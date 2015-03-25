@@ -40,3 +40,6 @@ gem 'spring',        group: :development
 
 # Puma, A ruby web server built for concurrency
 gem "puma"
+
+# User authentication
+gem 'devise'
