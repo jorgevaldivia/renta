@@ -43,3 +43,6 @@ gem "puma"
 
 # User authentication
 gem 'devise'
+
+# Replacement for ERB
+gem "haml-rails"
