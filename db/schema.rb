@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325221823) do
+ActiveRecord::Schema.define(version: 20150325223157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+
+  create_table "bank_accounts", force: true do |t|
+    t.integer  "user_id"
+    t.string   "holder_name"
+    t.string   "clabe"
+    t.hstore   "open_pay_data", default: {}
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bank_accounts", ["user_id"], name: "index_bank_accounts_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"
@@ -35,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150325221823) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.hstore   "open_pay_data",          default: {}
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

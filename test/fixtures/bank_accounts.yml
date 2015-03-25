@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  holder_name: MyString
+  clabe: MyString
+  openpay_data: 
+
+two:
+  user_id: 
+  holder_name: MyString
+  clabe: MyString
+  openpay_data: 
