@@ -46,3 +46,6 @@ gem 'devise'
 
 # Replacement for ERB
 gem "haml-rails"
+
+# Openpay gem
+gem 'openpay'
