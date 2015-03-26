@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   store_accessor :open_pay_data, :open_pay_id
 
   has_many :bank_accounts, dependent: :destroy
+  has_many :properties, dependent: :destroy
 
   before_save :create_or_update_in_open_pay
   before_destroy :destroy_from_open_pay
