@@ -1,0 +1,25 @@
+!!!
+%html.body-full-height{lang: "en"}
+  %head
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+    
+    %meta{content: "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
+  %body.theme-clean.page-signin-alt
+    .signin-header
+      %a.logo{href: "#{}"}
+        .demo-logo.bg-primary>
+          %img{alt: "", src: image_path("pixel-admin/main-navbar-logo.png"), style: "margin-top: -4px;"}/
+        \ 
+        %strong= t(:app_name)
+      - if devise_mapping.registerable?
+        - if controller_name == 'passwords'
+          %a.btn.btn-primary{href: new_user_session_path}= t(:sign_in)
+        - elsif controller_name != 'registrations'
+          %a.btn.btn-primary{href: new_user_registration_path}= t(:sign_up)
+      - elsif controller_name != 'sessions'
+        %a.btn.btn-primary{href: new_user_session_path}= t(:sign_in)
+
+    = yield

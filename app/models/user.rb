@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   before_save :create_or_update_in_open_pay
   before_destroy :destroy_from_open_pay
 
+  validates :first_name, :last_name, presence: :true
+
   def full_name
     [first_name, last_name].join(" ")
   end
@@ -20,11 +22,13 @@ class User < ActiveRecord::Base
 
   # When a user is saved or created, update his info in open pay.
   def create_or_update_in_open_pay
-    response = OpenPay::Customer.
-      new(open_pay_id).
-      save({id: open_pay_id, name: full_name, email: email, requires_account: false})
+    if first_name_changed? || last_name_changed? || email_changed?
+      response = OpenPay::Customer.
+        new(open_pay_id).
+        save({id: open_pay_id, name: full_name, email: email, requires_account: false})
 
-    self.open_pay_data = response
+      self.open_pay_data = response
+    end
   end
 
   # Delete user from open pay when a user is deleted.

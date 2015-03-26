@@ -1,0 +1,92 @@
+!!!
+%html
+  %head
+    %title Renta
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+    = render "/layouts/select_includes"
+    
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+  %body.theme-clean.main-menu-animated{"ng-app" => "propertea", class: @pixel_layout}
+    :javascript
+      var init = [];
+    / Demo script
+    / %script{:src => "/assets/demo/demo.js"}
+    / / Demo script
+    #main-wrapper
+      /
+        2. $MAIN_NAVIGATION ===========================================================================
+        
+        Main navigation
+      #main-navbar.navbar.navbar-inverse{:role => "navigation"}
+        / Main menu toggle
+        %button#main-menu-toggle{:type => "button"}
+          %i.navbar-icon.fa.fa-bars.icon
+          %span.hide-menu-text HIDE MENU
+        .navbar-inner
+          / Main navbar header
+          .navbar-header
+            / Logo
+            %a.navbar-brand{href: dashboard_path }
+              %div
+                %img{:alt => t(:app_name), :src => image_path("pixel-admin/main-navbar-logo.png") }/
+              = t(:app_name)
+            / Main navbar toggle
+            %button.navbar-toggle.collapsed{"data-target" => "#main-navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+              %i.navbar-icon.fa.fa-bars
+          / / .navbar-header
+          #main-navbar-collapse.collapse.navbar-collapse.main-navbar-collapse
+            %div
+              .right.clearfix
+                %ul.nav.navbar-nav.pull-right.right-navbar-nav
+                  = render "layouts/nav_notifications"
+                  / /3. $END_NAVBAR_ICON_BUTTONS
+                  %li
+                    %form.navbar-form.pull-left
+                      %input.form-control{:placeholder => "Search", :type => "text"}/
+                  %li.dropdown
+                    %a.dropdown-toggle.user-menu{"data-toggle" => "dropdown", :href => "#"}
+                      %img{:alt => "", :src => "/assets/demo/avatars/1.jpg"}/
+                      %span Replace Name
+                    %ul.dropdown-menu
+                      %li
+                        %a{:href => "#"}
+                          %span.label.label-warning.pull-right> New
+                          Profile
+                      %li
+                        %a{:href => "#"}
+                          %span.badge.badge-primary.pull-right> New
+                          Account
+                      %li
+                        %a{:href => "#"}
+                          %i.dropdown-icon.fa.fa-cog>
+                            Settings
+                      %li.divider
+                      %li
+                        = link_to(destroy_user_session_path, method: :delete) do
+                          %i.dropdown-icon.fa.fa-power-off>
+                            Log Out
+
+      = render "/layouts/navigation"
+      #content-wrapper
+        %div{"data-ng-view" => ""}
+      #main-menu-bg
+    
+    / [if !IE]>
+    :javascript
+      window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js">'+"<"+"/script>");
+    / <![endif]
+    /[if lte IE 9]
+      <script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">'+"<"+"/script>"); </script>
+    / %script{:src => "jquery.transit.js"}
+    / / Pixel Admin's javascripts
+    / %script{:src => "assets/bootstrap.min.js"}
+    / %script{:src => "assets/pixel-admin.min.js"}
+    :javascript
+      init.push(function () {
+        // Javascript code here
+      });
+      window.PixelAdmin.start(init);

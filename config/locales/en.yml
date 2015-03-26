@@ -20,4 +20,25 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  app_name: "Renta"
+  sign_in: Sign In
+  sign_up: Sign Up
+
+  views:
+    devise:
+      passwords:
+        new:
+          header: "Forgot your password?"
+          submit: Send Reset Password Instructions
+        edit:
+          header: "Create your account"
+
+      sessions:
+        new:
+          alt_signin: "or sign in with"
+          header: "Sign in to your account"
+          remember_me: Remember me
+
+      registrations:
+        new:
+          header: "Create your account"

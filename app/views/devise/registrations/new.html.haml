@@ -1,0 +1,27 @@
+%h1.form-header= t("views.devise.registrations.new.header")
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),
+  html: {class: "panel"} ) do |f|
+
+  = devise_error_messages!
+  .clearfix
+
+  .form-group
+    = f.text_field :first_name, placeholder: User.human_attribute_name(:first_name),
+      class: "form-control input-lg", autofocus: true
+  .form-group
+    = f.text_field :last_name, placeholder: User.human_attribute_name(:last_name),
+      class: "form-control input-lg", autofocus: true
+  .form-group
+    = f.email_field :email, as: :email, autofocus: true, placeholder: User.human_attribute_name(:email),
+      class: "form-control input-lg"
+
+  .form-group
+    = f.password_field :password, autocomplete: "off", placeholder: User.human_attribute_name(:password),
+      class: "form-control input-lg"
+
+  .form-group
+    = f.password_field :password_confirmation, autocomplete: "off", placeholder: User.human_attribute_name(:password_confirmation),
+      class: "form-control input-lg"
+
+  .form-actions
+    %input.btn.btn-primary.btn-block.btn-lg{type: "submit", value: t(:sign_up)}/

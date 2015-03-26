@@ -1,0 +1,38 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_self
+ */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin);
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "pixel-admin";
+
+@import "pixel-admin-scss/widgets/widgets";
+@import "pixel-admin-scss/pages/pages";
+@import "pixel-admin-scss/themes/themes";
+
+@import "select.min";
+
+body {
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 13px;
+}
+.form-control {
+  border-radius: 0px;
+}
+
+.input-group-addon, .panel, .panel-heading {
+  border-radius: 0px;
+}
