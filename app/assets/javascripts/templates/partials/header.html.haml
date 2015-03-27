@@ -13,7 +13,7 @@
   / start: right nav
   %ul.nav.navbar-nav.navbar-right
     %li.dropdown.dropdown-custom
-      %a.dropdown-toggle{:href => "#"}
+      %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
         %span.bullet.bullet-danger
         %span.ai.ai-notifications.fs-22.pos-t-4
       .dropdown-menu.np
@@ -82,14 +82,12 @@
                     Joel Bowen -
                     %span.text-muted Donec egestas. Duis ac arcu. Nunc mauris...
             / / media list
-    %li.visible-xs
-      %a.dropdown-toggle{"data-ng-click" => "core.settings.headerSearchForm = !core.settings.headerSearchForm", :href => ""}
-        %i.ai.ai-search.fs-22.pos-t-4
+
     %li.dropdown
-      %a.dropdown-toggle{:href => ""}
+      %a.dropdown-toggle{:href => "", "data-toggle" => "dropdown"}
         %span.img-wrapper.img-rounded
           %img{:alt => "", :src => "/assets/avatar/avatar2.jpg"}/
-        %span.text.fw-sb.ml-xs.hidden-xs Andrew
+        %span.text.fw-sb.ml-xs.hidden-xs {{me.first_name}}
         %span.caret
       %ul.dropdown-menu
         %li

@@ -7,6 +7,7 @@ app.config [
     $stateProvider.state('default',
       abstract: true
       url: ''
+      controller: "DefaultController"
       templateUrl: 'layouts/default.html'
     )
 

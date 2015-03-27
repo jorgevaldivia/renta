@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :properties, except: [:new, :edit], defaults: { format: :json }
   resource :dashboard, only: :show
+  resource :me, only: :show, controller: "me", defaults: { format: :json }
 
   devise_for :users, controllers: { 
     sessions: "users/sessions",
