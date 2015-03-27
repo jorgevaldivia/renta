@@ -45,6 +45,10 @@ en:
   sign_in: Sign In
   sign_up: Sign Up
 
+  confirmations:
+    generic: "Are you sure?"
+    deletion: "Are you sure you want to delete this record?"
+
   date:
     formats:
       default: "%Y-%m-%d"

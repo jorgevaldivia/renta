@@ -23,7 +23,7 @@
               %span.caret
             %ul.dropdown-menu{role: "menu"}
               %li
-                %a{:href => "javascript:void(0);"}
+                %a{href: "", "ng-really-message" => I18n.t("confirmations.deletion"), "ng-really-click" => "delete()"}
                   %span.fa.fa-trash-o
                   = I18n.t(:delete)
 

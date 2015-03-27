@@ -1,7 +1,7 @@
 !!!
 %html{"ng-app" => "propertea", "data-ng-class" => "{'page-loading': core.settings.pageLoading, 'header-fixed': core.settings.headerFixed, 'sidebar-left-fixed': core.settings.sidebarLeftFixed, 'sidebar-left-collapse': core.settings.sidebarLeftCollapse || core.screen.sm, 'sidebar-open-ltr': core.settings.sidebarLeftOpen,}", "data-ng-controller" => "coreSettingsCtrl"}
   %head
-    %title Renta
+    %title= t(:app_name)
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags

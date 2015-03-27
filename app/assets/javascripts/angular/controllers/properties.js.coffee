@@ -1,6 +1,11 @@
 app.controller "PropertiesController", ["$scope", "$state", "$stateParams", "Property",
   ($scope, $state, $stateParams, Property) ->
     $scope.record = {object: {}}
+
+    $scope.delete = ->
+      $scope.record.object.$delete({id: $scope.record.object.id}).then(->
+        $state.go("default.properties.index")
+      )
 ]
 
 app.controller "PropertiesIndexController", ["$scope", "Property",
@@ -44,7 +49,6 @@ app.controller "PropertyShowController", ["$scope", "$stateParams", "Property",
   ($scope, $stateParams, Property) ->
     
     $scope.getProperty = ->
-      console.log($scope.blah)
       if $stateParams.id
         Property.get({id: $stateParams.id}, (record) ->
           $scope.record.object = record
