@@ -57,6 +57,9 @@ en:
 
   activerecord:
     models:
+      lease:
+        one: Lease
+        other: Leases
       property:
         one: Property
         other: Properties

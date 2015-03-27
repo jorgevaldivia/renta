@@ -5,10 +5,14 @@
         %h3
           %a{"ui-sref" => "default.properties.index"}
             = Property.model_name.human(count: 2)
-          %a{"ui-sref" => "default.properties.show({id: record.object.id})", "ng-show" => "record.object.name"}
-            %small
-              &#10095;
-              {{record.object.name}}
+          %small
+            &#10095;
+            %a{"ui-sref" => "default.properties.show({id: record.object.id})", "ng-show" => "record.object.name"}
+              {{ record.object.name | characters:25 }}
+          %small{"ng-show" => "$state.includes('default.properties.leases')"}
+            &#10095;
+            %a{"ui-sref" => "default.properties.leases.index({property_id: record.object.id})"}
+              = Lease.model_name.human(count: 2)
       .col-sm-2.va-m
         .pull-right
           %a.btn.btn-success{type: "button", "ui-sref" => "default.properties.new", "ng-hide" => "$state.includes('default.properties.show')"}

@@ -21,9 +21,9 @@
 @import "miveus/fontawesome";
 @import "miveus/layout";
 @import "miveus/component";
-@import "widgets";
 
-@import "select.min";
+@import "widgets";
+@import "atlant";
 
 body {
   font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -33,6 +33,6 @@ body {
   border-radius: 0px;
 }
 
-.input-group-addon, .panel, .panel-heading {
+.input-group-addon {
   border-radius: 0px;
 }

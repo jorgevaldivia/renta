@@ -23,9 +23,11 @@
         .widget-subtitle= Property.human_attribute_name(:total_profit)
   .row
     .col-md-12
-      .panel.panel-default
+      .panel.panel-primary
         .panel-heading
-          .panel-title= Property.human_attribute_name(:current_lease)
+          .panel-title
+            %a{"ui-sref" => "default.properties.leases.index({property_id: record.object.id})"}
+              = Property.human_attribute_name(:current_lease)
         .panel-body
           .table-responsive
             %table.table.table-hover
@@ -36,7 +38,6 @@
                   %th= Lease.human_attribute_name(:start_date)
                   %th= Lease.human_attribute_name(:end_date)
                   %th= Lease.human_attribute_name(:next_bill_date)
-                  %th &nbsp;
               %tbody
                 %tr
                   %td Jorge Valdivia
@@ -50,7 +51,7 @@
 
   .row
     .col-md-6
-      .panel.panel-default
+      .panel.panel-primary
         .panel-heading
           .panel-title= Property.human_attribute_name(:past_leases)
         .panel-body
@@ -62,7 +63,6 @@
                   %th= Lease.human_attribute_name(:rent)
                   %th= Lease.human_attribute_name(:start_date)
                   %th= Lease.human_attribute_name(:end_date)
-                  %th &nbsp;
               %tbody
                 %tr
                   %td Jorge Valdivia
@@ -71,7 +71,7 @@
                   %td March 31st, 2015
 
     .col-md-6
-      .panel.panel-default
+      .panel.panel-primary
         .panel-heading
           .panel-title Recent Transactions
         .panel-body

@@ -1,10 +1,9 @@
 .container-fluid.pt-md
-
   .row
     .col-md-12
-      .panel.panel-primary
+      .panel.panel-default
         .panel-heading
-          .panel-title All Records
+          .panel-title= Lease.model_name.human(count: 2)
         .table-responsive
           %table.table.table-striped.table-hover
             %thead

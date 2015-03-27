@@ -12,7 +12,8 @@
 #= require_tree ../templates
 
 # Init Angular app
-@app = angular.module("propertea", ["ngResource", "ui.router", "ui.select", "ngSanitize", "templates", "ngAnimate"])
+@app = angular.module("propertea", ["ngResource", "ui.router", "ui.select",
+  "ngSanitize", "templates", "ngAnimate", "truncate"])
 
 # Rails 4 now requires the use of the csrf token on all requests, including
 # ajax ones. This gets the token from the dom (added by rails) and adds it as a
@@ -61,6 +62,8 @@
 
     $rootScope.$on '$stateChangeSuccess', ->
       $scope.core.settings.pageLoading = false
+      # Scroll to top
+      $("html, body").animate({ scrollTop: 0 }, 0);
       return
 
     ###* On resize, update viewport variable ###

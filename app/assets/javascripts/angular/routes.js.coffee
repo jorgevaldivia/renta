@@ -45,4 +45,17 @@ app.config [
       templateUrl: 'properties/show.html'
       controller: "PropertyShowController"
     )
+
+    .state('default.properties.leases',
+      url: '/:property_id/leases'
+      abstract: true
+      templateUrl: 'properties/leases/layout.html'
+      controller: "PropertyLeasesController"
+    )
+
+    .state('default.properties.leases.index',
+      url: '/'
+      templateUrl: 'properties/leases/index.html'
+      controller: "PropertyLeasesIndexController"
+    )
 ]

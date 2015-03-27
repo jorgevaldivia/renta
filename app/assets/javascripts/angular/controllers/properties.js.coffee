@@ -2,6 +2,15 @@ app.controller "PropertiesController", ["$scope", "$state", "$stateParams", "Pro
   ($scope, $state, $stateParams, Property) ->
     $scope.record = {object: {}}
 
+    $scope.getProperty = (id) ->
+      if id
+        if(String($scope.record.object.id) != String(id))
+          Property.get({id: id}, (record) ->
+            $scope.record.object = record
+          )
+      else
+        $scope.record = new Property()
+
     $scope.delete = ->
       $scope.record.object.$delete({id: $scope.record.object.id}).then(->
         $state.go("default.properties.index")
@@ -47,14 +56,6 @@ app.controller "PropertyFormController", ["$scope", "$state", "$stateParams", "P
 
 app.controller "PropertyShowController", ["$scope", "$stateParams", "Property",
   ($scope, $stateParams, Property) ->
-    
-    $scope.getProperty = ->
-      if $stateParams.id
-        Property.get({id: $stateParams.id}, (record) ->
-          $scope.record.object = record
-        )
-      else
-        $scope.record = new Property()
 
-    $scope.getProperty();
+    $scope.getProperty($stateParams.id);
 ]
