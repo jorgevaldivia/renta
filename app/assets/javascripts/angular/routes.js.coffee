@@ -23,7 +23,7 @@ app.config [
     )
 
     .state('default.properties.index',
-      url: '/properties'
+      url: '/'
       templateUrl: 'properties/index.html'
       controller: "PropertiesIndexController"
     )
