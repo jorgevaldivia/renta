@@ -25,17 +25,23 @@ app.config [
     .state('default.properties.index',
       url: '/properties'
       templateUrl: 'properties/index.html'
-      controller: "PropertiesController"
+      controller: "PropertiesIndexController"
     )
 
     .state('default.properties.new',
       url: '/new'
-      templateUrl: 'properties/new.html'
+      templateUrl: 'properties/form.html'
+      controller: "PropertyFormController"
+    )
+
+    .state('default.properties.edit',
+      url: '/:id/edit'
+      templateUrl: 'properties/form.html'
       controller: "PropertyFormController"
     )
 
     .state('default.properties.show',
-      url: '/show/:id'
+      url: '/:id'
       templateUrl: 'properties/show.html'
       controller: "PropertyShowController"
     )

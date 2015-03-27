@@ -39,6 +39,9 @@ en:
   paging_counts_angular: "{{pagingFirstRecord()}} - {{pagingLastRecord()}} of {{paging.total_count}}"
   previous_page: Previous Page
   remove: Remove
+  save: Save
+  save_record: "Save %{name}"
+  reset: Reset
   sign_in: Sign In
   sign_up: Sign Up
 

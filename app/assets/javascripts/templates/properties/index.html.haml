@@ -39,8 +39,8 @@
                 %td.text-center
                   / button toolbar
                   .toolbar
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-check
-                    %a.btn.btn-sm.btn-default{:href => ""}
+                    %a.btn.btn-sm.btn-default{{"ui-sref" => "default.properties.edit({id: record.id})"}}
+                      %span.fa.fa-pencil
+                    %a.btn.btn-sm.btn-default{href: ""}
                       %span.fa.fa-trash-o
                   / / button toolbar

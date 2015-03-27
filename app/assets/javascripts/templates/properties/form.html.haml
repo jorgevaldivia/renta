@@ -1,0 +1,52 @@
+.container-fluid.pt-md
+  .row
+    .col-md-12
+      / start: panel
+      .panel.panel-default
+        .panel-heading
+          .panel-title= I18n.t(:add_new, name: Property.model_name.human)
+        %form.form-horizontal{name: "propertyForm", "novalidate" => ""}
+          .panel-body
+
+            .form-group
+              %label.col-sm-2.control-label= Property.human_attribute_name(:name)
+              .col-sm-10
+                %input.form-control{type: "text", "ng-model" => "record.object.name", name: "name", "server-validation" => ""}/
+            %hr.mnr-md.mnl-md/
+
+            .form-group
+              %label.col-sm-2.control-label= Property.human_attribute_name(:address_line_1)
+              .col-sm-10
+                %input.form-control{type: "text", "ng-model" => "record.object.address_line_1", name: "address_line_1", "server-validation" => ""}/
+            %hr.mnr-md.mnl-md/
+
+            .form-group
+              %label.col-sm-2.control-label= Property.human_attribute_name(:address_line_2)
+              .col-sm-10
+                %input.form-control{type: "text", "ng-model" => "record.object.address_line_2", name: "address_line_2", "server-validation" => ""}/
+            %hr.mnr-md.mnl-md/
+
+            .form-group
+              %label.col-sm-2.control-label= Property.human_attribute_name(:city)
+              .col-sm-10
+                %input.form-control{type: "text", "ng-model" => "record.object.city", name: "city", "server-validation" => ""}/
+            %hr.mnr-md.mnl-md/
+
+            .form-group
+              %label.col-sm-2.control-label= Property.human_attribute_name(:state)
+              .col-sm-6
+                %input.form-control{type: "text", "ng-model" => "record.object.state", name: "state", "server-validation" => ""}/
+            %hr.mnr-md.mnl-md/
+
+            .form-group
+              %label.col-sm-2.control-label= Property.human_attribute_name(:postal_code)
+              .col-sm-6
+                %input.form-control{type: "text", "ng-model" => "record.object.postal_code", name: "postal_code", "server-validation" => ""}/
+
+          .panel-footer
+            .form-group.mb-0
+              %label.col-sm-2.control-label
+              .col-sm-10
+                %button.btn.btn-primary{type: "submit", "ng-click" => "save();", "ng-disabled" => "propertyForm.$pristine"}
+                  = I18n.t(:save_record, name: Property.model_name.human)
+                %button.btn.btn-default{type: "reset"}= I18n.t(:reset)
