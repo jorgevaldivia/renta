@@ -68,3 +68,7 @@ gem "money-rails"
 # Turns off the Rails asset pipeline log. This means that it suppresses
 # messages in your development log.
 gem 'quiet_assets', group: :development
+
+# Enables the creation of both simple and advanced search forms for your Ruby
+# on Rails application.
+gem 'ransack', "~> 1.6.3"

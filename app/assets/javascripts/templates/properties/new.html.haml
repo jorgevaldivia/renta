@@ -1,0 +1,33 @@
+.container-fluid.pt-md
+  .row
+    .col-md-12
+      / start: panel
+      .panel.panel-default
+        %form.form-horizontal.ng-pristine.ng-valid
+          .panel-body
+            %h4.mb-xs Basic Elements
+            .form-group
+              %label.col-sm-2.control-label Input Text
+              .col-sm-10
+                %input.form-control{:type => "text"}/
+            %hr.mnr-md.mnl-md/
+            / horizontal line
+            .form-group
+              %label.col-sm-2.control-label Input Text Rounded
+              .col-sm-10
+                %input.form-control.form-control-rounded{:type => "text"}/
+            %hr.mnr-md.mnl-md/
+            / horizontal line
+            .form-group
+              %label.col-sm-2.control-label Input Password
+              .col-sm-10
+                %input.form-control{:type => "password"}/
+            %hr.mnr-md.mnl-md/
+            / horizontal line
+            .form-group
+              %label.col-sm-2.control-label Help text
+              .col-sm-10
+                %input.form-control{:type => "text"}/
+                %span.help-block Help text that breaks onto a new line and may extend beyond one line.
+            %hr.mnr-md.mnl-md/
+            

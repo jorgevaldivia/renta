@@ -1,9 +1,8 @@
 app.factory "Property", [
-  "$resource", "currentAccount"
-  ($resource, currentAccount) ->
-    return $resource("/#{currentAccount.url_token}/properties/:id/.json", null,
+  "$resource",
+  ($resource) ->
+    return $resource("/properties/:id", null,
       update:
-        method: "PUT",
-      query:  { method:'GET', isArray: false },
+        method: "PATCH",
     )
 ]

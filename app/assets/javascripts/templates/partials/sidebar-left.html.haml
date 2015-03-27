@@ -16,13 +16,13 @@
         %li.nav-heading APPLICATIONS
 
         %li.nav-group{"ng-class" => "{ active: $state.includes('dashboard') }"}
-          %a.nav-toggle{:href => "#/dashboard"}
+          %a.nav-toggle{"ui-sref" => "default.dashboard"}
             %span.figure.figure-left.icon
               %i.ai.ai-dashboard
-            %span.text.ellipsis Dashboard
+            %span.text.ellipsis Dashboard {{$rootScope}}
 
         %li.nav-group{"ng-class" => "{ active: $state.includes('properties') }"}
-          %a.nav-toggle{:href => "#/properties"}
+          %a.nav-toggle{"ui-sref" => "default.properties.index"}
             %span.figure.figure-left.icon
               %i.ai.ai-home
             %span.text.ellipsis= Property.model_name.human(count: 2)

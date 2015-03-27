@@ -18,23 +18,25 @@ app.config [
 
     .state('default.properties',
       url: '/properties'
+      templateUrl: 'properties/layout.html'
+      controller: "PropertiesController"
+    )
+
+    .state('default.properties.index',
+      url: '/properties'
       templateUrl: 'properties/index.html'
       controller: "PropertiesController"
     )
 
+    .state('default.properties.new',
+      url: '/new'
+      templateUrl: 'properties/new.html'
+      controller: "PropertyFormController"
+    )
 
-    # $urlRouterProvider.otherwise '/dashboard'
-
-    # $stateProvider.
-    #   state('dashboard',
-    #     url: '/dashboard'
-    #     templateUrl: 'dashboards/show.html'
-    #     controller: "DashboardController"
-    #   )
-
-    #   .state('properties',
-    #     url: '/properties'
-    #     templateUrl: 'properties/index.html'
-    #     controller: "PropertiesController"
-    #   )
+    .state('default.properties.show',
+      url: '/show/:id'
+      templateUrl: 'properties/show.html'
+      controller: "PropertyShowController"
+    )
 ]

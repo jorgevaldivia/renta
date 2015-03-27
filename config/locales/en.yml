@@ -21,8 +21,32 @@
 
 en:
   app_name: Propertea
+
+  add_new: "New %{name}"
+  add: "Add %{name}"
+  all: "All"
+  all_elements: "All %{name}"
+  back_to: "Back to %{name}"
+  dashboard: "Dashboard"
+  delete: "Delete"
+  delete_object: "Delete %{name}"
+  edit: "Edit"
+  edit_object: "Edit %{name}"
+  filters: Filters
+  heads_up: "Heads Up!"
+  home: Home
+  no_results: No results found
+  paging_counts_angular: "{{pagingFirstRecord()}} - {{pagingLastRecord()}} of {{paging.total_count}}"
+  previous_page: Previous Page
+  remove: Remove
   sign_in: Sign In
   sign_up: Sign Up
+
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      long: "%B %d, %Y"
+      short: "%b %d"
 
   activerecord:
     models:
@@ -69,3 +93,19 @@ en:
       registrations:
         new:
           header: "Create your account"
+
+    errors:
+      not_found:
+        summary: "page not found"
+        description: "Unfortunately we're having trouble loading the page you are looking for. Please make sure you have the correct link and try again."
+    confirmations:
+      delete: "Are you sure you want to delete this record? All associated data will be lost."
+
+    leases:
+      form:
+        invoice_help_html: |
+          <p>Invoices are automatically generated each time that rent is due.</p>
+          <p>Late fees are automatically added to invoices after the grace period has passed.</p>
+
+    lease:
+      rent_for_date: "Rent for %{date}"

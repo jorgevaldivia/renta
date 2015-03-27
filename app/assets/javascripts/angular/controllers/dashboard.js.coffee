@@ -1,3 +1,3 @@
-app.controller "DashboardController", ["$scope", "$state",
-  ($scope, $state) ->
+app.controller "DashboardController", ["$scope",
+  ($scope) ->
 ]

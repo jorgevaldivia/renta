@@ -1,0 +1,13 @@
+%div
+  .page-header
+    .box-layout
+      .col-sm-6.va-m
+        %a{"ui-sref" => "default.properties.index"}
+          %h3= Property.model_name.human(count: 2)
+      .col-sm-6.va-m
+        .pull-right
+          %a.btn.btn-success{type: "button", "ui-sref" => "default.properties.new"}
+            %span.fa.fa-plus
+            = I18n.t(:add, name: Property.model_name.human)
+
+  .ui-view.slide-right

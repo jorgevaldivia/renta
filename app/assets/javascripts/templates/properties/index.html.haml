@@ -1,15 +1,3 @@
-/ start: page header
-.page-header
-  .box-layout
-    .col-sm-6.va-m
-      %h3= Property.model_name.human(count: 2)
-    .col-sm-6.va-m
-      %ol.breadcrumb.pull-right-sm.mb-0
-        %li
-          %a{:href => "#"} Table
-        %li.active Static
-/ / end: page header
-/ start: container fluid
 .container-fluid.pt-md
 
   / start: row
@@ -18,7 +6,7 @@
       / start: panel
       .panel.panel-default
         .panel-heading
-          .panel-title User Lists
+          .panel-title All Records
         / start: table responsive
         .table-responsive
           %table.table.table-striped.table-hover
@@ -29,26 +17,25 @@
                     %label
                       %input{:type => "checkbox"}/
                       %span
-                %th Name
-                %th Country
-                %th Email
-                %th Company
-                %th{:width => "10%"} Progress
-                %th
+                %th= Property.human_attribute_name(:name)
+                %th= Property.human_attribute_name(:address_line_1)
+                %th= Property.human_attribute_name(:city)
+                %th= Property.human_attribute_name(:state)
+                %th &nbsp;
             %tbody
-              %tr
+              %tr{"ng-repeat" => "record in records"}
                 %td
                   .checkbox.custom-info.mt-0.mb-0
                     %label
                       %input{:type => "checkbox"}/
                       %span
-                %td Short, Cheyenne E.
-                %td Bangladesh
-                %td quis.diam@gravida.net
-                %td Tellus Non Corp.
                 %td
-                  .progress.progress-xs.nm
-                    .progress-bar.progress-bar-danger{:style => "width:30%;"}
+                  %a{"ui-sref" => "default.properties.show({id: record.id})"}
+                    {{record.name}}
+                %td {{record.address_line_1}}
+                %td {{record.city}}
+                %td {{record.state}}
+
                 %td.text-center
                   / button toolbar
                   .toolbar
@@ -57,194 +44,3 @@
                     %a.btn.btn-sm.btn-default{:href => ""}
                       %span.fa.fa-trash-o
                   / / button toolbar
-              %tr
-                %td
-                  .checkbox.custom-info.mt-0.mb-0
-                    %label
-                      %input{:type => "checkbox"}/
-                      %span
-                %td Acosta, Isaiah V.
-                %td Turkmenistan
-                %td ac.mattis@Maecenas.ca
-                %td Pharetra Associates
-                %td
-                  .progress.progress-xs.nm
-                    .progress-bar.progress-bar-danger{:style => "width:10%;"}
-                %td.text-center
-                  / button toolbar
-                  .toolbar
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-check
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-trash-o
-                  / / button toolbar
-              %tr
-                %td
-                  .checkbox.custom-info.mt-0.mb-0
-                    %label
-                      %input{:type => "checkbox"}/
-                      %span
-                %td Stuart, Meghan W.
-                %td British Indian
-                %td enim@erat.com
-                %td Bibendum Donec Industries
-                %td
-                  .progress.progress-xs.nm
-                    .progress-bar.progress-bar-warning{:style => "width:50%;"}
-                %td.text-center
-                  / button toolbar
-                  .toolbar
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-check
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-trash-o
-                  / / button toolbar
-              %tr
-                %td
-                  .checkbox.custom-info.mt-0.mb-0
-                    %label
-                      %input{:type => "checkbox"}/
-                      %span
-                %td Pugh, Moses V.
-                %td Lithuania
-                %td diam@sapienmolestie.com
-                %td Vel Turpis Foundation
-                %td
-                  .progress.progress-xs.nm
-                    .progress-bar.progress-bar-warning{:style => "width:50%;"}
-                %td.text-center
-                  / button toolbar
-                  .toolbar
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-check
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-trash-o
-                  / / button toolbar
-              %tr
-                %td
-                  .checkbox.custom-info.mt-0.mb-0
-                    %label
-                      %input{:type => "checkbox"}/
-                      %span
-                %td Lawrence, Donna B.
-                %td Togo
-                %td arcu@onecfelis.co.uk
-                %td Tellus Non Corp.
-                %td
-                  .progress.progress-xs.nm
-                    .progress-bar.progress-bar-success{:style => "width:90%;"}
-                %td.text-center
-                  / button toolbar
-                  .toolbar
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-check
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-trash-o
-                  / / button toolbar
-              %tr
-                %td
-                  .checkbox.custom-info.mt-0.mb-0
-                    %label
-                      %input{:type => "checkbox"}/
-                      %span
-                %td Sharpe, Addison L.
-                %td Falkland Islands
-                %td enim@dolor.ca
-                %td Convallis Ante Lectus Ltd
-                %td
-                  .progress.progress-xs.nm
-                    .progress-bar{:style => "width:70%;"}
-                %td.text-center
-                  / button toolbar
-                  .toolbar
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-check
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-trash-o
-                  / / button toolbar
-              %tr
-                %td
-                  .checkbox.custom-info.mt-0.mb-0
-                    %label
-                      %input{:type => "checkbox"}/
-                      %span
-                %td Witt, Cullen T.
-                %td Kiribati
-                %td dui@magna.org
-                %td In Inc.
-                %td
-                  .progress.progress-xs.nm
-                    .progress-bar.progress-bar-success{:style => "width:100%;"}
-                %td.text-center
-                  / button toolbar
-                  .toolbar
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-check
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-trash-o
-                  / / button toolbar
-              %tr
-                %td
-                  .checkbox.custom-info.mt-0.mb-0
-                    %label
-                      %input{:type => "checkbox"}/
-                      %span
-                %td Cotton, Christopher S.
-                %td Benin
-                %td tincidunt@laoreet.edu
-                %td A Odio LLC
-                %td
-                  .progress.progress-xs.nm
-                    .progress-bar.progress-bar-info{:style => "width:100%;"}
-                %td.text-center
-                  / button toolbar
-                  .toolbar
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-check
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-trash-o
-                  / / button toolbar
-              %tr
-                %td
-                  .checkbox.custom-info.mt-0.mb-0
-                    %label
-                      %input{:type => "checkbox"}/
-                      %span
-                %td Dudley, Joan I.
-                %td Bonaire
-                %td magna@sodalesnisi.net
-                %td Mi Corp.
-                %td
-                  .progress.progress-xs.nm
-                    .progress-bar.progress-bar-danger{:style => "width:2%;"}
-                %td.text-center
-                  / button toolbar
-                  .toolbar
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-check
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-trash-o
-                  / / button toolbar
-              %tr
-                %td
-                  .checkbox.custom-info.mt-0.mb-0
-                    %label
-                      %input{:type => "checkbox"}/
-                      %span
-                %td Best, Eagan R.
-                %td Saint Martin
-                %td sodales@odio.org
-                %td Nunc Corporation
-                %td
-                  .progress.progress-xs.nm
-                    .progress-bar.progress-bar-success{:style => "width:90%;"}
-                %td.text-center
-                  / button toolbar
-                  .toolbar
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-check
-                    %a.btn.btn-sm.btn-default{:href => ""}
-                      %span.fa.fa-trash-o
-                  / / button toolbar
-        / / end: table responsive
-  / / end: row
