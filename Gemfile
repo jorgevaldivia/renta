@@ -54,6 +54,10 @@ gem 'openpay'
 # minify automatically during production.
 gem 'angularjs-rails', '1.3.10'
 
+# Adds your HTML templates into Angular's $templateCache using Rails asset
+# pipeline.
+gem 'angular-rails-templates'
+
 # Aims to be as flexible as possible while helping you with powerful components
 # to create your forms.
 gem 'simple_form'
@@ -64,7 +68,3 @@ gem "money-rails"
 # Turns off the Rails asset pipeline log. This means that it suppresses
 # messages in your development log.
 gem 'quiet_assets', group: :development
-
-# Adds your HTML templates into Angular's $templateCache using Rails asset
-# pipeline.
-gem 'angular-rails-templates'

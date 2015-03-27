@@ -1,0 +1,33 @@
+/ start: sidebar header
+.sidebar-header
+  / brand
+  %a.brand{:href => ""}
+    %span.brand-figure
+    %span.brand-text Propertea.
+  / / brand
+/ / end: sidebar header
+/ start: sidebar content
+.sidebar-content
+  / scroll-content
+  .scroll-wrapper{:style => "position: relative; overflow: hidden; width: auto;"}
+    .scroll-content{"slim-scroll" => "", :style => "overflow: hidden; width: auto;"}
+      / navigation
+      %ul.nav.nav-sidebar
+        %li.nav-heading APPLICATIONS
+
+        %li.nav-group{"ng-class" => "{ active: $state.includes('dashboard') }"}
+          %a.nav-toggle{:href => "#/dashboard"}
+            %span.figure.figure-left.icon
+              %i.ai.ai-dashboard
+            %span.text.ellipsis Dashboard
+
+        %li.nav-group{"ng-class" => "{ active: $state.includes('properties') }"}
+          %a.nav-toggle{:href => "#/properties"}
+            %span.figure.figure-left.icon
+              %i.ai.ai-home
+            %span.text.ellipsis= Property.model_name.human(count: 2)
+      / / navigation
+    .scroll-bar{:style => "width: 6px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 518px; background: rgb(0, 0, 0);"}
+    .scroll-rail{:style => "width: 6px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"}
+  / / scroll-content
+/ start: sidebar content

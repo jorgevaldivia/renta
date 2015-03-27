@@ -20,9 +20,36 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  app_name: "Renta"
+  app_name: Propertea
   sign_in: Sign In
   sign_up: Sign Up
+
+  activerecord:
+    models:
+      property:
+        one: Property
+        other: Properties
+
+    attributes:
+      property:
+        name: Name
+        address1: Address
+        address_line_1: Address 1
+        address_line_2: Address 2
+        basics: Basic Info
+        city: City
+        state: State/Province
+        zip_code: Zip/Postal
+        number_of_units: "# of Units"
+      property/units:
+        name: "Unit Name"
+
+    errors:
+      models:
+        property:
+          attributes:
+            base:
+              has_unit: Each property must have at least one unit.
 
   views:
     devise:

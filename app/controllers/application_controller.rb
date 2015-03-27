@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     if devise_controller?
       "sessions"
     else
-      "application"
+      "miveus"
     end
   end
 end

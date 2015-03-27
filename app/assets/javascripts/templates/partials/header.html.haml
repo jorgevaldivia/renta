@@ -1,0 +1,109 @@
+/ start: navbar-nocollapse
+.navbar-nocollapse.clearfix
+  / start: left nav
+  %ul.nav.navbar-nav.navbar-left
+    %li.visible-xs
+      %a{"data-ng-click" => "core.settings.sidebarLeftOpen = !core.settings.sidebarLeftOpen", :href => ""}
+        %i.ai.ai-menu.fs-24.pos-t-5
+    %li.hidden-xs
+      %a{"data-ng-click" => "core.settings.sidebarLeftCollapse = !core.settings.sidebarLeftCollapse", :href => ""}
+        %i.ai.fs-24.pos-t-5{"ng-class" => "{'ai-arrow-forward':core.settings.sidebarLeftCollapse || core.screen.sm, 'ai-arrow-back':!core.settings.sidebarLeftCollapse || !core.screen.sm}"}
+  / / end: left nav
+
+  / start: right nav
+  %ul.nav.navbar-nav.navbar-right
+    %li.dropdown.dropdown-custom
+      %a.dropdown-toggle{:href => "#"}
+        %span.bullet.bullet-danger
+        %span.ai.ai-notifications.fs-22.pos-t-4
+      .dropdown-menu.np
+        /
+          <div class="box-layout pa-md bdr-b bg-gray-50">
+          <div class="col-xs-8 va-m"><h5 class="fw-sb text-muted">1 Unread Notification</h5></div>
+          <div class="col-xs-4 va-m text-right"><a href="" title="Clear all"><i class="ai ai-clear-all fs-24 pos-t-2"></i></a></div>
+          </div>
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title 1 new notification
+          .scroll-content{"slim-scroll" => "{height:'250px'}", :style => "height:250px"}
+            / media list
+            %ul.media-list
+              %li.media
+                .media-left.text-muted
+                  %i.ai.ai-receipt.fs-24.pos-t-4.text-success
+                .media-body
+                  %span.fs-10.text-muted.pull-right 35M
+                  %h5.media-heading.mb-2.fw-sb
+                    %a{:href => ""} You've receive a receipt
+                  %p.mb-0
+                    %span.text-muted Google has sent your monthly payment receipt...
+              %li.media
+                .media-left.text-warning
+                  %i.ai.ai-note-add.fs-24.pos-t-4
+                .media-body
+                  %span.fs-10.text-muted.pull-right 2H
+                  %h5.media-heading.mb-2.fw-sb
+                    %a{:href => ""} Readme.md added!
+                  %p.mb-0
+                    %span.text-muted Your Github readme file is successfuly added...
+              %li.media
+                %a.media-left.pt-xs{:href => ""}
+                  %span.img-wrapper.img-rounded
+                    %img{:src => "/assets/avatar/avatar9.jpg"}/
+                .media-body
+                  %span.fs-10.text-muted.pull-right 1H
+                  %h5.media-heading.mb-2.fw-sb
+                    %a{:href => ""} Lunch together?
+                  %p.mb-0
+                    Ashton Cooley -
+                    %span.text-muted Nam porttitor scelerisque neque. Nullam nisl...
+              %li.media.media-new
+                %a.media-left.pt-xs{:href => ""}
+                  %span.img-wrapper.img-rounded
+                    %img{:src => "/assets/avatar/avatar7.jpg"}/
+                .media-body
+                  %span.fs-10.text-muted.pull-right 5H
+                  %h5.media-heading.mb-2.fw-sb
+                    %a{:href => ""}
+                      %span.bullet.bullet-success
+                      Angular is awesome
+                  %p.mb-0
+                    Brendan Dickerson -
+                    %span.text-muted Cras pellente. Sed dictum. Proin eget odio...
+              %li.media
+                %a.media-left.pt-xs{:href => ""}
+                  %span.img-wrapper.img-rounded
+                    %img{:src => "/assets/avatar/avatar6.jpg"}/
+                .media-body
+                  %span.fs-10.text-muted.pull-right 1D
+                  %h5.media-heading.mb-2.fw-sb
+                    %a{:href => ""} Another job offer
+                  %p.mb-0
+                    Joel Bowen -
+                    %span.text-muted Donec egestas. Duis ac arcu. Nunc mauris...
+            / / media list
+    %li.visible-xs
+      %a.dropdown-toggle{"data-ng-click" => "core.settings.headerSearchForm = !core.settings.headerSearchForm", :href => ""}
+        %i.ai.ai-search.fs-22.pos-t-4
+    %li.dropdown
+      %a.dropdown-toggle{:href => ""}
+        %span.img-wrapper.img-rounded
+          %img{:alt => "", :src => "/assets/avatar/avatar2.jpg"}/
+        %span.text.fw-sb.ml-xs.hidden-xs Andrew
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          %a{"ui-sref" => "default.setting.profile"}
+            %i.ai.ai-person.fs-16.pos-t-1.mr-xs
+            Profile
+        %li
+          %a{:href => ""}
+            %i.ai.ai-info-outline.fs-16.pos-t-1.mr-xs
+            Help
+        %li.divider
+        %li
+          %a{"ui-sref" => "minimal.page.signin"}
+            %i.ai.ai-lock.fs-16.pos-t-1.mr-xs
+            Logout
+  / / end: right nav
+/ / end: navbar-nocollapse

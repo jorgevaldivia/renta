@@ -1,15 +1,40 @@
 app.config [
-  '$routeProvider'
-  ($routeProvider) ->
-    $routeProvider.when '/dashboard',
-      controller: 'DashboardController'
+  "$stateProvider", "$urlRouterProvider",
+  ($stateProvider, $urlRouterProvider) ->
+
+    $urlRouterProvider.otherwise 'dashboard'
+
+    $stateProvider.state('default',
+      abstract: true
+      url: ''
+      templateUrl: 'layouts/default.html'
+    )
+
+    .state('default.dashboard',
+      url: '/dashboard'
       templateUrl: 'dashboards/show.html'
+      controller: "DashboardController"
+    )
 
-    $routeProvider.when '/properties',
-      controller: 'PropertiesController'
+    .state('default.properties',
+      url: '/properties'
       templateUrl: 'properties/index.html'
-    
-    $routeProvider.otherwise({ redirectTo: "/dashboard" });
+      controller: "PropertiesController"
+    )
 
-    return
+
+    # $urlRouterProvider.otherwise '/dashboard'
+
+    # $stateProvider.
+    #   state('dashboard',
+    #     url: '/dashboard'
+    #     templateUrl: 'dashboards/show.html'
+    #     controller: "DashboardController"
+    #   )
+
+    #   .state('properties',
+    #     url: '/properties'
+    #     templateUrl: 'properties/index.html'
+    #     controller: "PropertiesController"
+    #   )
 ]
