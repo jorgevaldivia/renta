@@ -46,16 +46,34 @@ app.config [
       controller: "PropertyShowController"
     )
 
-    .state('default.properties.leases',
-      url: '/:property_id/leases'
+    .state('default.leases',
+      url: '/properties/:property_id/leases'
       abstract: true
       templateUrl: 'properties/leases/layout.html'
       controller: "PropertyLeasesController"
     )
 
-    .state('default.properties.leases.index',
+    .state('default.leases.index',
       url: '/'
       templateUrl: 'properties/leases/index.html'
       controller: "PropertyLeasesIndexController"
+    )
+
+    .state('default.leases.new',
+      url: '/new'
+      templateUrl: 'properties/leases/form.html'
+      controller: "PropertyLeaseFormController"
+    )
+
+    .state('default.leases.edit',
+      url: '/:id/edit'
+      templateUrl: 'properties/leases/form.html'
+      controller: "PropertyLeaseFormController"
+    )
+
+    .state('default.leases.show',
+      url: '/:id'
+      templateUrl: 'properties/leases/show.html'
+      controller: "PropertyLeaseShowController"
     )
 ]

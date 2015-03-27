@@ -1,0 +1,51 @@
+.container-fluid.pt-md
+  .row
+    .col-md-12
+      .panel.panel-success
+        .panel-heading
+          .panel-title= I18n.t(:add_new, name: Lease.model_name.human)
+        %form.form-horizontal{name: "form", "novalidate" => ""}
+          .panel-body
+
+            .form-group
+              %label.col-sm-2.control-label= Lease.human_attribute_name(:start_date)
+              .col-sm-6
+                %input.form-control{type: "text", "ng-model" => "record.object.start_date", name: "start_date", "server-validation" => ""}/
+            %hr.mnr-md.mnl-md/
+
+            .form-group
+              %label.col-sm-2.control-label= Lease.human_attribute_name(:end_date)
+              .col-sm-6
+                %input.form-control{type: "text", "ng-model" => "record.object.end_date", name: "end_date", "server-validation" => ""}/
+            %hr.mnr-md.mnl-md/
+
+            .form-group
+              %label.col-sm-2.control-label= Lease.human_attribute_name(:frequency)
+              .col-sm-6
+                %input.form-control{type: "text", "ng-model" => "record.object.frequency", name: "frequency", "server-validation" => ""}/
+            %hr.mnr-md.mnl-md/
+
+            .form-group
+              %label.col-sm-2.control-label= Lease.human_attribute_name(:interval)
+              .col-sm-6
+                %input.form-control{type: "text", "ng-model" => "record.object.interval", name: "interval", "server-validation" => ""}/
+            %hr.mnr-md.mnl-md/
+
+            .form-group
+              %label.col-sm-2.control-label= Lease.human_attribute_name(:rent)
+              .col-sm-6
+                %input.form-control{type: "text", "ng-model" => "record.object.rent", name: "rent", "server-validation" => ""}/
+            %hr.mnr-md.mnl-md/
+
+            .form-group
+              %label.col-sm-2.control-label= Lease.human_attribute_name(:deposit)
+              .col-sm-6
+                %input.form-control{type: "text", "ng-model" => "record.object.deposit", name: "deposit", "server-validation" => ""}/
+
+          .panel-footer
+            .form-group.mb-0
+              %label.col-sm-2.control-label
+              .col-sm-10
+                %button.btn.btn-primary{type: "submit", "ng-click" => "save();", "ng-disabled" => "form.$pristine"}
+                  = I18n.t(:save_record, name: Lease.model_name.human)
+                %button.btn.btn-default{type: "reset"}= I18n.t(:reset)

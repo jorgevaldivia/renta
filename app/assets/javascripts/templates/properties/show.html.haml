@@ -26,8 +26,14 @@
       .panel.panel-primary
         .panel-heading
           .panel-title
-            %a{"ui-sref" => "default.properties.leases.index({property_id: record.object.id})"}
-              = Property.human_attribute_name(:current_lease)
+            .row
+              .col-md-6
+                = Property.human_attribute_name(:current_lease)
+              .col-md-6
+                %ul.panel-controls
+                  %li
+                    %a{"ui-sref" => "default.leases.index({property_id: record.object.id})"}
+                      %span.fa.fa-arrow-right
         .panel-body
           .table-responsive
             %table.table.table-hover
@@ -44,7 +50,7 @@
                   %td
                     $19,000
                     %br/
-                    %span.label.label-success Current
+                    %span.label.label-danger 6 Days Late
                   %td April 1st, 2015
                   %td March 31st, 2016
                   %td May 1st, 2015
@@ -53,7 +59,15 @@
     .col-md-6
       .panel.panel-primary
         .panel-heading
-          .panel-title= Property.human_attribute_name(:past_leases)
+          .panel-title
+            .row
+              .col-md-6
+                = Property.human_attribute_name(:past_lease)
+              .col-md-6
+                %ul.panel-controls
+                  %li
+                    %a{"ui-sref" => "default.leases.index({property_id: record.object.id})"}
+                      %span.fa.fa-arrow-right
         .panel-body
           .table-responsive
             %table.table.table-striped.table-hover
