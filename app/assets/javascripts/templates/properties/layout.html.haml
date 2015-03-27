@@ -5,7 +5,7 @@
         %h3
           %a{"ui-sref" => "default.properties.index"}
             = Property.model_name.human(count: 2)
-          %span{"ng-show" => "record.object.name"}
+          %a{"ui-sref" => "default.properties.show({id: record.object.id})", "ng-show" => "record.object.name"}
             %small
               &#10095;
               {{record.object.name}}
