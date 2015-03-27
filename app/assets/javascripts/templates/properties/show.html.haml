@@ -1,8 +1,110 @@
 .container-fluid.pt-md
+
+  .row
+    .col-md-4
+      .widget.widget-info.widget-no-subtitle
+        .widget-big-int
+          $
+          %span.num-count {{ record.object.total_revenue | number:2 }}
+        .widget-subtitle= Property.human_attribute_name(:total_revenue)
+
+    .col-md-4
+      .widget.widget-info.widget-no-subtitle
+        .widget-big-int
+          $
+          %span.num-count {{ record.object.total_expenses | number:2 }}
+        .widget-subtitle= Property.human_attribute_name(:total_expenses)
+
+    .col-md-4
+      .widget.widget-no-subtitle{"ng-class" => "{'widget-success': (record.object.total_profit >= 0), 'widget-danger': (record.object.total_profit < 0)}"}
+        .widget-big-int
+          $
+          %span.num-count {{ record.object.total_profit | number:2 }}
+        .widget-subtitle= Property.human_attribute_name(:total_profit)
   .row
     .col-md-12
-      / start: panel
       .panel.panel-default
+        .panel-heading
+          .panel-title= Property.human_attribute_name(:current_lease)
         .panel-body
-          showing
-          {{record.name}}
+          .table-responsive
+            %table.table.table-hover
+              %thead
+                %tr
+                  %th= Lease.human_attribute_name(:tenant)
+                  %th= Lease.human_attribute_name(:rent)
+                  %th= Lease.human_attribute_name(:start_date)
+                  %th= Lease.human_attribute_name(:end_date)
+                  %th= Lease.human_attribute_name(:next_bill_date)
+                  %th &nbsp;
+              %tbody
+                %tr
+                  %td Jorge Valdivia
+                  %td
+                    $19,000
+                    %br/
+                    %span.label.label-success Current
+                  %td April 1st, 2015
+                  %td March 31st, 2016
+                  %td May 1st, 2015
+
+  .row
+    .col-md-6
+      .panel.panel-default
+        .panel-heading
+          .panel-title= Property.human_attribute_name(:past_leases)
+        .panel-body
+          .table-responsive
+            %table.table.table-striped.table-hover
+              %thead
+                %tr
+                  %th= Lease.human_attribute_name(:tenant)
+                  %th= Lease.human_attribute_name(:rent)
+                  %th= Lease.human_attribute_name(:start_date)
+                  %th= Lease.human_attribute_name(:end_date)
+                  %th &nbsp;
+              %tbody
+                %tr
+                  %td Jorge Valdivia
+                  %td $18,500
+                  %td April 1st, 2014
+                  %td March 31st, 2015
+
+    .col-md-6
+      .panel.panel-default
+        .panel-heading
+          .panel-title Recent Transactions
+        .panel-body
+          .table-responsive
+            %table.table.table-striped.table-hover
+              %thead
+                %tr
+                  %th Date
+                  %th &nbsp;
+                  %th Amount
+                  %th From
+              %tbody
+                %tr
+                  %td March 1st, 2015
+                  %td
+                    %span.label.label-success Income
+                  %td $18,500
+                  %td Jorge Valdivia
+                %tr
+                  %td March 1st, 2015
+                  %td
+                    %span.label.label-warning Expense
+                  %td $3,600
+                  %td Mantenimiento
+                %tr
+                  %td Feb 1st, 2015
+                  %td
+                    %span.label.label-success Income
+                  %td $18,500
+                  %td Jorge Valdivia
+                %tr
+                  %td Feb 1st, 2015
+                  %td
+                    %span.label.label-warning Expense
+                  %td $3,600
+                  %td Mantenimiento

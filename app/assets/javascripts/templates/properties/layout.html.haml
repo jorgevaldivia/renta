@@ -15,8 +15,16 @@
             %span.fa.fa-plus
             = I18n.t(:add, name: Property.model_name.human)
 
-          %a.btn.btn-primary{type: "button", "ui-sref" => "default.properties.edit({id: record.object.id})", "ng-show" => "$state.includes('default.properties.show')"}
-            %span.fa.fa-pencil
-            = I18n.t(:edit_object, name: Property.model_name.human)
+          .btn-group{dropdown: "", "ng-show" => "$state.includes('default.properties.show')"}
+            %button.btn.btn-primary{type: "button", "ui-sref" => "default.properties.edit({id: record.object.id})"}
+              %span.fa.fa-pencil
+              = I18n.t(:edit_object, name: Property.model_name.human)
+            %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :type => "button"}
+              %span.caret
+            %ul.dropdown-menu{role: "menu"}
+              %li
+                %a{:href => "javascript:void(0);"}
+                  %span.fa.fa-trash-o
+                  = I18n.t(:delete)
 
   .ui-view.slide-right

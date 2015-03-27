@@ -1,13 +1,10 @@
 .container-fluid.pt-md
 
-  / start: row
   .row
     .col-md-12
-      / start: panel
       .panel.panel-default
         .panel-heading
           .panel-title All Records
-        / start: table responsive
         .table-responsive
           %table.table.table-striped.table-hover
             %thead
@@ -37,10 +34,8 @@
                 %td {{record.state}}
 
                 %td.text-center
-                  / button toolbar
                   .toolbar
                     %a.btn.btn-sm.btn-default{{"ui-sref" => "default.properties.edit({id: record.id})"}}
                       %span.fa.fa-pencil
                     %a.btn.btn-sm.btn-default{href: ""}
                       %span.fa.fa-trash-o
-                  / / button toolbar

@@ -17,15 +17,11 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-// @import "pixel-admin";
-
-// @import "pixel-admin-scss/widgets/widgets";
-// @import "pixel-admin-scss/pages/pages";
-// @import "pixel-admin-scss/themes/themes";
 
 @import "miveus/fontawesome";
 @import "miveus/layout";
 @import "miveus/component";
+@import "widgets";
 
 @import "select.min";
 

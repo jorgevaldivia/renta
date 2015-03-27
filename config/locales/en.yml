@@ -58,6 +58,15 @@ en:
         other: Properties
 
     attributes:
+      lease:
+        tenant:
+          one: Tenant
+          other: Tenants
+        rent: Rent
+        start_date: Start
+        end_date: End
+        next_bill_date: Next Bill
+
       property:
         name: Name
         address1: Address
@@ -65,7 +74,12 @@ en:
         address_line_2: Address 2
         basics: Basic Info
         city: City
+        current_lease: "Current Lease"
+        past_leases: "Past Leases"
         state: State/Province
+        total_expenses: Total Expenses
+        total_profit: Total Profit
+        total_revenue: Total Revenue
         zip_code: Zip/Postal
         number_of_units: "# of Units"
       property/units:
