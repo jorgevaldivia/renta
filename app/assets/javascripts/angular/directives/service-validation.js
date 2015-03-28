@@ -28,8 +28,10 @@ app.factory("FormValidator", ["$http", function($http) {
     this.failure = function(response){
       angular.forEach(response.data.errors, function(errors, key) {
         angular.forEach(errors, function(e) {
-          form[key].$dirty = true;
-          form[key].$setValidity(e, false);
+          if(form[key]){
+            form[key].$dirty = true;
+            form[key].$setValidity(e, false);
+          }
         });
       });
     };
@@ -61,8 +63,8 @@ app.factory("FormValidator", ["$http", function($http) {
       // field.
       createErrorContainer = function(attrs){
         var error_container = $("<p class='help-block text-danger fs-12 mb-0 error-help'></p>");
-        error_container.attr("ng-show", "propertyForm." + attrs.name + 
-          ".$invalid && propertyForm." + attrs.name + ".$dirty");
+        error_container.attr("ng-show", "form." + attrs.name + 
+          ".$invalid && form." + attrs.name + ".$dirty");
         $compile(error_container)(scope);
         element.after(error_container);
       };

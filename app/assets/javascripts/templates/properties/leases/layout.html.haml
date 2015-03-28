@@ -11,7 +11,7 @@
               {{ record.property.name | characters:25 }}
           %small
             &#10095;
-            %a{"ui-sref" => "default.properties.leases.index({property_id: record.property.id})"}
+            %a{"ui-sref" => "default.leases.index({property_id: record.property.id})"}
               = Lease.model_name.human(count: 2)
       .col-sm-2.va-m
         .pull-right

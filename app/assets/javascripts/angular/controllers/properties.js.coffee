@@ -40,7 +40,7 @@ app.controller "PropertyFormController", ["$scope", "$state", "$stateParams", "P
         $scope.record.object = new Property()
 
     $scope.save = ->
-      $scope.validator = new FormValidator($scope.propertyForm, $scope.record.object);
+      $scope.validator = new FormValidator($scope.form, $scope.record.object);
       $scope.validator.resetValidations();
       if($scope.record.object.id)
         promise = $scope.record.object.$update({id: $scope.record.object.id})

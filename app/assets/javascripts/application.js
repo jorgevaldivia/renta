@@ -15,41 +15,10 @@
 //= require jquery_ujs
 //= require angular/app
 //= require bootstrap.min
-//= require pixel-admin.min
+//= require bootstrap-datepicker
 //= require select.min
 //= require_tree .
 
 $(document).ready(function(){
-
-  $('form').on('click', '.remove_fields', function(event) {
-
-    $(this).prev('input[type=hidden]').val('1');
-    $(this).closest('.fieldset').children("td").addClass("alert alert-warning");
-    
-    $(this).children(".fa-times").removeClass("fa-times").addClass("fa-refresh");
-    $(this).removeClass("remove_fields").addClass("restore_fields");
-
-    event.preventDefault();
-  });
-
-  $('form').on('click', '.restore_fields', function(event) {
-
-    $(this).prev('input[type=hidden]').val('0');
-    $(this).closest('.fieldset').children("td").removeClass("alert alert-warning");
-
-    $(this).children(".fa-refresh").removeClass("fa-refresh").addClass("fa-times");
-    $(this).removeClass("restore_fields").addClass("remove_fields");
-  
-    event.preventDefault();
-  });
-
-  $('form').on('click', '.add_fields', function(event) {
-    var regexp, time;
-    time = new Date().getTime();
-    regexp = new RegExp($(this).data('id'), 'g');
-    $(this).parents(".append-fields-parent").children(".append-fields-container").append($(this).data('fields').replace(regexp, time));
-    
-    event.preventDefault();
-  });
 
 });

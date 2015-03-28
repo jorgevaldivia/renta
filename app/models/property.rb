@@ -1,5 +1,6 @@
 class Property < ActiveRecord::Base
   belongs_to :user
+  has_many :leases
 
   validates :name, :address_line_1, :city, :state, :postal_code, presence: true
 

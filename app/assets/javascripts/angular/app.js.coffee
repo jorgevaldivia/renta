@@ -1,5 +1,6 @@
 #= require angular
 #= require angular-resource
+#= require angularjs/rails/resource
 #= require angular-sanitize
 #= require angular-rails-templates
 #= require ./angular-ui-router.min
@@ -13,7 +14,7 @@
 
 # Init Angular app
 @app = angular.module("propertea", ["ngResource", "ui.router", "ui.select",
-  "ngSanitize", "templates", "ngAnimate", "truncate"])
+  "ngSanitize", "templates", "ngAnimate", "truncate", "rails"])
 
 # Rails 4 now requires the use of the csrf token on all requests, including
 # ajax ones. This gets the token from the dom (added by rails) and adds it as a
@@ -64,6 +65,8 @@
       $scope.core.settings.pageLoading = false
       # Scroll to top
       $("html, body").animate({ scrollTop: 0 }, 0);
+
+      $('.datepicker').datepicker()
       return
 
     ###* On resize, update viewport variable ###

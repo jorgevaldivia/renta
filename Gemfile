@@ -72,3 +72,10 @@ gem 'quiet_assets', group: :development
 # Enables the creation of both simple and advanced search forms for your Ruby
 # on Rails application.
 gem 'ransack', "~> 1.6.3"
+
+# integrates a datepicker with Rails 3 assets pipeline.
+gem 'bootstrap-datepicker-rails'
+
+# A resource factory inspired by $resource from AngularJS. Added mainly
+# because of root wrapping and $save sometimes removing attrs.
+gem 'angularjs-rails-resource', '~> 2.0.0'

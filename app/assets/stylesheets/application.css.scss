@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_self
+ *= require bootstrap-datepicker3
  */
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin);
@@ -35,4 +36,13 @@ body {
 
 .input-group-addon {
   border-radius: 0px;
+}
+
+.datepicker {
+  padding: 6px 12px !important;
+  border-radius: 0px  !important;
+}
+
+.form-control-icon .form-control.datepicker {
+  padding-left: 34px !important;
 }

@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :properties, except: [:new, :edit], defaults: { format: :json }
+  resources :properties, except: [:new, :edit], defaults: { format: :json } do
+    scope module: :properties do
+      resources :leases
+    end
+  end
+
   resource :dashboard, only: :show
   resource :me, only: :show, controller: "me", defaults: { format: :json }
 
