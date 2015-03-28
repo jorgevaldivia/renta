@@ -16,8 +16,6 @@ class Properties::LeasesController < ApplicationController
 
   def create
     @lease = @property.leases.build(lease_params)
-    puts "\n$$$$$$ #{lease_params}"
-    puts @lease.inspect
     @lease.save
     respond_with(@property, @lease, location: nil)
   end
@@ -38,7 +36,7 @@ class Properties::LeasesController < ApplicationController
     end
 
     def set_lease
-      @lease = @property.leases.find.find(params[:id])
+      @lease = @property.leases.find(params[:id])
     end
 
     def lease_params

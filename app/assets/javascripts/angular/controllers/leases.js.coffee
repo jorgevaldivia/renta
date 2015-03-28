@@ -31,9 +31,15 @@ app.controller "PropertyLeasesIndexController", ["$scope", "$stateParams", "Leas
 
 app.controller "PropertyLeaseFormController", ["$scope", "$stateParams", "Lease", "FormValidator", "$state",
   ($scope, $stateParams, Lease, FormValidator, $state) ->
+
+    $scope.$watch('record.property', ->
+      if $scope.record.property
+        $scope.init();
+    )
+
     $scope.init = ->
       if $stateParams.id
-        Lease.get({property_id: $scope.record.property.id, id: $stateParams.id}, (record) ->
+        Lease.get({property_id: $scope.record.property.id, id: $stateParams.id}).then((record) ->
           $scope.record.object = record
         )
       else
@@ -52,8 +58,6 @@ app.controller "PropertyLeaseFormController", ["$scope", "$stateParams", "Lease"
       promise.then(((record) ->
         $state.go('default.leases.index', {property_id: $scope.record.property.id});
       ), $scope.validator.failure)
-
-    $scope.init();
 ]
 
 app.controller "PropertyLeasesShowController", ["$scope", "$stateParams",

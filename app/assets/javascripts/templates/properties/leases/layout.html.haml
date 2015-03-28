@@ -13,6 +13,9 @@
             &#10095;
             %a{"ui-sref" => "default.leases.index({property_id: record.property.id})"}
               = Lease.model_name.human(count: 2)
+          %small{"ng-show" => "record.object.start_date"}
+            &#10095;
+            {{ record.object.start_date | characters:25 }}
       .col-sm-2.va-m
         .pull-right
           %a.btn.btn-success{type: "button", "ui-sref" => "default.leases.new", "ng-hide" => "$state.includes('default.leases.show')"}

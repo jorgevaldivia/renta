@@ -6,30 +6,40 @@
           .row
             .col-md-6
               .panel-title= Lease.model_name.human(count: 2)
-        .table-responsive
-          %table.table.table-striped.table-hover
-            %thead
-              %tr
-                %th{:width => "3%"}
-                  .checkbox.custom-info.mt-0.mb-0
-                    %label
-                      %input{:type => "checkbox"}/
-                      %span
-                %th= Lease.human_attribute_name(:tenant)
-                %th= Lease.human_attribute_name(:rent)
-                %th= Lease.human_attribute_name(:start_date)
-                %th= Lease.human_attribute_name(:end_date)
-                %th= Lease.human_attribute_name(:next_bill_date)
-            %tbody
-              %tr{"ng-repeat" => "record in records"}
-                %td
-                  .checkbox.custom-info.mt-0.mb-0
-                    %label
-                      %input{:type => "checkbox"}/
-                      %span
-                %td Jorge Valdivia (change)
-                %td {{ record.rent | currency }}
-                %td {{ record.start_date }}
-                %td {{ record.end_date }}
-                %td {{ record.next_bill_date }}
-
+        %table.table.table-striped.table-hover
+          %thead
+            %tr
+              %th{:width => "3%"}
+                .checkbox.custom-info.mt-0.mb-0
+                  %label
+                    %input{:type => "checkbox"}/
+                    %span
+              %th= Lease.human_attribute_name(:tenant)
+              %th= Lease.human_attribute_name(:rent)
+              %th= Lease.human_attribute_name(:start_date)
+              %th= Lease.human_attribute_name(:end_date)
+              %th= Lease.human_attribute_name(:next_bill_date)
+              %td &nbsp;
+          %tbody
+            %tr{"ng-repeat" => "record in records"}
+              %td
+                .checkbox.custom-info.mt-0.mb-0
+                  %label
+                    %input{:type => "checkbox"}/
+                    %span
+              %td Jorge Valdivia (change)
+              %td {{ record.rent | currency }}
+              %td {{ record.start_date }}
+              %td {{ record.end_date }}
+              %td {{ record.next_bill_date }}
+              %td
+                .btn-group
+                  %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :type => "button"}
+                    %i.the-icon.fa.fa-gears
+                    %span.caret
+                  %ul.dropdown-menu.dropdown-menu-right{:role => "menu"}
+                    %li
+                      %a{"ui-sref" => "default.leases.edit({id: record.id})"}
+                        %i.the-icon.fa.fa-pencil
+                        = I18n.t(:edit)
+                    
