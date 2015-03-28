@@ -1,0 +1,8 @@
+%div
+  .form-group{"highlight-if-error" => "{{fieldName}}"}
+    %label.col-sm-2.control-label {{label}}
+    .col-sm-10
+      %input.form-control{type: "text", "ng-model" => "field", name: "{{fieldName}}"}/
+      %span{"error-messages" => "{{fieldName}}"}
+
+  %hr.mnr-md.mnl-md/

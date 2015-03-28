@@ -19,6 +19,8 @@ class Lease < ActiveRecord::Base
           lease.id, lease.start_date, lease.end_date)
   }
 
+  default_scope { order('start_date desc') } 
+
   private
 
   # Check to make sure that no date ranges over lap
