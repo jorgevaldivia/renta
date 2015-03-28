@@ -77,11 +77,20 @@ en:
         name: "Unit Name"
 
     errors:
+      messages:
+        inclusion: "not an accepted value"
       models:
         property:
           attributes:
             base:
               has_unit: Each property must have at least one unit.
+        lease:
+          attributes:
+            start_date:
+              cannot_overlap: "Leases cannot overlap. Please make sure that the start and end dates are correct."
+              minimum_one_tenant: You must add at least one tenant to a lease.
+            end_date:
+              end_date_after_start_date: "must come after start date."
 
   views:
     devise:

@@ -13,13 +13,24 @@ app.controller "PropertyLeasesController", ["$scope", "$stateParams", "Property"
     $scope.init()
 ]
 
-app.controller "PropertyLeasesIndexController", ["$scope", "$stateParams",
-  ($scope, $stateParams) ->
+app.controller "PropertyLeasesIndexController", ["$scope", "$stateParams", "Lease",
+  ($scope, $stateParams, Lease) ->
+
+    $scope.$watch('record.property', ->
+      if $scope.record.property
+        $scope.refreshRecords()
+    )
+
+    $scope.refreshRecords = ->
+      Lease.query({}, {property_id: $scope.record.property.id}).then((records)->
+        $scope.records = records
+      )
+
+    $scope.record.object = new Lease()
 ]
 
 app.controller "PropertyLeaseFormController", ["$scope", "$stateParams", "Lease", "FormValidator", "$state",
   ($scope, $stateParams, Lease, FormValidator, $state) ->
-
     $scope.init = ->
       if $stateParams.id
         Lease.get({property_id: $scope.record.property.id, id: $stateParams.id}, (record) ->

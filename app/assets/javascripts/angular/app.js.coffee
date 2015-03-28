@@ -23,6 +23,11 @@
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 ]
 
+# By default, rails resource camlecases everything, F that.
+@app.config(["railsSerializerProvider", (railsSerializerProvider) ->
+    railsSerializerProvider.underscore(angular.identity).camelize(angular.identity);
+])
+
 @app.run ['$rootScope', '$state', '$stateParams',
   ($rootScope, $state, $stateParams) ->
     $rootScope.$state = $state
@@ -66,7 +71,10 @@
       # Scroll to top
       $("html, body").animate({ scrollTop: 0 }, 0);
 
-      $('.datepicker').datepicker()
+      return
+
+    $rootScope.$on '$viewContentLoaded', ->
+      $('.datepicker').datepicker({format: 'yyyy-mm-dd'})
       return
 
     ###* On resize, update viewport variable ###

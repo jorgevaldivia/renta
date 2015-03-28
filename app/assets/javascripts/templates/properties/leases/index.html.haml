@@ -15,11 +15,11 @@
                     %label
                       %input{:type => "checkbox"}/
                       %span
-                %th= Property.human_attribute_name(:name)
-                %th= Property.human_attribute_name(:address_line_1)
-                %th= Property.human_attribute_name(:city)
-                %th= Property.human_attribute_name(:state)
-                %th &nbsp;
+                %th= Lease.human_attribute_name(:tenant)
+                %th= Lease.human_attribute_name(:rent)
+                %th= Lease.human_attribute_name(:start_date)
+                %th= Lease.human_attribute_name(:end_date)
+                %th= Lease.human_attribute_name(:next_bill_date)
             %tbody
               %tr{"ng-repeat" => "record in records"}
                 %td
@@ -27,16 +27,9 @@
                     %label
                       %input{:type => "checkbox"}/
                       %span
-                %td
-                  %a{"ui-sref" => "default.properties.show({id: record.id})"}
-                    {{record.name}}
-                %td {{record.address_line_1}}
-                %td {{record.city}}
-                %td {{record.state}}
+                %td Jorge Valdivia (change)
+                %td {{ record.rent | number:2 }}
+                %td {{ record.start_date }}
+                %td {{ record.end_date }}
+                %td {{ record.next_bill_date }}
 
-                %td.text-center
-                  .toolbar
-                    %a.btn.btn-sm.btn-default{{"ui-sref" => "default.properties.edit({id: record.id})"}}
-                      %span.fa.fa-pencil
-                    %a.btn.btn-sm.btn-default{href: ""}
-                      %span.fa.fa-trash-o

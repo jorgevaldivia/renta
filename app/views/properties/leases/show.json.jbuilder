@@ -1,0 +1,1 @@
+json.partial! 'lease', lease: @lease
