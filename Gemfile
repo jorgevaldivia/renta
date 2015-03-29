@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby "2.2.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.9'
@@ -79,3 +79,6 @@ gem 'bootstrap-datepicker-rails'
 # A resource factory inspired by $resource from AngularJS. Added mainly
 # because of root wrapping and $save sometimes removing attrs.
 gem 'angularjs-rails-resource', '~> 2.0.0'
+
+# Required for heroku
+gem 'rails_12factor', group: :production
