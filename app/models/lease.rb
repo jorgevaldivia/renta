@@ -12,6 +12,7 @@ class Lease < ActiveRecord::Base
   validate :end_date_after_start_date
 
   before_save :calculate_next_bill_date
+  after_save :set_current_lease
 
   monetize :rent_cents, allow_nil: true
   monetize :deposit_cents, allow_nil: true
@@ -26,20 +27,22 @@ class Lease < ActiveRecord::Base
   private
 
   concerning :Billing do
-    def calculate_next_bill_date
-      if end_date.present? && next_bill_date.present? && end_date <= next_bill_date
-        self.next_bill_date = nil
-        return
-      end
 
+    def set_current_lease
+      if start_date <= Date.today && (end_date || Date.parse("2099-12-31")) >= Date.today
+        property.current_lease = self
+        property.save
+      end
+    end
+
+    def calculate_next_bill_date
       # It's not yet time to calculate next bill date
       return if next_bill_date.present? && Date.today < next_bill_date
 
       if next_bill_date.present?
         # Been billed before, always go off that if available
-        date = next_bill_date
         # Turns into something like `date + 1.month`
-        self.next_bill_date = date.send(:+, eval("#{interval}.#{frequency}"))
+        date = next_bill_date = next_bill_date.send(:+, eval("#{interval}.#{frequency}"))
       else
         # Never been billed before. Go off of start date.
         if start_date >= Date.today
@@ -58,9 +61,11 @@ class Lease < ActiveRecord::Base
               break
             end
           end
-
-          self.next_bill_date = date if date
         end
+      end
+
+      if date && date <= (end_date || Date.parse("2099-12-31"))
+        self.next_bill_date = date if date
       end
     end
   end
