@@ -21,7 +21,7 @@
               %i.ai.ai-dashboard
             %span.text.ellipsis Dashboard {{$rootScope}}
 
-        %li.nav-group{"ng-class" => "{ active: $state.includes('default.properties') }"}
+        %li.nav-group{"ng-class" => "{ active: $state.includes('default.properties') || $state.includes('default.leases') }"}
           %a.nav-toggle{"ui-sref" => "default.properties.index"}
             %span.figure.figure-left.icon
               %i.ai.ai-home
