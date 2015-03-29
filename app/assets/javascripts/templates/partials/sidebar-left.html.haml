@@ -15,13 +15,13 @@
       %ul.nav.nav-sidebar
         %li.nav-heading APPLICATIONS
 
-        %li.nav-group{"ng-class" => "{ active: $state.includes('dashboard') }"}
+        %li.nav-group{"ng-class" => "{ active: $state.includes('default.dashboard') }"}
           %a.nav-toggle{"ui-sref" => "default.dashboard"}
             %span.figure.figure-left.icon
               %i.ai.ai-dashboard
             %span.text.ellipsis Dashboard {{$rootScope}}
 
-        %li.nav-group{"ng-class" => "{ active: $state.includes('properties') }"}
+        %li.nav-group{"ng-class" => "{ active: $state.includes('default.properties') }"}
           %a.nav-toggle{"ui-sref" => "default.properties.index"}
             %span.figure.figure-left.icon
               %i.ai.ai-home
