@@ -21,17 +21,22 @@
               %th= Lease.human_attribute_name(:next_bill_date)
               %td &nbsp;
           %tbody
-            %tr{"ng-repeat" => "record in records"}
+            %tr{"ng-repeat" => "item in records"}
               %td
                 .checkbox.custom-info.mt-0.mb-0
                   %label
                     %input{:type => "checkbox"}/
                     %span
-              %td Jorge Valdivia (change)
-              %td {{ record.rent | currency }}
-              %td {{ record.start_date }}
-              %td {{ record.end_date }}
-              %td {{ record.next_bill_date }}
+              %td
+                Jorge Valdivia (change)
+                %div{"ng-show" => "item.id == record.property.current_lease_id"}
+                  %span.label.label-primary= Property.human_attribute_name(:current_lease)
+                  %span.label.label-warning{"ng-show" => "item.ending_soon"}
+                    = Lease.human_attribute_name(:ending_soon)
+              %td {{ item.rent | currency }}
+              %td {{ item.start_date }}
+              %td {{ item.end_date }}
+              %td {{ item.next_bill_date }}
               %td
                 .btn-group
                   %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :type => "button"}
@@ -39,7 +44,7 @@
                     %span.caret
                   %ul.dropdown-menu.dropdown-menu-right{:role => "menu"}
                     %li
-                      %a{"ui-sref" => "default.leases.edit({id: record.id})"}
+                      %a{"ui-sref" => "default.leases.edit({id: item.id})"}
                         %i.the-icon.fa.fa-pencil
                         = I18n.t(:edit)
                     

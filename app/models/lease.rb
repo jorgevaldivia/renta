@@ -29,10 +29,19 @@ class Lease < ActiveRecord::Base
   concerning :Billing do
 
     def set_current_lease
-      if start_date <= Date.today && (end_date || Date.parse("2099-12-31")) >= Date.today
+      if current_lease?
         property.current_lease = self
         property.save
       end
+    end
+
+    def current_lease?
+      start_date <= Date.today && (end_date || Date.parse("2099-12-31")) >= Date.today
+    end
+
+    # Boolean for whether the lease is ending within 60 days
+    def ending_soon?
+      current_lease? && end_date.present? && (end_date - Date.today) <= 60
     end
 
     def calculate_next_bill_date
