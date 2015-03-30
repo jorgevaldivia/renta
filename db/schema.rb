@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150329053021) do
+ActiveRecord::Schema.define(version: 20150330003705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,32 @@ ActiveRecord::Schema.define(version: 20150329053021) do
 
   add_index "bank_accounts", ["user_id"], name: "index_bank_accounts_on_user_id", using: :btree
 
+  create_table "invoice_line_items", force: true do |t|
+    t.integer  "invoice_id"
+    t.string   "summary"
+    t.integer  "amount_cents"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invoice_line_items", ["invoice_id"], name: "index_invoice_line_items_on_invoice_id", using: :btree
+
+  create_table "invoices", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "lease_id"
+    t.string   "subject"
+    t.date     "issue_date"
+    t.date     "due_date"
+    t.string   "status"
+    t.integer  "total_amount_cents"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invoices", ["lease_id"], name: "index_invoices_on_lease_id", using: :btree
+  add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
+
   create_table "leases", force: true do |t|
     t.integer  "property_id"
     t.date     "start_date"
@@ -39,9 +65,12 @@ ActiveRecord::Schema.define(version: 20150329053021) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "next_bill_date"
+    t.integer  "grace_period"
+    t.integer  "user_id"
   end
 
   add_index "leases", ["property_id"], name: "index_leases_on_property_id", using: :btree
+  add_index "leases", ["user_id"], name: "index_leases_on_user_id", using: :btree
 
   create_table "properties", force: true do |t|
     t.integer  "user_id"

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subject: MyString
+  user_id: 
+  lease_id: 
+  issue_date: 2015-03-29
+  due_date: 2015-03-29
+  status: MyString
+  total_amount_cents: 1
+  notes: MyText
+
+two:
+  subject: MyString
+  user_id: 
+  lease_id: 
+  issue_date: 2015-03-29
+  due_date: 2015-03-29
+  status: MyString
+  total_amount_cents: 1
+  notes: MyText
