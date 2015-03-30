@@ -84,10 +84,6 @@
 
       return
 
-    # $rootScope.$on '$viewContentLoaded', ->
-    #   $('.datepicker').datepicker({format: 'yyyy-mm-dd'})
-    #   return
-
     ###* On resize, update viewport variable ###
 
     angular.element($window).on 'resize', ->
