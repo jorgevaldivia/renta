@@ -1,62 +1,62 @@
-%div
-  .page-header
-    .box-layout
-      .col-sm-10.va-m
-        %h3
-          %a{"ui-sref" => "default.properties.index"}
-            = Property.model_name.human(count: 2)
-          %small
-            &#10095;
-            %a{"ui-sref" => "default.properties.show({id: record.object.id})", "ng-show" => "record.object.name"}
-              {{ record.object.name | characters:25 }}
-          %small{"ng-show" => "$state.includes('default.properties.leases')"}
-            &#10095;
-            %a{"ui-sref" => "default.properties.leases.index({property_id: record.object.id})"}
-              = Lease.model_name.human(count: 2)
-      .col-sm-2.va-m
-        .pull-right
-          %a.btn.btn-success{type: "button", "ui-sref" => "default.properties.new", "ng-hide" => "$state.includes('default.properties.show')"}
-            %span.fa.fa-plus
-            = I18n.t(:add, name: Property.model_name.human)
-
-          .btn-group{dropdown: "", "ng-show" => "$state.includes('default.properties.show')"}
-            %button.btn.btn-primary{type: "button", "ui-sref" => "default.properties.edit({id: record.object.id})"}
-              %span.fa.fa-pencil
-              = I18n.t(:edit_object, name: Property.model_name.human)
-            %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :type => "button"}
-              %span.caret
-            %ul.dropdown-menu{role: "menu"}
-              %li
-                %a{href: "", "ng-really-message" => I18n.t("confirmations.deletion"), "ng-really-click" => "delete()"}
-                  %span.fa.fa-trash-o
-                  = I18n.t(:delete)
-                %a{"data-target" => "#transaction-modal", "data-toggle" => "modal", style: "cursor: pointer"}
-                  %span.fa.fa-money
-                  = I18n.t(:add, name: Transaction.model_name.human)
-
-  #transaction-modal.modal.fade.full-height-modal-right{"aria-hidden" => "true", "aria-labelledby" => "transaction-modalLabel", :role => "dialog", :tabindex => "-1"}
-    .modal-dialog
-      .modal-content-wrap{style: "height: 100%;"}
-        .modal-content{style: "height: 100%;"}
-          .modal-header
-            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-              %span{"aria-hidden" => "true"} ×
-            %h4#transaction-modalLabel.modal-title= I18n.t(:add_new, name: Transaction.model_name.human)
-          .modal-body
-            %form.form-horizontal{name: "form", "novalidate" => ""}
-              .form-group{"highlight-if-error" => "name"}
-                %label.col-sm-3.control-label= Property.human_attribute_name(:name)
-                .col-sm-9
-                  %input.form-control{type: "text", "ng-model" => "record.object.name", name: "name"}/
-                  %span{"error-messages" => "name"}
-              %hr.mnr-md.mnl-md/
-
-              .form-group{"highlight-if-error" => "address_line_1"}
-                %label.col-sm-3.control-label= Property.human_attribute_name(:address_line_1)
-                .col-sm-9
-                  %input.form-control{type: "text", "ng-model" => "record.object.address_line_1", name: "address_line_1"}/
-                  %span{"error-messages" => "address_line_1"}
-              %hr.mnr-md.mnl-md/
+.ui-view.slide-right
 
 
-  .ui-view.slide-right
+/ %div
+/   .page-header
+/     .box-layout
+/       .col-sm-10.va-m
+/         %h3
+/           %a{"ui-sref" => "default.properties.index"}
+/             = Property.model_name.human(count: 2)
+/           %small
+/             &#10095;
+/             %a{"ui-sref" => "default.properties.show({id: record.object.id})", "ng-show" => "record.object.name"}
+/               {{ record.object.name | characters:25 }}
+/           %small{"ng-show" => "$state.includes('default.properties.leases')"}
+/             &#10095;
+/             %a{"ui-sref" => "default.properties.leases.index({property_id: record.object.id})"}
+/               = Lease.model_name.human(count: 2)
+/       .col-sm-2.va-m
+/         .pull-right
+/           %a.btn.btn-success{type: "button", "ui-sref" => "default.properties.new", "ng-hide" => "$state.includes('default.properties.show')"}
+/             %span.fa.fa-plus
+/             = I18n.t(:add, name: Property.model_name.human)
+
+/           .btn-group{dropdown: "", "ng-show" => "$state.includes('default.properties.show')"}
+/             %button.btn.btn-primary{type: "button", "ui-sref" => "default.properties.edit({id: record.object.id})"}
+/               %span.fa.fa-pencil
+/               = I18n.t(:edit_object, name: Property.model_name.human)
+/             %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :type => "button"}
+/               %span.caret
+/             %ul.dropdown-menu{role: "menu"}
+/               %li
+/                 %a{href: "", "ng-really-message" => I18n.t("confirmations.deletion"), "ng-really-click" => "delete()"}
+/                   %span.fa.fa-trash-o
+/                   = I18n.t(:delete)
+/                 %a{"data-target" => "#transaction-modal", "data-toggle" => "modal", style: "cursor: pointer"}
+/                   %span.fa.fa-money
+/                   = I18n.t(:add, name: Transaction.model_name.human)
+
+#transaction-modal.modal.fade.full-height-modal-right{"aria-hidden" => "true", "aria-labelledby" => "transaction-modalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content-wrap{style: "height: 100%;"}
+      .modal-content{style: "height: 100%;"}
+        .modal-header
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+          %h4#transaction-modalLabel.modal-title= I18n.t(:add_new, name: Transaction.model_name.human)
+        .modal-body
+          %form.form-horizontal{name: "form", "novalidate" => ""}
+            .form-group{"highlight-if-error" => "name"}
+              %label.col-sm-3.control-label= Property.human_attribute_name(:name)
+              .col-sm-9
+                %input.form-control{type: "text", "ng-model" => "record.object.name", name: "name"}/
+                %span{"error-messages" => "name"}
+            %hr.mnr-md.mnl-md/
+
+            .form-group{"highlight-if-error" => "address_line_1"}
+              %label.col-sm-3.control-label= Property.human_attribute_name(:address_line_1)
+              .col-sm-9
+                %input.form-control{type: "text", "ng-model" => "record.object.address_line_1", name: "address_line_1"}/
+                %span{"error-messages" => "address_line_1"}
+            %hr.mnr-md.mnl-md/

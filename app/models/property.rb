@@ -11,7 +11,11 @@ class Property < ActiveRecord::Base
 
   before_save :calculate_total_proft
 
-  default_scope { order('name asc') } 
+  default_scope { order('name asc') }
+
+  def full_address
+    [address_line_1, address_line_2, city, state, postal_code].compact.join(" ")
+  end
 
   private
 

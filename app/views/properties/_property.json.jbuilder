@@ -1,6 +1,7 @@
 json.cache! property do
 
   json.merge! property.attributes
+  json.full_address property.full_address
 
   json.total_revenue property.total_revenue.try(:amount)
   json.total_expenses property.total_expenses.try(:amount)

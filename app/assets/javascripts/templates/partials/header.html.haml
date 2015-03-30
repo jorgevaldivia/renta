@@ -1,14 +1,32 @@
-/ start: navbar-nocollapse
 .navbar-nocollapse.clearfix
-  / start: left nav
   %ul.nav.navbar-nav.navbar-left
     %li.visible-xs
       %a{"data-ng-click" => "core.settings.sidebarLeftOpen = !core.settings.sidebarLeftOpen", :href => ""}
-        %i.ai.ai-menu.fs-24.pos-t-5
+        / %i.ai.ai-menu.fs-24.pos-t-5
+        %i.fa.fa-bars.pos-t-5
     %li.hidden-xs
       %a{"data-ng-click" => "core.settings.sidebarLeftCollapse = !core.settings.sidebarLeftCollapse", :href => ""}
-        %i.ai.fs-24.pos-t-5{"ng-class" => "{'ai-arrow-forward':core.settings.sidebarLeftCollapse || core.screen.sm, 'ai-arrow-back':!core.settings.sidebarLeftCollapse || !core.screen.sm}"}
-  / / end: left nav
+        / %i.fa.fa-bars
+        %i.fa.fa-bars.pos-t-5{"ng-class" => "{'ai-arrow-forward':core.settings.sidebarLeftCollapse || core.screen.sm, 'ai-arrow-back':!core.settings.sidebarLeftCollapse || !core.screen.sm}"}
+
+
+  .navbar-left
+    .page-header{style: "padding: 20px 15px; padding-top: 20px; border:0;"}
+      %div{"ncy-breadcrumb" => ""}
+      / %h4
+      /   %a{:href => "#/properties/", "ui-sref" => "default.properties.index"}
+      /     Properties
+      /   %small
+      /     ❯
+      /     %a.ng-binding{:href => "#/properties/1", "ui-sref" => "default.properties.show({id: record.property.id})"}
+      /       Property: 1
+      /   %small
+      /     ❯
+      /     %a{:href => "#/properties/1/leases/", "ui-sref" => "default.leases.index({property_id: record.property.id})"}
+      /       Leases
+      /   %small.ng-binding.ng-hide{"ng-show" => "record.object.start_date"}
+      /     ❯
+
 
   / start: right nav
   %ul.nav.navbar-nav.navbar-right

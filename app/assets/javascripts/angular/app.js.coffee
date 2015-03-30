@@ -6,6 +6,7 @@
 #= require ./angular-ui-router.min
 #= require_self
 #= require ./angular-animate.min
+#= require ./angular-breadcrumb.min
 #= require ./routes
 #= require_tree ./services
 #= require_tree ./directives
@@ -14,7 +15,8 @@
 
 # Init Angular app
 @app = angular.module("propertea", ["ngResource", "ui.router", "ui.select",
-  "ngSanitize", "templates", "ngAnimate", "truncate", "rails"])
+  "ngSanitize", "templates", "ngAnimate", "truncate", "rails",
+  'ncy-angular-breadcrumb'])
 
 # Rails 4 now requires the use of the csrf token on all requests, including
 # ajax ones. This gets the token from the dom (added by rails) and adds it as a
@@ -28,8 +30,17 @@
     railsSerializerProvider.underscore(angular.identity).camelize(angular.identity);
 ])
 
-@app.run ['$rootScope', '$state', '$stateParams',
-  ($rootScope, $state, $stateParams) ->
+# Custom breadcrumb templated
+@app.config ($breadcrumbProvider) ->
+  $breadcrumbProvider.setOptions({templateUrl: 'shared/breadcrumb.html'})
+
+# Allow trailing slash in urls to be optional
+@app.config ($urlMatcherFactoryProvider) ->
+  # should be false. doesn't actually work
+  # $urlMatcherFactoryProvider.strictMode(false)
+
+@app.run ['$rootScope', '$state', '$stateParams', '$breadcrumb',
+  ($rootScope, $state, $stateParams, $breadcrumb) ->
     $rootScope.$state = $state
     $rootScope.$stateParams = $stateParams
 ]
@@ -73,9 +84,9 @@
 
       return
 
-    $rootScope.$on '$viewContentLoaded', ->
-      $('.datepicker').datepicker({format: 'yyyy-mm-dd'})
-      return
+    # $rootScope.$on '$viewContentLoaded', ->
+    #   $('.datepicker').datepicker({format: 'yyyy-mm-dd'})
+    #   return
 
     ###* On resize, update viewport variable ###
 

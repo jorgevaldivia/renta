@@ -1,5 +1,9 @@
 app.controller "PropertiesController", ["$scope", "$state", "$stateParams", "Property",
   ($scope, $state, $stateParams, Property) ->
+]
+
+app.controller "PropertyController", ["$scope", "$state", "$stateParams", "Property",
+  ($scope, $state, $stateParams, Property) ->
     $scope.record = {object: {}}
 
     $scope.getProperty = (id) ->
@@ -15,6 +19,8 @@ app.controller "PropertiesController", ["$scope", "$state", "$stateParams", "Pro
       $scope.record.object.$delete({id: $scope.record.object.id}).then(->
         $state.go("default.properties.index")
       )
+
+    $scope.getProperty($stateParams.id);
 ]
 
 app.controller "PropertiesIndexController", ["$scope", "Property",
@@ -24,7 +30,6 @@ app.controller "PropertiesIndexController", ["$scope", "Property",
         $scope.records = records
       )
 
-    $scope.record.object = new Property()
     $scope.refreshProperties();
 ]
 
@@ -32,12 +37,7 @@ app.controller "PropertyFormController", ["$scope", "$state", "$stateParams", "P
   ($scope, $state, $stateParams, Property, FormValidator) ->
 
     $scope.init = ->
-      if $stateParams.id
-        Property.get({id: $stateParams.id}, (record) ->
-          $scope.record.object = record
-        )
-      else
-        $scope.record.object = new Property()
+      $scope.getProperty($stateParams.id)
 
     $scope.save = ->
       $scope.validator = new FormValidator($scope.form, $scope.record.object);
@@ -56,6 +56,5 @@ app.controller "PropertyFormController", ["$scope", "$state", "$stateParams", "P
 
 app.controller "PropertyShowController", ["$scope", "$stateParams", "Property",
   ($scope, $stateParams, Property) ->
-
-    $scope.getProperty($stateParams.id);
+    # $scope.getProperty($stateParams.id);
 ]
