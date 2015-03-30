@@ -47,6 +47,9 @@ en:
       property:
         one: Property
         other: Properties
+      transaction:
+        one: Transaction
+        other: Transactions
 
     attributes:
       lease:

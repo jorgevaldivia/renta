@@ -1,5 +1,4 @@
 .container-fluid.pt-md
-
   .row
     .col-md-4
       .widget.widget-info.widget-no-subtitle
@@ -21,6 +20,7 @@
           $
           %span.num-count {{ record.object.total_profit | number:2 }}
         .widget-subtitle= Property.human_attribute_name(:total_profit)
+
   .row
     .col-md-12
       .panel.panel-primary
@@ -35,25 +35,41 @@
                     %a{"ui-sref" => "default.leases.index({property_id: record.object.id})"}
                       %span.fa.fa-arrow-right
         .panel-body
-          .table-responsive
-            %table.table.table-hover
-              %thead
-                %tr
-                  %th= Lease.human_attribute_name(:tenant)
-                  %th= Lease.human_attribute_name(:rent)
-                  %th= Lease.human_attribute_name(:start_date)
-                  %th= Lease.human_attribute_name(:end_date)
-                  %th= Lease.human_attribute_name(:next_bill_date)
-              %tbody
-                %tr
-                  %td Jorge Valdivia
-                  %td
-                    $19,000
-                    %br/
-                    %span.label.label-danger 6 Days Late
-                  %td April 1st, 2015
-                  %td March 31st, 2016
-                  %td May 1st, 2015
+          %table.table.table-striped.table-hover
+            %thead
+              %tr
+                %th= Lease.human_attribute_name(:tenant)
+                %th= Lease.human_attribute_name(:rent)
+                %th= Lease.human_attribute_name(:start_date)
+                %th= Lease.human_attribute_name(:end_date)
+                %th= Lease.human_attribute_name(:next_bill_date)
+                %td &nbsp;
+            %tbody{"ng-hide" => "record.object.current_lease"}
+              %td{colspan: 6}
+                %em= I18n.t(:no_results)
+            %tbody{"ng-show" => "record.object.current_lease"}
+              %td
+                Jorge Valdivia (change)
+                %div{"ng-show" => "record.object.current_lease.id == record.object.current_lease_id"}
+                  %span.label.label-primary= Property.human_attribute_name(:current_lease)
+                  %span.label.label-warning{"ng-show" => "record.object.current_lease.ending_soon"}
+                    = Lease.human_attribute_name(:ending_soon)
+              %td {{ record.object.current_lease.rent | currency }}
+              %td {{ record.object.current_lease.start_date }}
+              %td {{ record.object.current_lease.end_date }}
+              %td {{ record.object.current_lease.next_bill_date }}
+              %td
+                .btn-group
+                  %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :type => "button"}
+                    %i.the-icon.fa.fa-gears
+                    %span.caret
+                  %ul.dropdown-menu.dropdown-menu-right{:role => "menu"}
+                    %li
+                      %a{"ui-sref" => "default.leases.edit({property_id: record.object.id, id: record.object.current_lease.id})"}
+                        %i.the-icon.fa.fa-pencil
+                        = I18n.t(:edit)
+                        
+
 
   .row
     .col-md-6

@@ -1,0 +1,25 @@
+/* Full height modals */
+.modal.fade.full-height-modal-right .modal-dialog {
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  margin: 0;
+}
+
+.modal.fade.full-height-modal-right .modal-content {
+  border-radius: 0;
+}
+
+.modal-header {
+  background: #3a4856;
+  color: #fff;
+}
+
+.modal.full-height-modal-right.fade:not(.in) .modal-dialog {
+  -webkit-transform: translate3d(125%, 0, 0);
+  transform: translate3d(125%, 0, 0);
+}
+
+.modal.fade.full-height-modal-right .modal-dialog {
+  width: 450px;
+}

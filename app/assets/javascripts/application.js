@@ -14,7 +14,6 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require angular/app
-//= require bootstrap.min
 //= require bootstrap-datepicker
 //= require select.min
 //= require_tree .

@@ -1,15 +1,16 @@
 class PropertiesController < ApplicationController
-  before_action :set_property, only: [:show, :edit, :update, :destroy]
+  before_action :set_property, only: [:edit, :update, :destroy]
 
   respond_to :json
 
   def index
-    @q = current_user.properties.ransack(params[:q])
+    @q = current_user.properties.includes(:current_lease).ransack(params[:q])
     @properties = @q.result
     respond_with(@properties)
   end
 
   def show
+    @property = current_user.properties.includes(:current_lease).find(params[:id])
     respond_with(@property)
   end
 
