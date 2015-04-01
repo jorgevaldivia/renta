@@ -1,62 +1,62 @@
 app.controller "PropertyLeasesController", ["$scope", "$stateParams", "Property",
   ($scope, $stateParams, Property) ->
-    $scope.record = {}
+]
 
-    $scope.init = ->
-      $scope.getProperty($stateParams.property_id)
+app.controller "PropertyLeaseController", ["$scope", "$stateParams", "Lease",
+  ($scope, $stateParams, Lease) ->
 
-    $scope.getProperty = (id) ->
-      Property.get({id: id}, (record) ->
-        $scope.record.property = record
-      )
+    $scope.getLease = ->
+      if $stateParams.lease_id
+        Lease.get({property_id: $stateParams.id, id: $stateParams.lease_id}).then((record) ->
+          $scope.record.lease = record
+        )
+      else
+        $scope.record.lease = new Lease()
 
-    $scope.init()
+    $scope.getLease();
 ]
 
 app.controller "PropertyLeasesIndexController", ["$scope", "$stateParams", "Lease",
   ($scope, $stateParams, Lease) ->
 
-    $scope.$watch('record.property', ->
-      if $scope.record.property
+    $scope.$watch('record.object', ->
+      if $scope.record.object && $scope.record.object.id
         $scope.refreshRecords()
     )
 
     $scope.refreshRecords = ->
-      Lease.query({}, {property_id: $scope.record.property.id}).then((records)->
+      Lease.query({}, {property_id: $scope.record.object.id}).then((records)->
         $scope.records = records
       )
-
-    $scope.record.object = new Lease()
 ]
 
 app.controller "PropertyLeaseFormController", ["$scope", "$stateParams", "Lease", "FormValidator", "$state",
   ($scope, $stateParams, Lease, FormValidator, $state) ->
-
-    $scope.$watch('record.property', ->
-      if $scope.record.property
-        $scope.init();
-    )
+    # $scope.$watch('record.object', ->
+    #   if $scope.record.object
+    #     $scope.init();
+    # )
 
     $scope.init = ->
-      if $stateParams.id
-        Lease.get({property_id: $scope.record.property.id, id: $stateParams.id}).then((record) ->
-          $scope.record.object = record
+      if $stateParams.lease_id
+        Lease.get({property_id: $scope.record.object.id, id: $stateParams.lease_id}).then((record) ->
+          $scope.record.lease = record
         )
       else
-        $scope.record.object = new Lease()
+        $scope.record.lease = new Lease()
 
     $scope.save = ->
-      $scope.validator = new FormValidator($scope.form, $scope.record.object);
+      $scope.validator = new FormValidator($scope.form, $scope.record.lease);
       $scope.validator.resetValidations();
 
-      if($scope.record.object.id)
-        promise = $scope.record.object.update()
+      if($scope.record.lease.id)
+        promise = $scope.record.lease.update()
       else
-        $scope.record.object.property_id = $scope.record.property.id
-        promise = $scope.record.object.create()
+        $scope.record.lease.property_id = $scope.record.object.id
+        promise = $scope.record.lease.create()
 
       promise.then(((record) ->
-        $state.go('default.leases.index', {property_id: $scope.record.property.id});
+        $state.go('default.properties.property.leases.index', {property_id: $scope.record.object.id});
       ), $scope.validator.failure)
 ]
 

@@ -197,7 +197,7 @@
 .panel-info .panel-heading,
 .panel-warning .panel-heading,
 .panel-danger .panel-heading {
-  background: #F5F5F5;
+  background: #fff;
   border-color: #E5E5E5;
 }
 .panel-fullscreen-wrap {

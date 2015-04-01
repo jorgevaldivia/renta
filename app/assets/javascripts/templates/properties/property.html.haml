@@ -1,35 +1,50 @@
 .box-layout.ng-scope
-  .col-sm-3.bg-white.height-auto
-    .bg-picture.text-center.pt-lg.pb-lg.bdr-b{style: "min-height:0;"}
-      %h4.fw-sb {{ record.object.name }}
-      %p.mb-md.text-muted
-        %i.fa.fa-map-marker
-        %small {{record.object.full_address}}
+  %aside.profile-nav.col-sm-3
+    .container-fluid.pt-md
+      %section.panel
+        .user-heading.round
+          %h1{style: "font-size: 44px;"}
+            %i.fa.fa-home
 
-      .btn-group{dropdown: "", "ng-show" => "$state.includes('default.properties.property')"}
-        %button.btn.btn-primary{type: "button", "ui-sref" => "default.properties.property.edit({id: record.object.id})"}
-          %span.fa.fa-pencil
-          = I18n.t(:edit_object, name: Property.model_name.human)
-        %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :type => "button"}
-          %span.caret
-        %ul.dropdown-menu{role: "menu"}
+          %h1 {{ record.object.name }}
+          %p
+            %i.fa.fa-map-marker
+            {{ record.object.address_line_1 }}
+            {{ record.object.address_line_2 }}
+            {{ record.object.city }}
+            {{ record.object.state }}
+            {{ record.object.postal_code }}
+        %div.action-buttons
+          .btn-group
+            %button.btn.btn-success{type: "button", "ui-sref" => "default.properties.new"}
+              %span.fa.fa-plus
+              = I18n.t(:add, name: Property.model_name.human)
+            .btn-group{dropdown: ""}
+              %button.btn.btn-primary{type: "button", "data-toggle" => "dropdown"}
+                %span.fa.fa-cogs
+                = I18n.t(:settings)
+                %span.caret
+              %ul.dropdown-menu{role: "menu"}
+                %li
+                  %a{"ui-sref" => "default.properties.property.edit({id: record.object.id})"}
+                    %span.fa.fa-pencil
+                    = I18n.t(:edit_object, name: Property.model_name.human)
+                  %a{href: "", "ng-really-message" => I18n.t("confirmations.deletion"), "ng-really-click" => "delete()"}
+                    %span.fa.fa-trash-o
+                    = I18n.t(:delete)
+                  %a{"data-target" => "#transaction-modal", "data-toggle" => "modal", style: "cursor: pointer"}
+                    %span.fa.fa-money
+                    = I18n.t(:add, name: Transaction.model_name.human)
+
+        %ul.nav.nav-stacked
           %li
-            %a{href: "", "ng-really-message" => I18n.t("confirmations.deletion"), "ng-really-click" => "delete()"}
-              %span.fa.fa-trash-o
-              = I18n.t(:delete)
-            %a{"data-target" => "#transaction-modal", "data-toggle" => "modal", style: "cursor: pointer"}
-              %span.fa.fa-money
-              = I18n.t(:add, name: Transaction.model_name.human)
-    %ul.nav
-      %li.nav-heading.mt-xs MAIN
-      %li
-        %a.active{"ui-sref" => "default.leases.index({property_id: record.object.id})"}
-          %i.fa.fa-file-text.fs-16.pos-t-2.mr-sm
-          = Lease.model_name.human(count: 2)
-      %li
-        %a{:href => "#/setting/account", "ui-sref" => "default.setting.account", "ui-sref-active" => "active"}
-          %i.fa.fa-money.fs-16.pos-t-2.mr-sm
-          = Transaction.model_name.human(count: 2)
+            %a{"ui-sref" => ".leases.index"}
+              %i.fa.fa-file-text
+              = Lease.model_name.human(count: 2)
+          %li
+            %a{"ui-sref" => "default.setting.account"}
+              %i.fa.fa-money
+              = Transaction.model_name.human(count: 2)
 
-  .col-sm-9.height-auto.bg-auto.bdr-l.bdr-t-xs
+  .col-sm-9.height-auto.bg-auto.bdr-t-xs
     .ui-view.slide-right

@@ -10,7 +10,7 @@
               %label.col-sm-2.control-label= Lease.human_attribute_name(:start_date)
               .col-sm-6
                 .form-control-icon.mb-xs
-                  %input.form-control.datepicker.server-validation{type: "text", "ng-model" => "record.object.start_date", name: "start_date"}/
+                  %input.form-control.datepicker.server-validation{type: "text", "ng-model" => "record.lease.start_date", name: "start_date"}/
                   %i.the-icon.fa.fa-calendar.text-muted
                   %span{"error-messages" => "start_date"}
 
@@ -20,7 +20,7 @@
               %label.col-sm-2.control-label= Lease.human_attribute_name(:end_date)
               .col-sm-6
                 .form-control-icon.mb-xs
-                  %input.form-control.datepicker{type: "text", "ng-model" => "record.object.end_date", name: "end_date"}/
+                  %input.form-control.datepicker{type: "text", "ng-model" => "record.lease.end_date", name: "end_date"}/
                   %i.the-icon.fa.fa-calendar.text-muted
                   %span{"error-messages" => "end_date"}
             %hr.mnr-md.mnl-md/
@@ -28,11 +28,11 @@
             .form-group{"highlight-if-error" => "interval, frequency"}
               %label.col-sm-2.control-label= Lease.human_attribute_name(:frequency)
               .col-sm-2
-                %input.form-control{type: "text", "ng-model" => "record.object.interval", name: "interval"}/
+                %input.form-control{type: "text", "ng-model" => "record.lease.interval", name: "interval"}/
                 %span{"error-messages" => "interval"}
 
               .col-sm-3
-                %select.form-control{type: "text", "ng-model" => "record.object.frequency", name: "frequency"}
+                %select.form-control{type: "text", "ng-model" => "record.lease.frequency", name: "frequency"}
                   - Lease::FREQUENCY_TYPES.each do |type|
                     %option{value: type}
                       = I18n.t("activerecord.models.lease.frequency_types.#{type}")
@@ -44,7 +44,7 @@
               %label.col-sm-2.control-label= Lease.human_attribute_name(:rent)
               .col-sm-6
                 .form-control-icon.mb-xs
-                  %input.form-control{type: "text", "ng-model" => "record.object.rent", name: "rent"}/
+                  %input.form-control{type: "text", "ng-model" => "record.lease.rent", name: "rent"}/
                   %i.the-icon.fa.fa-usd.text-muted
                   %span{"error-messages" => "rent"}
             %hr.mnr-md.mnl-md/
@@ -53,7 +53,7 @@
               %label.col-sm-2.control-label= Lease.human_attribute_name(:deposit)
               .col-sm-6
                 .form-control-icon.mb-xs
-                  %input.form-control{type: "text", "ng-model" => "record.object.deposit", name: "deposit"}/
+                  %input.form-control{type: "text", "ng-model" => "record.lease.deposit", name: "deposit"}/
                   %i.the-icon.fa.fa-usd.text-muted
                   %span{"error-messages" => "deposit"}
 

@@ -283,7 +283,7 @@ body > #app-wrapper {
     margin-bottom: 13px;
   }
   .sidebar-left ~ #app-header.navbar {
-    left: 250px;
+    left: 210px;
   }
   .sidebar-left-collapse .sidebar-left ~ #app-header.navbar {
     left: 68px;
@@ -291,8 +291,8 @@ body > #app-wrapper {
 }
 @media (max-width: 767px) {
   .csstransforms3d.sidebar-open-ltr .app-sidebar.sidebar-left {
-    -webkit-transform: translate3d(250px, 0, 0);
-            transform: translate3d(250px, 0, 0);
+    -webkit-transform: translate3d(210px, 0, 0);
+            transform: translate3d(210px, 0, 0);
     -webkit-transition: -webkit-transform .3s ease;
          -o-transition: -o-transform .3s ease;
             transition: transform .3s ease;
@@ -313,14 +313,14 @@ body > #app-wrapper {
           transition: transform .3s ease;
 }
 .app-sidebar.sidebar-left {
-  width: 250px;
-  left: -250px;
+  width: 210px;
+  left: -210px;
   background-color: #243342;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
   color: rgba(255, 255, 255, 0.55);
 }
 .app-sidebar.sidebar-left .sidebar-header {
-  width: 250px;
+  width: 210px;
   background-color: #3a4856;
 }
 .app-sidebar.sidebar-left .sidebar-header .brand,
@@ -477,7 +477,7 @@ body > #app-wrapper {
     padding-top: 60px;
   }
   .sidebar-left ~ #app-content {
-    margin-left: 250px;
+    margin-left: 210px;
   }
   .sidebar-left-collapse .sidebar-left ~ #app-content {
     margin-left: 68px;
@@ -508,7 +508,7 @@ body > #app-wrapper {
 }
 @media (min-width: 768px) {
   .sidebar-left ~ #app-footer {
-    left: 250px;
+    left: 210px;
   }
   .sidebar-left-collapse .sidebar-left ~ #app-footer {
     left: 68px;

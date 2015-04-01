@@ -7,7 +7,7 @@
             = Property.model_name.human(count: 2)
           %small
             &#10095;
-            %a{"ui-sref" => "default.properties.show({id: record.property.id})", "ng-show" => "record.property.name"}
+            %a{"ui-sref" => "default.properties.property.show({id: record.property.id})", "ng-show" => "record.property.name"}
               {{ record.property.name | characters:25 }}
           %small
             &#10095;

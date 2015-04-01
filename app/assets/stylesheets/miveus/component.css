@@ -2963,7 +2963,8 @@ pre.scroll-x {
 }
 .bg-gray-50,
 .bg-auto {
-  background-color: #f2f5f8 !important;
+  background-color: #F1F2F7 !important;
+  /*background-color: #F1F2F7;*/
   border-color: #e1e8ef !important;
 }
 .bg-gray-100 {

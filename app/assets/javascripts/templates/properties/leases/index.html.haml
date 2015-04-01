@@ -6,7 +6,7 @@
           .row
             .col-md-6
               .panel-title= Lease.model_name.human(count: 2)
-        %table.table.table-striped.table-hover
+        %table.table.table-hover
           %thead
             %tr
               %th{:width => "3%"}
@@ -29,7 +29,7 @@
                     %span
               %td
                 Jorge Valdivia (change)
-                %div{"ng-show" => "item.id == record.property.current_lease_id"}
+                %div{"ng-show" => "item.id == record.object.current_lease_id"}
                   %span.label.label-primary= Property.human_attribute_name(:current_lease)
                   %span.label.label-warning{"ng-show" => "item.ending_soon"}
                     = Lease.human_attribute_name(:ending_soon)
@@ -44,7 +44,7 @@
                     %span.caret
                   %ul.dropdown-menu.dropdown-menu-right{:role => "menu"}
                     %li
-                      %a{"ui-sref" => "default.leases.edit({id: item.id})"}
+                      %a{"ui-sref" => "default.properties.property.leases.lease.edit({lease_id: item.id})"}
                         %i.the-icon.fa.fa-pencil
                         = I18n.t(:edit)
                     

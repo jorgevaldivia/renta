@@ -73,18 +73,58 @@ app.config [
       }
     )
 
-    .state('default.leases',
-      url: '/properties/:property_id/leases'
-      abstract: true
-      templateUrl: 'properties/leases/layout.html'
+    .state('default.properties.property.leases',
+      url: '/leases'
+      template: '<div class="ui-view slide-right"></div>'
       controller: "PropertyLeasesController"
+      ncyBreadcrumb: { skip: true }
     )
 
-    .state('default.leases.index',
+    .state('default.properties.property.leases.index',
       url: '/'
       templateUrl: 'properties/leases/index.html'
       controller: "PropertyLeasesIndexController"
+      ncyBreadcrumb: {
+        parent: 'default.properties.property'
+        label: "Leases"
+      }
     )
+
+    .state('default.properties.property.leases.new',
+      url: '/new'
+      templateUrl: 'properties/leases/form.html'
+      controller: "PropertyLeaseFormController"
+      ncyBreadcrumb: {
+        parent: 'default.properties.property.leases.index'
+        label: "New"
+      }
+    )
+
+    .state('default.properties.property.leases.lease',
+      url: '/:lease_id'
+      template: '<div class="ui-view slide-right"></div>'
+      controller: "PropertyLeaseController"
+      ncyBreadcrumb: {
+        parent: 'default.properties.property.leases.index'
+        label: "{{record.lease.start_date}}"
+      }
+    )
+
+    .state('default.properties.property.leases.lease.edit',
+      url: '/edit'
+      templateUrl: 'properties/leases/form.html'
+      controller: "PropertyLeaseFormController"
+      ncyBreadcrumb: {
+        label: "Edit"
+      }
+    )
+
+    # .state('default.leases',
+    #   url: '/properties/:property_id/leases'
+    #   abstract: true
+    #   templateUrl: 'properties/leases/layout.html'
+    #   controller: "PropertyLeasesController"
+    # )
 
     .state('default.leases.new',
       url: '/new'

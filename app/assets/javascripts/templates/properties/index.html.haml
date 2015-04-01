@@ -1,40 +1,36 @@
-.container-fluid.pt-md
-  .row
-    .col-md-12
-      .panel.panel-primary
-        .panel-heading
-          .panel-title All Records
-        .table-responsive
-          %table.table.table-striped.table-hover
-            %thead
-              %tr
-                %th{:width => "3%"}
-                  .checkbox.custom-info.mt-0.mb-0
-                    %label
-                      %input{:type => "checkbox"}/
-                      %span
-                %th= Property.human_attribute_name(:name)
-                %th= Property.human_attribute_name(:address_line_1)
-                %th= Property.human_attribute_name(:city)
-                %th= Property.human_attribute_name(:state)
-                %th &nbsp;
-            %tbody
-              %tr{"ng-repeat" => "record in records"}
-                %td
-                  .checkbox.custom-info.mt-0.mb-0
-                    %label
-                      %input{:type => "checkbox"}/
-                      %span
-                %td
-                  %a{"ui-sref" => "default.properties.property.show({id: record.id})"}
-                    {{record.name}}
-                %td {{record.address_line_1}}
-                %td {{record.city}}
-                %td {{record.state}}
+.container-fluid.pt-md.bg-auto
+  .panel
+    .panel-heading
+      .panel-title All Records
+    .panel-body
+      .row
+        .col-md-12
+          .input-group
+            %input.input-sm.form-control{:placeholder => "Search Here", :type => "text"}/
+            %span.input-group-btn
 
-                %td.text-center
-                  .toolbar
-                    %a.btn.btn-sm.btn-default{{"ui-sref" => "default.properties.edit({id: record.id})"}}
-                      %span.fa.fa-pencil
-                    %a.btn.btn-sm.btn-default{href: ""}
-                      %span.fa.fa-trash-o
+    %table.table.table-hover
+      %thead
+        %tr
+          %th= Property.human_attribute_name(:name)
+          %th= Property.human_attribute_name(:address_line_1)
+          %th= Property.human_attribute_name(:city)
+          %th= Property.human_attribute_name(:state)
+          %th &nbsp;
+      %tbody
+        %tr{"ng-repeat" => "record in records"}
+          %td
+            %a{"ui-sref" => "default.properties.property.show({id: record.id})"}
+              {{record.name}}
+            %br/
+            %small {{record.city}}, {{record.state}}
+          %td {{record.address_line_1}}
+          %td {{record.city}}
+          %td {{record.state}}
+
+          %td.text-center
+            .toolbar
+              %a.btn.btn-sm.btn-default{{"ui-sref" => "default.properties.property.edit({id: record.id})"}}
+                %span.fa.fa-pencil
+              %a.btn.btn-sm.btn-default{href: ""}
+                %span.fa.fa-trash-o
