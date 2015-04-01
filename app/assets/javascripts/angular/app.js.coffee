@@ -31,13 +31,15 @@
 ])
 
 # Custom breadcrumb templated
-@app.config ($breadcrumbProvider) ->
+@app.config ["$breadcrumbProvider", ($breadcrumbProvider) ->
   $breadcrumbProvider.setOptions({templateUrl: 'shared/breadcrumb.html'})
+]
 
 # Allow trailing slash in urls to be optional
-@app.config ($urlMatcherFactoryProvider) ->
+@app.config ["$urlMatcherFactoryProvider", ($urlMatcherFactoryProvider) ->
   # should be false. doesn't actually work
   # $urlMatcherFactoryProvider.strictMode(false)
+]
 
 @app.run ['$rootScope', '$state', '$stateParams', '$breadcrumb',
   ($rootScope, $state, $stateParams, $breadcrumb) ->
