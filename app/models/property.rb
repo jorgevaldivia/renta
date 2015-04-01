@@ -1,6 +1,7 @@
 class Property < ActiveRecord::Base
   belongs_to :user
   has_many :leases
+  has_many :invoices, through: :leases
   belongs_to :current_lease, class_name: "Lease", foreign_key: :current_lease_id
 
   validates :name, :address_line_1, :city, :state, :postal_code, presence: true
@@ -20,6 +21,10 @@ class Property < ActiveRecord::Base
   private
 
   def calculate_total_proft
-    self.total_profit = total_revenue - total_expenses
+    if total_revenue && total_expenses
+      self.total_profit = total_revenue - total_expenses
+    else
+      self.total_profit = self.total_revenue = self.total_expenses = 0
+    end
   end
 end

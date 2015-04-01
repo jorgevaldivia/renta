@@ -119,6 +119,52 @@ app.config [
       }
     )
 
+    .state('default.properties.property.invoices',
+      url: '/invoices'
+      template: '<div class="ui-view slide-right"></div>'
+      controller: "PropertyInvoicesController"
+      ncyBreadcrumb: { skip: true }
+    )
+
+    .state('default.properties.property.invoices.index',
+      url: '/'
+      templateUrl: 'properties/invoices/index.html'
+      controller: "PropertyInvoicesIndexController"
+      ncyBreadcrumb: {
+        parent: 'default.properties.property'
+        label: "Invoices"
+      }
+    )
+
+    .state('default.properties.property.invoices.new',
+      url: '/new'
+      templateUrl: 'properties/invoices/form.html'
+      controller: "PropertyInvoiceFormController"
+      ncyBreadcrumb: {
+        parent: 'default.properties.property.invoices.index'
+        label: "New"
+      }
+    )
+
+    .state('default.properties.property.invoices.invoice',
+      url: '/:invoice_id'
+      template: '<div class="ui-view slide-right"></div>'
+      controller: "PropertyInvoiceController"
+      ncyBreadcrumb: {
+        parent: 'default.properties.property.invoices.index'
+        label: "{{record.invoice.start_date}}"
+      }
+    )
+
+    .state('default.properties.property.invoices.invoice.edit',
+      url: '/edit'
+      templateUrl: 'properties/invoices/form.html'
+      controller: "PropertyInvoiceFormController"
+      ncyBreadcrumb: {
+        label: "Edit"
+      }
+    )
+
     # .state('default.leases',
     #   url: '/properties/:property_id/leases'
     #   abstract: true
@@ -126,21 +172,21 @@ app.config [
     #   controller: "PropertyLeasesController"
     # )
 
-    .state('default.leases.new',
-      url: '/new'
-      templateUrl: 'properties/leases/form.html'
-      controller: "PropertyLeaseFormController"
-    )
+    # .state('default.leases.new',
+    #   url: '/new'
+    #   templateUrl: 'properties/leases/form.html'
+    #   controller: "PropertyLeaseFormController"
+    # )
 
-    .state('default.leases.edit',
-      url: '/:id/edit'
-      templateUrl: 'properties/leases/form.html'
-      controller: "PropertyLeaseFormController"
-    )
+    # .state('default.leases.edit',
+    #   url: '/:id/edit'
+    #   templateUrl: 'properties/leases/form.html'
+    #   controller: "PropertyLeaseFormController"
+    # )
 
-    .state('default.leases.show',
-      url: '/:id'
-      templateUrl: 'properties/leases/show.html'
-      controller: "PropertyLeaseShowController"
-    )
+    # .state('default.leases.show',
+    #   url: '/:id'
+    #   templateUrl: 'properties/leases/show.html'
+    #   controller: "PropertyLeaseShowController"
+    # )
 ]

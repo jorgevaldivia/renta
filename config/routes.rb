@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :properties, except: [:new, :edit], defaults: { format: :json } do
     scope module: :properties do
       resources :leases
+      resources :invoices
     end
   end
 

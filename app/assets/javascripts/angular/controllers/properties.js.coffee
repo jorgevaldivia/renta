@@ -39,7 +39,7 @@ app.controller "PropertyFormController", ["$scope", "$state", "$stateParams", "P
       if $stateParams.id
         $scope.getProperty($stateParams.id)
       else
-        $scope.record = {object: {}}
+        $scope.record = {object: new Property()}
 
     $scope.save = ->
       $scope.validator = new FormValidator($scope.form, $scope.record.object);

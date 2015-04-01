@@ -37,6 +37,9 @@ en:
 
   activerecord:
     models:
+      invoice:
+        one: Invoice
+        other: Invoices
       lease:
         one: Lease
         other: Leases
