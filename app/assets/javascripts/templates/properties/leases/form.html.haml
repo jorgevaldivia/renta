@@ -12,7 +12,6 @@
             %i.the-icon.fa.fa-calendar.text-muted
             %span{"error-messages" => "start_date"}
 
-      %hr.mnr-md.mnl-md/
 
       .form-group{"highlight-if-error" => "end_date"}
         %label.col-sm-2.control-label= Lease.human_attribute_name(:end_date)
@@ -21,7 +20,6 @@
             %input.form-control.datepicker{type: "text", "ng-model" => "record.lease.end_date", name: "end_date"}/
             %i.the-icon.fa.fa-calendar.text-muted
             %span{"error-messages" => "end_date"}
-      %hr.mnr-md.mnl-md/
 
       .form-group{"highlight-if-error" => "interval, frequency"}
         %label.col-sm-2.control-label= Lease.human_attribute_name(:frequency)
@@ -36,8 +34,6 @@
                 = I18n.t("activerecord.models.lease.frequency_types.#{type}")
           %span{"error-messages" => "frequency"}
       
-      %hr.mnr-md.mnl-md/
-
       .form-group{"highlight-if-error" => "rent"}
         %label.col-sm-2.control-label= Lease.human_attribute_name(:rent)
         .col-sm-6
@@ -45,7 +41,6 @@
             %input.form-control{type: "text", "ng-model" => "record.lease.rent", name: "rent"}/
             %i.the-icon.fa.fa-usd.text-muted
             %span{"error-messages" => "rent"}
-      %hr.mnr-md.mnl-md/
 
       .form-group{"highlight-if-error" => "deposit"}
         %label.col-sm-2.control-label= Lease.human_attribute_name(:deposit)
@@ -54,6 +49,29 @@
             %input.form-control{type: "text", "ng-model" => "record.lease.deposit", name: "deposit"}/
             %i.the-icon.fa.fa-usd.text-muted
             %span{"error-messages" => "deposit"}
+
+      %h5.no-margin-b
+        %strong= Lease.human_attribute_name(:tenant, count: 2)
+
+      %hr.mnr-md.mnl-md/
+
+      .form-group{"highlight-if-error" => "first_name"}
+        %label.col-sm-2.control-label= User.human_attribute_name(:first_name)
+        .col-sm-6
+          %input.form-control{type: "text", "ng-model" => "record.lease.tenant.first_name", name: "first_name"}/
+          %span{"error-messages" => "first_name"}
+
+      .form-group{"highlight-if-error" => "last_name"}
+        %label.col-sm-2.control-label= User.human_attribute_name(:last_name)
+        .col-sm-6
+          %input.form-control{type: "text", "ng-model" => "record.lease.tenant.last_name", name: "last_name"}/
+          %span{"error-messages" => "last_name"}
+
+      .form-group{"highlight-if-error" => "email"}
+        %label.col-sm-2.control-label= User.human_attribute_name(:email)
+        .col-sm-6
+          %input.form-control{type: "text", "ng-model" => "record.lease.tenant.email", name: "email"}/
+          %span{"error-messages" => "email"}
 
     .panel-footer
       .form-group.mb-0

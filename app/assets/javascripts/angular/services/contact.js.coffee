@@ -1,9 +1,6 @@
-app.factory "Contact", [
-  "$resource", "currentAccount"
-  ($resource, currentAccount) ->
-    return $resource("/#{currentAccount.url_token}/contacts/:id/.json", null,
-      update:
-        method: "PUT",
-      query:  { method:'GET', isArray: false },
-    )
+app.factory "Contact", ["railsResourceFactory", (railsResourceFactory) ->
+  railsResourceFactory(
+    url: "/contacts/{{id}}"
+    name: "contact"
+  )
 ]

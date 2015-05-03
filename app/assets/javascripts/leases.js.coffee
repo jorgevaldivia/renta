@@ -4,7 +4,6 @@
     $scope.form = {selectedContacts: []}
 
     $scope.init = (obj) ->
-      console.log(obj.tenant_ids)
       if obj.tenant_ids && obj.tenant_ids.length  > 0
         $scope.initSelectedTenants(obj.tenant_ids);
     

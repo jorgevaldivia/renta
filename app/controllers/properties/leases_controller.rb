@@ -40,6 +40,7 @@ class Properties::LeasesController < ApplicationController
     end
 
     def lease_params
-      params.require(:lease).permit(:start_date, :end_date, :frequency, :interval, :deposit, :rent)
+      params.require(:lease).permit(:start_date, :end_date, :frequency, :interval, :deposit, :rent,
+        tenants_attributes: [:first_name, :last_name, :email, :_destroy, :id])
     end
 end

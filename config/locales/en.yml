@@ -91,6 +91,11 @@ en:
       property/units:
         name: "Unit Name"
 
+      user:
+        first_name: First Name
+        last_name: Last Name
+        email: Email
+
     errors:
       messages:
         inclusion: "not an accepted value"

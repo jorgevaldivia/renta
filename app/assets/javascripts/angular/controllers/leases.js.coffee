@@ -44,6 +44,7 @@ app.controller "PropertyLeaseFormController", ["$scope", "$stateParams", "Lease"
         )
       else
         $scope.record.lease = new Lease()
+        $scope.record.tenants = []
 
     $scope.save = ->
       $scope.validator = new FormValidator($scope.form, $scope.record.lease);
