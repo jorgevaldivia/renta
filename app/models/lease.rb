@@ -1,6 +1,8 @@
 class Lease < ActiveRecord::Base
   belongs_to :property
   has_many :invoices
+  has_many :leases_users
+  has_many :tenants, through: :leases_users, source: :user
 
   FREQUENCY_TYPES = %w(days weeks months years).freeze
 

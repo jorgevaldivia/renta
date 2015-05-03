@@ -1,5 +1,5 @@
 Rails.application.assets.context_class.class_eval do
-  # include ApplicationHelper
+  include ApplicationHelper
   # include ActionView::Helpers
   # include Rails.application.routes.url_helpers
   # include SimpleForm::ActionViewExtensions::Builder
@@ -8,4 +8,5 @@ Rails.application.assets.context_class.class_eval do
   # include ActionView::Context
   # include ActiveSupport::Configurable
   # include ActionController::RequestForgeryProtection
+  # use view_context
 end

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lease_id: 
+  user_id: 
+
+two:
+  lease_id: 
+  user_id: 

@@ -35,41 +35,35 @@
       .clearfix
       %br/
       %br/
-
       .form-group{"highlight-if-error" => "name"}
         %label.col-sm-2.control-label= Property.human_attribute_name(:name)
         .col-sm-10
           %input.form-control{type: "text", "ng-model" => "record.object.name", name: "name"}/
           %span{"error-messages" => "name"}
-      / %hr.mnr-md.mnl-md/
 
       .form-group{"highlight-if-error" => "address_line_1"}
         %label.col-sm-2.control-label= Property.human_attribute_name(:address_line_1)
         .col-sm-10
           %input.form-control{type: "text", "ng-model" => "record.object.address_line_1", name: "address_line_1"}/
           %span{"error-messages" => "address_line_1"}
-      / %hr.mnr-md.mnl-md/
 
       .form-group{"highlight-if-error" => "address_line_2"}
         %label.col-sm-2.control-label= Property.human_attribute_name(:address_line_2)
         .col-sm-10
           %input.form-control{type: "text", "ng-model" => "record.object.address_line_2", name: "address_line_2"}/
           %span{"error-messages" => "address_line_2"}
-      / %hr.mnr-md.mnl-md/
 
       .form-group{"highlight-if-error" => "city"}
         %label.col-sm-2.control-label= Property.human_attribute_name(:city)
         .col-sm-10
           %input.form-control{type: "text", "ng-model" => "record.object.city", name: "city"}/
           %span{"error-messages" => "city"}
-      / %hr.mnr-md.mnl-md/
 
       .form-group{"highlight-if-error" => "state"}
         %label.col-sm-2.control-label= Property.human_attribute_name(:state)
         .col-sm-6
           %input.form-control{type: "text", "ng-model" => "record.object.state", name: "state"}/
           %span{"error-messages" => "state"}
-      / %hr.mnr-md.mnl-md/
 
       .form-group{"highlight-if-error" => "postal_code"}
         %label.col-sm-2.control-label= Property.human_attribute_name(:postal_code)
