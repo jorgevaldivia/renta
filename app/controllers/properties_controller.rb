@@ -4,18 +4,18 @@ class PropertiesController < ApplicationController
   respond_to :json
 
   def index
-    @q = current_user.properties.includes(:current_lease).ransack(params[:q])
+    @q = Property.includes(:current_lease).ransack(params[:q])
     @properties = @q.result
     respond_with(@properties)
   end
 
   def show
-    @property = current_user.properties.includes(:current_lease).find(params[:id])
+    @property = Property.includes(:current_lease).find(params[:id])
     respond_with(@property)
   end
 
   def create
-    @property = current_user.properties.build(property_params)
+    @property = Property.build(property_params)
     @property.save
     respond_with(@property)
   end
@@ -32,7 +32,7 @@ class PropertiesController < ApplicationController
 
   private
     def set_property
-      @property = current_user.properties.find(params[:id])
+      @property = Property.find(params[:id])
     end
 
     def property_params

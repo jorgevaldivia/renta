@@ -1,4 +1,6 @@
 class Lease < ActiveRecord::Base
+  acts_as_tenant :account
+
   belongs_to :property
   has_many :invoices
   has_many :leases_users

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503225536) do
+ActiveRecord::Schema.define(version: 20150503230554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,8 +51,10 @@ ActiveRecord::Schema.define(version: 20150503225536) do
     t.integer  "amount_cents"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
 
+  add_index "invoice_line_items", ["account_id"], name: "index_invoice_line_items_on_account_id", using: :btree
   add_index "invoice_line_items", ["invoice_id"], name: "index_invoice_line_items_on_invoice_id", using: :btree
 
   create_table "invoices", force: true do |t|
@@ -66,8 +68,10 @@ ActiveRecord::Schema.define(version: 20150503225536) do
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
 
+  add_index "invoices", ["account_id"], name: "index_invoices_on_account_id", using: :btree
   add_index "invoices", ["lease_id"], name: "index_invoices_on_lease_id", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
 
@@ -84,8 +88,10 @@ ActiveRecord::Schema.define(version: 20150503225536) do
     t.date     "next_bill_date"
     t.integer  "grace_period"
     t.integer  "user_id"
+    t.integer  "account_id"
   end
 
+  add_index "leases", ["account_id"], name: "index_leases_on_account_id", using: :btree
   add_index "leases", ["property_id"], name: "index_leases_on_property_id", using: :btree
   add_index "leases", ["user_id"], name: "index_leases_on_user_id", using: :btree
 
@@ -94,8 +100,10 @@ ActiveRecord::Schema.define(version: 20150503225536) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
 
+  add_index "leases_users", ["account_id"], name: "index_leases_users_on_account_id", using: :btree
   add_index "leases_users", ["lease_id"], name: "index_leases_users_on_lease_id", using: :btree
   add_index "leases_users", ["user_id"], name: "index_leases_users_on_user_id", using: :btree
 
@@ -117,8 +125,10 @@ ActiveRecord::Schema.define(version: 20150503225536) do
     t.float    "baths"
     t.integer  "size"
     t.string   "size_unit"
+    t.integer  "account_id"
   end
 
+  add_index "properties", ["account_id"], name: "index_properties_on_account_id", using: :btree
   add_index "properties", ["current_lease_id"], name: "index_properties_on_current_lease_id", using: :btree
   add_index "properties", ["user_id"], name: "index_properties_on_user_id", using: :btree
 
@@ -132,8 +142,10 @@ ActiveRecord::Schema.define(version: 20150503225536) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
 
+  add_index "transactions", ["account_id"], name: "index_transactions_on_account_id", using: :btree
   add_index "transactions", ["item_id"], name: "index_transactions_on_item_id", using: :btree
   add_index "transactions", ["user_id"], name: "index_transactions_on_user_id", using: :btree
 

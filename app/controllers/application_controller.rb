@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
 
+  # Acts as tenant
+  set_current_tenant_through_filter
+  before_filter :set_tenant_from_user
+
   protected
 
   def layout_by_resource
@@ -13,5 +17,13 @@ class ApplicationController < ActionController::Base
     else
       "miveus"
     end
+  end
+
+  # For now, I'm just gonna set the tenant to always be the current user's only
+  # account. 
+  def set_tenant_from_user
+    return unless current_user.present?
+
+    set_current_tenant(current_user.accounts.first)
   end
 end

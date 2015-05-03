@@ -32,7 +32,7 @@ class Properties::InvoicesController < ApplicationController
 
   private
     def set_property
-      @property = current_user.properties.find(params[:property_id])
+      @property = Property.find(params[:property_id])
     end
 
     def set_invoice

@@ -1,4 +1,6 @@
 class Property < ActiveRecord::Base
+  acts_as_tenant :account
+
   belongs_to :user
   has_many :leases
   has_many :invoices, through: :leases

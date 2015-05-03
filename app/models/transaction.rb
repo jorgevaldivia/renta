@@ -1,4 +1,6 @@
 class Transaction < ActiveRecord::Base
+  acts_as_tenant :account
+
   belongs_to :user
   belongs_to :item, polymorphic:true
 

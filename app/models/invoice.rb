@@ -1,5 +1,6 @@
 class Invoice < ActiveRecord::Base
   # Statuses: open, due, overdue, paid
+  acts_as_tenant :account
 
   belongs_to :user
   belongs_to :lease
