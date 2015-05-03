@@ -1,4 +1,4 @@
 %p.help-block.text-danger.fs-12.mb-0.error-help.ng-scope
-  %span{"ng-repeat" => "(message, isError) in form[field].$error"}
+  %span{"ng-repeat" => "(message, isError) in formScope.form[field].$error"}
     {{message}}
     %span{"ng-hide" => "$last"}>,

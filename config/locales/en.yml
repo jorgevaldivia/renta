@@ -82,7 +82,7 @@ en:
         expenses: Expenses
         profit: Profit
         revenue: Revenue
-        zip_code: Zip/Postal
+        postal_code: Zip/Postal
         number_of_units: "# of Units"
         beds: Beds
         baths: Baths

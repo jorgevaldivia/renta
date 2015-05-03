@@ -1,8 +1,14 @@
 .container-fluid.pt-md
-  .panel
+  .panel.ibox
     .panel-heading
-      .panel-title All Records
-    .panel-body
+      .panel-title.ibox-title
+        .row
+          .col-md-12
+            %h4.pull-left= Property.model_name.human(count: 2)
+            %a.btn.btn-primary.btn-sm.pull-right{"ui-sref" => "default.properties.new"}
+              %i.fa.fa-plus
+              = I18n.t(:add, name: Property.model_name.human)
+    .panel-body.ibox-content
       .row
         .col-md-12
           .input-group

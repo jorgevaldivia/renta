@@ -21,13 +21,14 @@ app.factory('FormValidator', [
     (form, obj) ->
       @form = form
       @obj = obj
+
       # A generic failure function that displays the error messages and
       # highlights the field in red.
-
       @failure = (response) ->
-        console.log(response)
         angular.forEach response.data.errors, (errors, key) ->
           angular.forEach errors, (e) ->
+            # console.log(key)
+            # console.log(form[key])
             if form[key]
               form[key].$dirty = true
               form[key].$setValidity e, false
@@ -49,8 +50,6 @@ app.factory('FormValidator', [
         return
 
       return
-
-
 ])
 
 .directive 'highlightIfError', [
@@ -59,7 +58,7 @@ app.factory('FormValidator', [
       restrict: "AC"
       link: (scope, element, attrs) ->
         fields = attrs.highlightIfError.split(",").map((field) ->
-          "form['#{field.trim()}'].$invalid"
+          "formScope.form['#{field.trim()}'].$invalid"
         )
 
         scope.$watchGroup(fields, (values) ->

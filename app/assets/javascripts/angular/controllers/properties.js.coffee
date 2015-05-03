@@ -35,6 +35,8 @@ app.controller "PropertiesIndexController", ["$scope", "Property",
 
 app.controller "PropertyFormController", ["$scope", "$state", "$stateParams", "Property", "FormValidator",
   ($scope, $state, $stateParams, Property, FormValidator) ->
+    $scope.formScope = {};
+
     $scope.init = ->
       if $stateParams.id
         $scope.getProperty($stateParams.id)
@@ -42,8 +44,8 @@ app.controller "PropertyFormController", ["$scope", "$state", "$stateParams", "P
         $scope.record = {object: new Property()}
 
     $scope.save = ->
-      $scope.validator = new FormValidator($scope.form, $scope.record.object);
-      $scope.validator.resetValidations();
+      $scope.validator = new FormValidator($scope.formScope.form, $scope.record.object)
+      $scope.validator.resetValidations()
       if($scope.record.object.id)
         promise = $scope.record.object.$update({id: $scope.record.object.id})
       else

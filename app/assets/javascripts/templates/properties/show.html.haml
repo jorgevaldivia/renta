@@ -25,7 +25,7 @@
         %p
           %a.btn.btn-primary.btn-sm.pull-right{"ui-sref" => "default.properties.property.leases.new"}
             %i.fa.fa-plus
-            Add Lease
+            = I18n.t(:add, name: Lease.model_name.human)
       .clearfix
 
     .row{ "ng-show" => "record.object.current_lease" }
@@ -38,11 +38,11 @@
             %strong John Smith
             %br/
             %small
-              %i.fa.fa-usd
+              %i.fa.fa-usd.fa-fw
               {{ record.object.current_lease.rent | number:2 }}
             %br/
             %small
-              %i.fa.fa-calendar
+              %i.fa.fa-calendar.fa-fw
               {{ record.object.current_lease.start_date }} - {{ record.object.current_lease.end_date }}
             .clearfix
 
