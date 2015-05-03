@@ -2397,7 +2397,7 @@
 }
 .btn.btn-flat.btn-default,
 .btn.btn-flat.btn-gray {
-  color: #243342;
+  color: $miveus-dark-blue;
 }
 .btn.btn-rounded {
   border-radius: 34px;
@@ -3000,7 +3000,7 @@ pre.scroll-x {
   border-color: #303b47 !important;
 }
 .bg-gray-900 {
-  background-color: #243342 !important;
+  background-color: $miveus-dark-blue !important;
   border-color: #1b2632 !important;
 }
 .bg-red-50 {
@@ -3248,7 +3248,7 @@ pre.scroll-x {
 [ng-switch="datepickerMode"] > table > thead tr th .btn:hover {
   -webkit-box-shadow: none;
           box-shadow: none;
-  color: #243342;
+  color: $miveus-dark-blue;
 }
 [ng-switch="datepickerMode"] > table > thead tr th .btn .glyphicon {
   line-height: inherit;
@@ -3843,7 +3843,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
-  color: #243342;
+  color: $miveus-dark-blue;
 }
 .nav > .nav-heading {
   padding: 5px 15px;
@@ -4464,7 +4464,7 @@ body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 1.54;
-  color: #243342;
+  color: $miveus-dark-blue;
   background-color: #f2f5f8;
 }
 body,
@@ -4708,10 +4708,10 @@ a:focus {
   margin-left: 5px;
 }
 .step .steps.active {
-  color: #243342;
+  color: $miveus-dark-blue;
 }
 .step .steps.active > .steps-figure {
-  border-color: #243342;
+  border-color: $miveus-dark-blue;
 }
 .step a.steps:hover,
 .step a.steps:focus {

@@ -8,6 +8,34 @@
   %form.form-horizontal{name: "form", "novalidate" => ""}
     .panel-body
 
+      .wizard
+        %ul.steps_3.anchor
+          %li
+            %a.selected{href: "#step-1", isdone: "0", rel: "1"}
+              %span.stepNumber 1
+              %span.stepDesc
+                Step 1
+                %br/
+                %small Property Details
+          %li
+            %a.disabled{href: "#step-2", isdone: "0", rel: "2"}
+              %span.stepNumber 2
+              %span.stepDesc
+                Step 2
+                %br/
+                %small Upload Images
+          %li
+            %a.disabled{href: "#step-3", isdone: "0", rel: "3"}
+              %span.stepNumber 3
+              %span.stepDesc
+                Step 3
+                %br/
+                %small Add Lease
+
+      .clearfix
+      %br/
+      %br/
+
       .form-group{"highlight-if-error" => "name"}
         %label.col-sm-2.control-label= Property.human_attribute_name(:name)
         .col-sm-10

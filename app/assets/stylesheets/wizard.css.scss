@@ -1,0 +1,155 @@
+/* Smart Wizard */
+.wizard .anchor {
+  float: left;
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  display: block;
+  position: relative;
+  width: 100%;
+}
+.wizard .anchor:after {
+  content: " ";
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 2px;
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  border-radius: 1px;
+  background: $gray-light;
+  z-index: 1;
+}
+.wizard .anchor li {
+  float: left;
+  display: block;
+}
+.wizard .anchor li a {
+  font-size: 14px;
+  text-decoration: none;
+  display: block;
+  line-height: 18px;
+  padding: 10px 20px 15px 0px;
+  position: relative;
+}
+.wizard .anchor li a .stepNumber {
+  display: none;
+}
+.wizard .anchor li a .stepDesc {
+  font-weight: 400;
+}
+.wizard .anchor li a .stepDesc small {
+  color: #999;
+  font-weight: 300;
+}
+.wizard .anchor li a:before {
+  content: " ";
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 2px;
+  background: $gray-light;
+  z-index: 2;
+  -webkit-transition: all 200ms ease;
+  -moz-transition: all 200ms ease;
+  -ms-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  transition: all 200ms ease;
+}
+.wizard .anchor li a:after {
+  content: " ";
+  position: absolute;
+  bottom: -10px;
+  left: 0px;
+  width: 22px;
+  height: 22px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #FFF;
+  border: 3px solid $gray-light;
+  z-index: 3;
+  text-align: center;
+  line-height: 17px;
+  -webkit-transition: all 200ms ease;
+  -moz-transition: all 200ms ease;
+  -ms-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  transition: all 200ms ease;
+  color: #DDD;
+}
+.wizard .anchor li a.done:after {
+  border-color: #95b75d;
+  content: "\f00c";
+  font-family: FontAwesome;
+  color: #95b75d;
+  font-size: 10px;
+}
+.wizard .anchor li a.done:before {
+  background: #95b75d;
+}
+.wizard .anchor li a.error:after {
+  border-color: $brand-danger;
+  content: "\f00d";
+  font-family: FontAwesome;
+  color: $brand-danger;
+  font-size: 10px;
+}
+.wizard .anchor li a.error:before {
+  background: $brand-danger;
+}
+.wizard .anchor li a.selected:after {
+  border-color: $link-hover-color;
+  content: "\f0da";
+  font-family: FontAwesome;
+  color: $link-hover-color;
+  font-size: 13px;
+  padding-left: 2px;
+}
+.wizard .anchor li a.selected:before {
+  background: $link-hover-color;
+}
+.wizard .stepContainer,
+.wizard .actionBar {
+  float: left;
+  width: 100%;
+  margin-top: 30px;
+}
+.wizard .actionBar {
+  margin-top: 20px;
+}
+.wizard .actionBar .btn.pull-right {
+  margin-left: 5px;
+}
+.wizard .actionBar .btn-primary {
+  display: none;
+}
+.wizard .actionBar .loader {
+  display: none;
+}
+.wizard .anchor.steps_1 li {
+  width: 100%;
+}
+.wizard .anchor.steps_2 li {
+  width: 50%;
+}
+.wizard .anchor.steps_3 li {
+  width: 33.333333%;
+}
+.wizard .anchor.steps_4 li {
+  width: 25%;
+}
+.wizard .anchor.steps_5 li {
+  width: 20%;
+}
+.wizard .anchor.steps_6 li {
+  width: 16.666666%;
+}
+.wizard .anchor.steps_7 li {
+  width: 14.285714%;
+}
+.wizard .anchor.steps_8 li {
+  width: 12.5%;
+}

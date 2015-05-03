@@ -315,7 +315,7 @@ body > #app-wrapper {
 .app-sidebar.sidebar-left {
   width: 210px;
   left: -210px;
-  background-color: #243342;
+  background-color: $miveus-dark-blue;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
   color: rgba(255, 255, 255, 0.55);
 }
@@ -358,7 +358,7 @@ body > #app-wrapper {
   color: rgba(255, 255, 255, 0.35);
 }
 .sidebar-left-collapse .app-sidebar.sidebar-left .nav-sidebar > .nav-group > .nav-submenu {
-  background-color: #243342;
+  background-color: $miveus-dark-blue;
 }
 .sidebar-left-collapse .app-sidebar.sidebar-left {
   width: 68px;

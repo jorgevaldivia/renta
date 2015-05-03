@@ -23,6 +23,9 @@ $brand-info:            #23c6c8 !default;
 $brand-warning:         #f8ac59 !default;
 $brand-danger:          #ed5565 !default;
 
+$miveus-dark-blue:      #243342 !default;
+$miveus-light-blue:     #3a4856 !default;
+$miveus-link-color:     #667fa0 !default;
 
 //== Scaffolding
 //
@@ -34,7 +37,7 @@ $body-bg:               #fff !default;
 $text-color:            $gray-dark !default;
 
 //** Global textual link color.
-$link-color:            $brand-primary !default;
+$link-color:            $miveus-link-color !default;
 //** Link hover color set via `darken()` function.
 $link-hover-color:      darken($link-color, 15%) !default;
 

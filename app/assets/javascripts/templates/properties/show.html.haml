@@ -110,6 +110,50 @@
           %td $3,600
           %td Mantenimiento
 
+    %br/
+    .row
+      .col-md-12
+        %h5.no-margin-b.pull-left
+          %strong= Invoice.model_name.human(count: 2)
+        .ibox-tools.pull-right
+          %a.close-link
+            %i.fa.fa-plus
+
+    %hr.mnr-md.mnl-md/
+
+    %table.table.table-hover
+      %thead
+        %tr
+          %th{style: "width: 60px;"} Type
+          %th Date
+          %th Amount
+          %th From
+      %tbody
+        %tr
+          %td
+            %span.label.label-primary Income
+          %td March 1st, 2015
+          %td $18,500
+          %td Jorge Valdivia
+        %tr
+          %td
+            %span.label.label-warning Expense
+          %td March 1st, 2015
+          %td $3,600
+          %td Mantenimiento
+        %tr
+          %td
+            %span.label.label-primary Income
+          %td Feb 1st, 2015
+          %td $18,500
+          %td Jorge Valdivia
+        %tr
+          %td
+            %span.label.label-warning Expense
+          %td Feb 1st, 2015
+          %td $3,600
+          %td Mantenimiento
+
 
 / .container-fluid.pt-md
 /   .row

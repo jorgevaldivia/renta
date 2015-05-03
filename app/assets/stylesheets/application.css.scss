@@ -26,6 +26,7 @@
 
 @import "widgets";
 @import "atlant";
+@import "wizard";
 @import "modals";
 
 body {
@@ -138,10 +139,6 @@ html {
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
   box-shadow: 0 1px 1px rgba(0,0,0,.05);
-}
-
-a {
-  color: #667fa0;
 }
 
 
