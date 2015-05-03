@@ -1,4 +1,6 @@
 class Invoice < ActiveRecord::Base
+  # Statuses: open, due, overdue, paid
+
   belongs_to :user
   belongs_to :lease
   has_many :line_items, dependent: :destroy
@@ -6,6 +8,9 @@ class Invoice < ActiveRecord::Base
   monetize :total_amount_cents, allow_nil: true
 
   after_touch :calculate_total_amount
+
+  scope :due, -> { where("issue_date <= ? and due_date >= ? and status != 'paid'", Date.today, Date.today) }
+  scope :overdue, -> { where("due_date <= ? and status != 'paid'", Date.today) }
 
   private
 

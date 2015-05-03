@@ -36,7 +36,7 @@ app.config [
 
     .state('default.properties.new',
       url: '/new'
-      templateUrl: 'properties/form.html'
+      templateUrl: 'properties/new.html'
       controller: "PropertyFormController"
       ncyBreadcrumb: {
         parent: 'default.properties.index'

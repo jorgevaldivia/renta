@@ -1,111 +1,224 @@
-.container-fluid.pt-md
-  .row
-    .col-md-4
-      .widget.widget-info.widget-no-subtitle
-        .widget-big-int
-          $
-          %span.num-count {{ record.object.total_revenue | number:2 }}
-        .widget-subtitle= Property.human_attribute_name(:total_revenue)
+.panel.ibox
+  .panel-heading
+    .panel-title.ibox-title
+      %h4= I18n.t(:details)
+  .panel-body.ibox-content
+    %div{ "ng-show" => "record.object.current_lease" }
+      .row
+        .col-md-12
+          %h5.no-margin-b.pull-left
+            %strong= Property.human_attribute_name(:current_lease)
+          .ibox-tools.pull-right
+            %a{"ui-sref" => "default.properties.property.leases.lease.edit({lease_id: record.object.current_lease.id})"}
+              %i.fa.fa-pencil
 
-    .col-md-4
-      .widget.widget-info.widget-no-subtitle
-        .widget-big-int
-          $
-          %span.num-count {{ record.object.total_expenses | number:2 }}
-        .widget-subtitle= Property.human_attribute_name(:total_expenses)
+      %hr.mnr-md.mnl-md/
 
-    .col-md-4
-      .widget.widget-no-subtitle{"ng-class" => "{'widget-success': (record.object.total_profit >= 0), 'widget-danger': (record.object.total_profit < 0)}"}
-        .widget-big-int
-          $
-          %span.num-count {{ record.object.total_profit | number:2 }}
-        .widget-subtitle= Property.human_attribute_name(:total_profit)
+    %div{ "ng-hide" => "record.object.current_lease" }
+      .blank-slate
+        %h2
+          %i.fa.fa-exclamation-circle
+          No Current Lease
+        %p
+          %a{"ui-sref" => "default.properties.property.leases.new"} Create a lease
+          to add tenants, begin collecting rent, and start tracking stats. When you create a lease, you'll be able to set start and end dates, rent, and deposit amounts.
+        %p
+          %a.btn.btn-primary.btn-sm.pull-right{"ui-sref" => "default.properties.property.leases.new"}
+            %i.fa.fa-plus
+            Add Lease
+      .clearfix
 
-  .row
-    .col-md-12
-      .panel.panel-primary
-        .panel-heading
-          .panel-title
-            .row
-              .col-md-6
-                = Property.human_attribute_name(:current_lease)
-              .col-md-6
-                %ul.panel-controls
-                  %li
-                    %a{"ui-sref" => "default.leases.index({property_id: record.object.id})"}
-                      %span.fa.fa-arrow-right
-        .panel-body
-          %table.table.table-hover
-            %thead
-              %tr
-                %th= Lease.human_attribute_name(:tenant)
-                %th= Lease.human_attribute_name(:rent)
-                %th= Lease.human_attribute_name(:start_date)
-                %th= Lease.human_attribute_name(:end_date)
-                %th= Lease.human_attribute_name(:next_bill_date)
-                %td &nbsp;
-            %tbody{"ng-hide" => "record.object.current_lease"}
-              %tr
-                %td{colspan: 6}
-                  %em= I18n.t(:no_results)
-            %tbody{"ng-show" => "record.object.current_lease"}
-              %tr
-                %td
-                  Jorge Valdivia (change)
-                  %div{"ng-show" => "record.object.current_lease.id == record.object.current_lease_id"}
-                    %span.label.label-primary= Property.human_attribute_name(:current_lease)
-                    %span.label.label-warning{"ng-show" => "record.object.current_lease.ending_soon"}
-                      = Lease.human_attribute_name(:ending_soon)
-                %td {{ record.object.current_lease.rent | currency }}
-                %td {{ record.object.current_lease.start_date }}
-                %td {{ record.object.current_lease.end_date }}
-                %td {{ record.object.current_lease.next_bill_date }}
-                %td
-                  .btn-group
-                    %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :type => "button"}
-                      %i.the-icon.fa.fa-gears
-                      %span.caret
-                    %ul.dropdown-menu.dropdown-menu-right{:role => "menu"}
-                      %li
-                        %a{"ui-sref" => "default.leases.edit({property_id: record.object.id, id: record.object.current_lease.id})"}
-                          %i.the-icon.fa.fa-pencil
-                          = I18n.t(:edit)
-  .row
-    .col-md-12
-      .panel.panel-primary
-        .panel-heading
-          .panel-title Recent Transactions
-        .panel-body
-          .table-responsive
-            %table.table.table-hover
-              %thead
-                %tr
-                  %th Date
-                  %th &nbsp;
-                  %th Amount
-                  %th From
-              %tbody
-                %tr
-                  %td March 1st, 2015
-                  %td
-                    %span.label.label-success Income
-                  %td $18,500
-                  %td Jorge Valdivia
-                %tr
-                  %td March 1st, 2015
-                  %td
-                    %span.label.label-warning Expense
-                  %td $3,600
-                  %td Mantenimiento
-                %tr
-                  %td Feb 1st, 2015
-                  %td
-                    %span.label.label-success Income
-                  %td $18,500
-                  %td Jorge Valdivia
-                %tr
-                  %td Feb 1st, 2015
-                  %td
-                    %span.label.label-warning Expense
-                  %td $3,600
-                  %td Mantenimiento
+    .row{ "ng-show" => "record.object.current_lease" }
+      .col-md-6
+        .contact-box
+          .col-sm-4
+            .text-center
+              %img.img-circle.m-t-xs.img-responsive{alt: "image", src: "assets/demo/avatars/7.jpg"}/
+          .col-sm-8{style: "padding-left: 0"}
+            %strong John Smith
+            %br/
+            %small
+              %i.fa.fa-usd
+              {{ record.object.current_lease.rent | number:2 }}
+            %br/
+            %small
+              %i.fa.fa-calendar
+              {{ record.object.current_lease.start_date }} - {{ record.object.current_lease.end_date }}
+            .clearfix
+
+      .col-md-6
+        .contact-box
+          .col-sm-4
+            .text-center
+              .well.no-margin-b{style: "padding: 14px;"}
+                %h2
+                  %i.fa.fa-usd
+          .col-sm-8{style: "padding-left: 0"}
+            %strong Payments
+            %br/
+            %small
+              %strong Next:
+              06-01-2015
+            %br/
+            %small
+              %strong Last:
+              05-03-2015
+              %span.label.label-warning Overdue
+            .clearfix
+
+    %br/
+    .row
+      .col-md-12
+        %h5.no-margin-b.pull-left
+          %strong= Transaction.model_name.human(count: 2)
+        .ibox-tools.pull-right
+          %a.close-link
+            %i.fa.fa-plus
+
+    %hr.mnr-md.mnl-md/
+
+    %table.table.table-hover
+      %thead
+        %tr
+          %th{style: "width: 60px;"} Type
+          %th Date
+          %th Amount
+          %th From
+      %tbody
+        %tr
+          %td
+            %span.label.label-primary Income
+          %td March 1st, 2015
+          %td $18,500
+          %td Jorge Valdivia
+        %tr
+          %td
+            %span.label.label-warning Expense
+          %td March 1st, 2015
+          %td $3,600
+          %td Mantenimiento
+        %tr
+          %td
+            %span.label.label-primary Income
+          %td Feb 1st, 2015
+          %td $18,500
+          %td Jorge Valdivia
+        %tr
+          %td
+            %span.label.label-warning Expense
+          %td Feb 1st, 2015
+          %td $3,600
+          %td Mantenimiento
+
+
+/ .container-fluid.pt-md
+/   .row
+/     .col-md-4
+/       .widget.widget-info.widget-no-subtitle
+/         .widget-big-int
+/           $
+/           %span.num-count {{ record.object.total_revenue | number:2 }}
+/         .widget-subtitle= Property.human_attribute_name(:total_revenue)
+
+/     .col-md-4
+/       .widget.widget-info.widget-no-subtitle
+/         .widget-big-int
+/           $
+/           %span.num-count {{ record.object.total_expenses | number:2 }}
+/         .widget-subtitle= Property.human_attribute_name(:total_expenses)
+
+/     .col-md-4
+/       .widget.widget-no-subtitle{"ng-class" => "{'widget-success': (record.object.total_profit >= 0), 'widget-danger': (record.object.total_profit < 0)}"}
+/         .widget-big-int
+/           $
+/           %span.num-count {{ record.object.total_profit | number:2 }}
+/         .widget-subtitle= Property.human_attribute_name(:total_profit)
+
+/   .row
+/     .col-md-12
+/       .panel.panel-primary
+/         .panel-heading
+/           .panel-title
+/             .row
+/               .col-md-6
+/                 = Property.human_attribute_name(:current_lease)
+/               .col-md-6
+/                 %ul.panel-controls
+/                   %li
+/                     %a{"ui-sref" => "default.leases.index({property_id: record.object.id})"}
+/                       %span.fa.fa-arrow-right
+/         .panel-body
+/           %table.table.table-hover
+/             %thead
+/               %tr
+/                 %th= Lease.human_attribute_name(:tenant)
+/                 %th= Lease.human_attribute_name(:rent)
+/                 %th= Lease.human_attribute_name(:start_date)
+/                 %th= Lease.human_attribute_name(:end_date)
+/                 %th= Lease.human_attribute_name(:next_bill_date)
+/                 %td &nbsp;
+/             %tbody{"ng-hide" => "record.object.current_lease"}
+/               %tr
+/                 %td{colspan: 6}
+/                   %em= I18n.t(:no_results)
+/             %tbody{"ng-show" => "record.object.current_lease"}
+/               %tr
+/                 %td
+/                   Jorge Valdivia (change)
+/                   %div{"ng-show" => "record.object.current_lease.id == record.object.current_lease_id"}
+/                     %span.label.label-primary= Property.human_attribute_name(:current_lease)
+/                     %span.label.label-warning{"ng-show" => "record.object.current_lease.ending_soon"}
+/                       = Lease.human_attribute_name(:ending_soon)
+/                 %td {{ record.object.current_lease.rent | currency }}
+/                 %td {{ record.object.current_lease.start_date }}
+/                 %td {{ record.object.current_lease.end_date }}
+/                 %td {{ record.object.current_lease.next_bill_date }}
+/                 %td
+/                   .btn-group
+/                     %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :type => "button"}
+/                       %i.the-icon.fa.fa-gears
+/                       %span.caret
+/                     %ul.dropdown-menu.dropdown-menu-right{:role => "menu"}
+/                       %li
+/                         %a{"ui-sref" => "default.leases.edit({property_id: record.object.id, id: record.object.current_lease.id})"}
+/                           %i.the-icon.fa.fa-pencil
+/                           = I18n.t(:edit)
+/   .row
+/     .col-md-12
+/       .panel.panel-primary
+/         .panel-heading
+/           .panel-title Recent Transactions
+/         .panel-body
+/           .table-responsive
+/             %table.table.table-hover
+/               %thead
+/                 %tr
+/                   %th Date
+/                   %th &nbsp;
+/                   %th Amount
+/                   %th From
+/               %tbody
+/                 %tr
+/                   %td March 1st, 2015
+/                   %td
+/                     %span.label.label-success Income
+/                   %td $18,500
+/                   %td Jorge Valdivia
+/                 %tr
+/                   %td March 1st, 2015
+/                   %td
+/                     %span.label.label-warning Expense
+/                   %td $3,600
+/                   %td Mantenimiento
+/                 %tr
+/                   %td Feb 1st, 2015
+/                   %td
+/                     %span.label.label-success Income
+/                   %td $18,500
+/                   %td Jorge Valdivia
+/                 %tr
+/                   %td Feb 1st, 2015
+/                   %td
+/                     %span.label.label-warning Expense
+/                   %td $3,600
+/                   %td Mantenimiento

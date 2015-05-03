@@ -9,6 +9,7 @@ en:
   dashboard: "Dashboard"
   delete: "Delete"
   delete_object: "Delete %{name}"
+  details: "Details"
   edit: "Edit"
   edit_object: "Edit %{name}"
   filters: Filters
@@ -78,6 +79,9 @@ en:
         total_expenses: Total Expenses
         total_profit: Total Profit
         total_revenue: Total Revenue
+        expenses: Expenses
+        profit: Profit
+        revenue: Revenue
         zip_code: Zip/Postal
         number_of_units: "# of Units"
       property/units:

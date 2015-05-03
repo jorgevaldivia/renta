@@ -14,6 +14,8 @@ class Property < ActiveRecord::Base
 
   default_scope { order('name asc') }
 
+  scope :with_expired_lease, -> { where("leases.end_date < current_date").joins(:current_lease) }
+
   def full_address
     [address_line_1, address_line_2, city, state, postal_code].compact.join(" ")
   end

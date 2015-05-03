@@ -1,58 +1,58 @@
-.container-fluid.pt-md
-  .row
-    .col-md-12
-      .panel.panel-success
-        .panel-heading
-          .panel-title{"ng-show" => "$state.includes('default.properties.new')"}= I18n.t(:add_new, name: Property.model_name.human)
-          .panel-title{"ng-show" => "$state.includes('default.properties.property.edit')"}= I18n.t(:edit_object, name: Property.model_name.human)
-        %form.form-horizontal{name: "form", "novalidate" => ""}
-          .panel-body
+.panel.ibox
+  .panel-heading
+    .panel-title.ibox-title
+      .row
+        .col-md-8
+          %h5{"ng-show" => "$state.includes('default.properties.new')"}= I18n.t(:add_new, name: Property.model_name.human)
+          %h5{"ng-show" => "$state.includes('default.properties.property.edit')"}= I18n.t(:edit_object, name: Property.model_name.human)
+  %form.form-horizontal{name: "form", "novalidate" => ""}
+    .panel-body
 
-            .form-group{"highlight-if-error" => "name"}
-              %label.col-sm-2.control-label= Property.human_attribute_name(:name)
-              .col-sm-10
-                %input.form-control{type: "text", "ng-model" => "record.object.name", name: "name"}/
-                %span{"error-messages" => "name"}
-            %hr.mnr-md.mnl-md/
+      .form-group{"highlight-if-error" => "name"}
+        %label.col-sm-2.control-label= Property.human_attribute_name(:name)
+        .col-sm-10
+          %input.form-control{type: "text", "ng-model" => "record.object.name", name: "name"}/
+          %span{"error-messages" => "name"}
+      / %hr.mnr-md.mnl-md/
 
-            .form-group{"highlight-if-error" => "address_line_1"}
-              %label.col-sm-2.control-label= Property.human_attribute_name(:address_line_1)
-              .col-sm-10
-                %input.form-control{type: "text", "ng-model" => "record.object.address_line_1", name: "address_line_1"}/
-                %span{"error-messages" => "address_line_1"}
-            %hr.mnr-md.mnl-md/
+      .form-group{"highlight-if-error" => "address_line_1"}
+        %label.col-sm-2.control-label= Property.human_attribute_name(:address_line_1)
+        .col-sm-10
+          %input.form-control{type: "text", "ng-model" => "record.object.address_line_1", name: "address_line_1"}/
+          %span{"error-messages" => "address_line_1"}
+      / %hr.mnr-md.mnl-md/
 
-            .form-group{"highlight-if-error" => "address_line_2"}
-              %label.col-sm-2.control-label= Property.human_attribute_name(:address_line_2)
-              .col-sm-10
-                %input.form-control{type: "text", "ng-model" => "record.object.address_line_2", name: "address_line_2"}/
-                %span{"error-messages" => "address_line_2"}
-            %hr.mnr-md.mnl-md/
+      .form-group{"highlight-if-error" => "address_line_2"}
+        %label.col-sm-2.control-label= Property.human_attribute_name(:address_line_2)
+        .col-sm-10
+          %input.form-control{type: "text", "ng-model" => "record.object.address_line_2", name: "address_line_2"}/
+          %span{"error-messages" => "address_line_2"}
+      / %hr.mnr-md.mnl-md/
 
-            .form-group{"highlight-if-error" => "city"}
-              %label.col-sm-2.control-label= Property.human_attribute_name(:city)
-              .col-sm-10
-                %input.form-control{type: "text", "ng-model" => "record.object.city", name: "city"}/
-                %span{"error-messages" => "city"}
-            %hr.mnr-md.mnl-md/
+      .form-group{"highlight-if-error" => "city"}
+        %label.col-sm-2.control-label= Property.human_attribute_name(:city)
+        .col-sm-10
+          %input.form-control{type: "text", "ng-model" => "record.object.city", name: "city"}/
+          %span{"error-messages" => "city"}
+      / %hr.mnr-md.mnl-md/
 
-            .form-group{"highlight-if-error" => "state"}
-              %label.col-sm-2.control-label= Property.human_attribute_name(:state)
-              .col-sm-6
-                %input.form-control{type: "text", "ng-model" => "record.object.state", name: "state"}/
-                %span{"error-messages" => "state"}
-            %hr.mnr-md.mnl-md/
+      .form-group{"highlight-if-error" => "state"}
+        %label.col-sm-2.control-label= Property.human_attribute_name(:state)
+        .col-sm-6
+          %input.form-control{type: "text", "ng-model" => "record.object.state", name: "state"}/
+          %span{"error-messages" => "state"}
+      / %hr.mnr-md.mnl-md/
 
-            .form-group{"highlight-if-error" => "postal_code"}
-              %label.col-sm-2.control-label= Property.human_attribute_name(:postal_code)
-              .col-sm-6
-                %input.form-control{type: "text", "ng-model" => "record.object.postal_code", name: "postal_code"}/
-                %span{"error-messages" => "postal_code"}
+      .form-group{"highlight-if-error" => "postal_code"}
+        %label.col-sm-2.control-label= Property.human_attribute_name(:postal_code)
+        .col-sm-6
+          %input.form-control{type: "text", "ng-model" => "record.object.postal_code", name: "postal_code"}/
+          %span{"error-messages" => "postal_code"}
 
-          .panel-footer
-            .form-group.mb-0
-              %label.col-sm-2.control-label
-              .col-sm-10
-                %button.btn.btn-primary{type: "submit", "ng-click" => "save();", "ng-disabled" => "form.$pristine"}
-                  = I18n.t(:save_record, name: Property.model_name.human)
-                %button.btn.btn-default{type: "reset"}= I18n.t(:reset)
+    .panel-footer
+      .form-group.mb-0
+        %label.col-sm-2.control-label
+        .col-sm-10
+          %button.btn.btn-primary{type: "submit", "ng-click" => "save();", "ng-disabled" => "form.$pristine"}
+            = I18n.t(:save_record, name: Property.model_name.human)
+          %button.btn.btn-default{type: "reset"}= I18n.t(:reset)

@@ -6,6 +6,7 @@ class Lease < ActiveRecord::Base
 
   before_save :calculate_next_bill_date
   after_save :set_current_lease
+  after_create :create_invoices
 
   monetize :rent_cents, allow_nil: true
   monetize :deposit_cents, allow_nil: true
@@ -19,6 +20,10 @@ class Lease < ActiveRecord::Base
 
   # Returns all leases that are to be billed today.
   scope :due_today, -> { where "next_bill_date = ?", Date.today }
+  # Returns all leases that have ended
+  scope :ended, -> { where "end_date < current_date" }
+  # Returns all current leases
+  scope :current, -> { where("current_date between start_date and COALESCE(end_date, 'infinity'::timestamp)").first }
 
   default_scope { order('start_date desc') } 
 
@@ -59,6 +64,21 @@ class Lease < ActiveRecord::Base
       if current_lease?
         property.current_lease = self
         property.save
+      end
+    end
+
+    # Creates all of the invoices for the lease on creation.
+    def create_invoices
+      date = start_date
+      # If open ended lease, then only create 10 years worth of leases
+      loop_end_date = end_date || start_date + 120.month
+
+      index = 0
+      while(loop_end_date >= date)
+        date = start_date.send(:+, eval("#{interval * index}.#{frequency}"))
+        index += 1
+
+        LeaseService::RentInvoicer.new(self, date).perform
       end
     end
 

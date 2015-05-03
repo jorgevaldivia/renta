@@ -1,62 +1,165 @@
-.box-layout.ng-scope
-  %aside.profile-nav.col-sm-3
-    .container-fluid.pt-md
-      %section.panel
-        .user-heading.round
-          %h1{style: "font-size: 44px;"}
-            %i.fa.fa-home
+.container-fluid.pt-md
+  .row
+    .col-md-4
+      .panel.ibox.float-e-margins
+        .panel-heading
+          .panel-title.ibox-title
+            %h5 {{ record.object.name }}
+        %div
+          .ibox-content.no-padding.border-left-right
+            %img.img-responsive{alt: "image", src: "assets/demo/avatars/8.jpg"}/
+          .panel-body.ibox-content.profile-content
+            / %h4
+            /   %strong Monica Smith
+            %p
+              %i.fa.fa-map-marker
+              %small {{ record.object.full_address }}
+            %p
+              %i.fa.fa-bed
+              %small 3 Beds
 
-          %h1 {{ record.object.name }}
-          %p
-            %i.fa.fa-map-marker
-            {{ record.object.address_line_1 }}
-            {{ record.object.address_line_2 }}
-            {{ record.object.city }}
-            {{ record.object.state }}
-            {{ record.object.postal_code }}
-        %div.action-buttons
-          .btn-group
-            %button.btn.btn-default{type: "button", "ui-sref" => "default.properties.new"}
-              %span.fa.fa-plus
-              = I18n.t(:add, name: Property.model_name.human)
-            .btn-group{dropdown: ""}
-              %button.btn.btn-default{type: "button", "data-toggle" => "dropdown"}
-                %span.fa.fa-cogs
-                = I18n.t(:settings)
-                %span.caret
-              %ul.dropdown-menu{role: "menu"}
-                %li
-                  %a{"ui-sref" => "default.properties.property.edit({id: record.object.id})"}
-                    %span.fa.fa-pencil
-                    = I18n.t(:edit_object, name: Property.model_name.human)
-                  %a{href: "", "ng-really-message" => I18n.t("confirmations.deletion"), "ng-really-click" => "delete()"}
-                    %span.fa.fa-trash-o
-                    = I18n.t(:delete)
-                  %a{"data-target" => "#transaction-modal", "data-toggle" => "modal", style: "cursor: pointer"}
-                    %span.fa.fa-money
-                    = I18n.t(:add, name: Transaction.model_name.human)
+            %p
+              %i.fa.fa-map-marker
+              %small 2 Baths
+            / %h5
+            /   About me
+            / %p
+            /   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat.
+            
+            %hr.mnr-md.mnl-md/
 
-        %ul.nav.nav-stacked
-          %li
-            %a.col-xs-10{"ui-sref" => ".leases.index"}
-              %i.fa.fa-file-text
-              = Lease.model_name.human(count: 2)
-            %a.col-xs-2{"ui-sref" => ".leases.new"}
-              %span.fa.fa-plus
-            .clearfix
-          %li
-            %a.col-xs-10{"ui-sref" => ".invoices.index"}
-              %i.fa.fa-file-text
-              = Invoice.model_name.human(count: 2)
-            %a.col-xs-2{"ui-sref" => ".invoices.new"}
-              %span.fa.fa-plus
-            .clearfix
-          %li
-            %a.col-xs-10{"ui-sref" => "default.setting.account"}
-              %i.fa.fa-usd
-              = Transaction.model_name.human(count: 2)
-            %a.col-xs-2{"ui-sref" => ".transactions.new"}
-              %span.fa.fa-plus
+            .row.m-t-lg
+              .col-md-4
+                %span.bar{:style => "display: none;"} 5,3,9,6,5,9,7,3,5,2
+                %svg.peity{:height => "16", :width => "32"}
+                  %rect{:fill => "#1ab394", :height => "8.88888888888889", :width => "2.3", :x => "0", :y => "7.111111111111111"}
+                  %rect{:fill => "#d7d7d7", :height => "5.333333333333333", :width => "2.3", :x => "3.3", :y => "10.666666666666668"}
+                  %rect{:fill => "#1ab394", :height => "16", :width => "2.3", :x => "6.6", :y => "0"}
+                  %rect{:fill => "#d7d7d7", :height => "10.666666666666666", :width => "2.3", :x => "9.899999999999999", :y => "5.333333333333334"}
+                  %rect{:fill => "#1ab394", :height => "8.88888888888889", :width => "2.3", :x => "13.2", :y => "7.111111111111111"}
+                  %rect{:fill => "#d7d7d7", :height => "16", :width => "2.3", :x => "16.5", :y => "0"}
+                  %rect{:fill => "#1ab394", :height => "12.444444444444443", :width => "2.3", :x => "19.799999999999997", :y => "3.555555555555557"}
+                  %rect{:fill => "#d7d7d7", :height => "5.333333333333333", :width => "2.3", :x => "23.099999999999998", :y => "10.666666666666668"}
+                  %rect{:fill => "#1ab394", :height => "8.88888888888889", :width => "2.3", :x => "26.4", :y => "7.111111111111111"}
+                  %rect{:fill => "#d7d7d7", :height => "3.5555555555555554", :width => "2.3", :x => "29.7", :y => "12.444444444444445"}
+                %h5
+                  %strong ${{ record.object.total_revenue | number:2 }}
+                  = Property.human_attribute_name(:revenue)
+              .col-md-4
+                %span.line{:style => "display: none;"} 5,3,9,6,5,9,7,3,5,2
+                %svg.peity{:height => "16", :width => "32"}
+                  %polygon{:fill => "#1ab394", :points => "0 15 0 7.166666666666666 3.5555555555555554 10.5 7.111111111111111 0.5 10.666666666666666 5.5 14.222222222222221 7.166666666666666 17.77777777777778 0.5 21.333333333333332 3.833333333333332 24.888888888888886 10.5 28.444444444444443 7.166666666666666 32 12.166666666666666 32 15"}
+                  %polyline{:fill => "transparent", :points => "0 7.166666666666666 3.5555555555555554 10.5 7.111111111111111 0.5 10.666666666666666 5.5 14.222222222222221 7.166666666666666 17.77777777777778 0.5 21.333333333333332 3.833333333333332 24.888888888888886 10.5 28.444444444444443 7.166666666666666 32 12.166666666666666", :stroke => "#169c81", "stroke-linecap" => "square", "stroke-width" => "1"}
+                %h5
+                  %strong ${{ record.object.total_expenses | number:2 }}
+                  = Property.human_attribute_name(:expenses)
+              .col-md-4
+                %span.bar{:style => "display: none;"} 5,3,2,-1,-3,-2,2,3,5,2
+                %svg.peity{:height => "16", :width => "32"}
+                  %rect{:fill => "#1ab394", :height => "10", :width => "2.3", :x => "0", :y => "0"}
+                  %rect{:fill => "#d7d7d7", :height => "6", :width => "2.3", :x => "3.3", :y => "4"}
+                  %rect{:fill => "#1ab394", :height => "4", :width => "2.3", :x => "6.6", :y => "6"}
+                  %rect{:fill => "#d7d7d7", :height => "2", :width => "2.3", :x => "9.899999999999999", :y => "10"}
+                  %rect{:fill => "#1ab394", :height => "6", :width => "2.3", :x => "13.2", :y => "10"}
+                  %rect{:fill => "#d7d7d7", :height => "4", :width => "2.3", :x => "16.5", :y => "10"}
+                  %rect{:fill => "#1ab394", :height => "4", :width => "2.3", :x => "19.799999999999997", :y => "6"}
+                  %rect{:fill => "#d7d7d7", :height => "6", :width => "2.3", :x => "23.099999999999998", :y => "4"}
+                  %rect{:fill => "#1ab394", :height => "10", :width => "2.3", :x => "26.4", :y => "0"}
+                  %rect{:fill => "#d7d7d7", :height => "4", :width => "2.3", :x => "29.7", :y => "6"}
+                %h5
+                  %strong ${{ record.object.total_profit | number:2 }}
+                  = Property.human_attribute_name(:profit)
 
-  .col-sm-9.height-auto.bg-auto.bdr-t-xs
-    .ui-view.slide-right
+            %hr.mnr-md.mnl-md/
+
+            .user-button
+              .row
+                .col-md-12
+                  .btn-group.pull-right.dropup{dropdown: ""}
+                    %button.btn.btn-success.btn-block.dropdown-toggle{type: "button", "data-toggle" => "dropdown"}
+                      %span.fa.fa-cogs
+                      = I18n.t(:settings)
+                      %span.caret
+                    %ul.dropdown-menu{role: "menu"}
+                      %li
+                        %a{"ui-sref" => "default.properties.property.edit({id: record.object.id})"}
+                          %span.fa.fa-pencil
+                          = I18n.t(:edit_object, name: Property.model_name.human)
+                        %a{href: "", "ng-really-message" => I18n.t("confirmations.deletion"), "ng-really-click" => "delete()"}
+                          %span.fa.fa-trash-o
+                          = I18n.t(:delete)
+                        %a{"data-target" => "#transaction-modal", "data-toggle" => "modal", style: "cursor: pointer"}
+                          %span.fa.fa-money
+                          = I18n.t(:add, name: Transaction.model_name.human)
+
+    .col-md-8
+      .ui-view.slide-right
+
+  
+
+  / .box-layout.ng-scope.page-profile
+  / %aside.profile-nav.col-sm-3
+  /   .container-fluid.pt-md
+  /     %section.panel
+  /       .user-heading.round
+  /         %h1{style: "font-size: 44px;"}
+  /           %i.fa.fa-home
+
+  /         %h1 {{ record.object.name }}
+  /         %p
+  /           %i.fa.fa-map-marker
+  /           {{ record.object.address_line_1 }}
+  /           {{ record.object.address_line_2 }}
+  /           {{ record.object.city }}
+  /           {{ record.object.state }}
+  /           {{ record.object.postal_code }}
+  /       %div.action-buttons
+  /         .btn-group
+  /           %button.btn.btn-default{type: "button", "ui-sref" => "default.properties.new"}
+  /             %span.fa.fa-plus
+  /             = I18n.t(:add, name: Property.model_name.human)
+  /           .btn-group{dropdown: ""}
+  /             %button.btn.btn-default{type: "button", "data-toggle" => "dropdown"}
+  /               %span.fa.fa-cogs
+  /               = I18n.t(:settings)
+  /               %span.caret
+  /             %ul.dropdown-menu{role: "menu"}
+  /               %li
+  /                 %a{"ui-sref" => "default.properties.property.edit({id: record.object.id})"}
+  /                   %span.fa.fa-pencil
+  /                   = I18n.t(:edit_object, name: Property.model_name.human)
+  /                 %a{href: "", "ng-really-message" => I18n.t("confirmations.deletion"), "ng-really-click" => "delete()"}
+  /                   %span.fa.fa-trash-o
+  /                   = I18n.t(:delete)
+  /                 %a{"data-target" => "#transaction-modal", "data-toggle" => "modal", style: "cursor: pointer"}
+  /                   %span.fa.fa-money
+  /                   = I18n.t(:add, name: Transaction.model_name.human)
+
+  /       %ul.nav.nav-stacked
+  /         %li
+  /           %a.col-xs-10{"ui-sref" => ".leases.index"}
+  /             %i.fa.fa-file-text
+  /             = Lease.model_name.human(count: 2)
+  /           %a.col-xs-2{"ui-sref" => ".leases.new"}
+  /             %span.fa.fa-plus
+  /           .clearfix
+  /         %li
+  /           %a.col-xs-10{"ui-sref" => ".invoices.index"}
+  /             %i.fa.fa-file-text
+  /             = Invoice.model_name.human(count: 2)
+  /           %a.col-xs-2{"ui-sref" => ".invoices.new"}
+  /             %span.fa.fa-plus
+  /           .clearfix
+  /         %li
+  /           %a.col-xs-10{"ui-sref" => "default.setting.account"}
+  /             %i.fa.fa-usd
+  /             = Transaction.model_name.human(count: 2)
+  /           %a.col-xs-2{"ui-sref" => ".transactions.new"}
+  /             %span.fa.fa-plus
+
+  / .col-sm-9.height-auto.bg-auto.bdr-t-xs
+  /   .ui-view.slide-right
+
+
+  / .col-sm-9.height-auto.bdr-t-xs
+  /   .ui-view.slide-right
