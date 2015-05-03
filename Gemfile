@@ -82,3 +82,6 @@ gem 'angularjs-rails-resource', '~> 2.0.0'
 
 # Required for heroku
 gem 'rails_12factor', group: :production
+
+# Gem for font awesome
+gem 'font-awesome-sass', '~> 4.3.0'

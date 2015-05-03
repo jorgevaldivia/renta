@@ -45,15 +45,24 @@
             / %h4
             /   %strong Monica Smith
             %p
-              %i.fa.fa-map-marker
+              %i.fa.fa-map-marker.fa-fw
               %small {{ record.object.full_address }}
             %p
-              %i.fa.fa-bed
-              %small 3 Beds
-
+              %i.fa.fa-bed.fa-fw
+              %small
+                {{ record.object.beds }}
+                = Property.human_attribute_name(:beds)
             %p
-              %i.fa.fa-map-marker
-              %small 2 Baths
+              %i.fa.fa-male.fa-fw
+              %small
+                {{ record.object.baths }}
+                = Property.human_attribute_name(:baths)
+            %p
+              %i.fa.fa-building.fa-fw
+              %small
+                {{ record.object.size }}
+                m
+                %sup 2
             / %h5
             /   About me
             / %p

@@ -84,6 +84,10 @@ en:
         revenue: Revenue
         zip_code: Zip/Postal
         number_of_units: "# of Units"
+        beds: Beds
+        baths: Baths
+        size: Size
+        beds_baths: "Beds/Baths"
       property/units:
         name: "Unit Name"
 

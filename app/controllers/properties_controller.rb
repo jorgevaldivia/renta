@@ -37,6 +37,6 @@ class PropertiesController < ApplicationController
 
     def property_params
       params.require(:property).permit(:name, :address_line_1, 
-        :address_line_2, :city, :state, :postal_code)
+        :address_line_2, :city, :state, :postal_code, :beds, :baths, :size)
     end
 end

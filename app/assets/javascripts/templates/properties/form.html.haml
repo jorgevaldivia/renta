@@ -77,6 +77,33 @@
           %input.form-control{type: "text", "ng-model" => "record.object.postal_code", name: "postal_code"}/
           %span{"error-messages" => "postal_code"}
 
+      .form-group{"highlight-if-error" => "beds, baths"}
+        %label.col-sm-2.control-label= Property.human_attribute_name(:beds_baths)
+        .col-sm-3
+          %select.form-control{type: "text", "ng-model" => "record.object.beds", name: "beds"}
+            - (0..10).each do |num|
+              %option{value: num}
+                = (num == 10) ? "#{num}+" : num
+          %span{"error-messages" => "beds"}
+
+        .col-sm-3
+          %select.form-control{type: "text", "ng-model" => "record.object.baths", name: "baths"}
+            - (0..20).map{ |x| "%g" % (x / 2.0) }.each do |num|
+              %option{value: num}
+                = (num == "10") ? "#{num}+" : num
+          %span{"error-messages" => "baths"}
+
+      .form-group{"highlight-if-error" => "size"}
+        %label.col-sm-2.control-label= Property.human_attribute_name(:size)
+        .col-sm-6
+          .input-group
+            %input.form-control{type: "text", "ng-model" => "record.object.size", name: "size"}/
+            %span.input-group-addon.small>
+              m
+              %sup 2
+          %span{"error-messages" => "size"}
+
+
     .panel-footer
       .form-group.mb-0
         %label.col-sm-2.control-label

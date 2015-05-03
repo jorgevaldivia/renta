@@ -4,12 +4,19 @@ class Property < ActiveRecord::Base
   has_many :invoices, through: :leases
   belongs_to :current_lease, class_name: "Lease", foreign_key: :current_lease_id
 
+  SIZE_UNITS = ["sqft", "m"]
+
   validates :name, :address_line_1, :city, :state, :postal_code, presence: true
+  validates :beds, numericality: { greater_than_or_equal_to: 0 }, if: Proc.new{ |p| p.beds.present? }
+  validates :baths, numericality: { greater_than_or_equal_to: 0 }, if: Proc.new{ |p| p.baths.present? }
+  validates :size, numericality: { greater_than_or_equal_to: 0 }, if: Proc.new{ |p| p.size.present? }
+  validates :size_unit, inclusion: { in: SIZE_UNITS }
 
   monetize :total_revenue_cents, allow_nil: true
   monetize :total_expenses_cents, allow_nil: true
   monetize :total_profit_cents, allow_nil: true
 
+  before_validation :set_default_size_unit
   before_save :calculate_total_proft
 
   default_scope { order('name asc') }
@@ -28,5 +35,10 @@ class Property < ActiveRecord::Base
     else
       self.total_profit = self.total_revenue = self.total_expenses = 0
     end
+  end
+
+  # I'm only going to do meters squared for early versions
+  def set_default_size_unit
+    self.size_unit = "m" if self.size_unit.blank?
   end
 end
