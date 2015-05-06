@@ -1,4 +1,4 @@
 %ol.breadcrumb{style: "margin-bottom: 0;"}
-  %li{"ng-class" => "{active: $last}", "ng-repeat" => "step in steps", "ng-switch" => "$last"}
+  %li{"ng-class" => "{active: $last}", "ng-repeat" => "step in steps", "ng-switch" => "$last"}>
     %a{:href => "{{step.ncyBreadcrumbLink}}", "ng-switch-when" => "false"} {{step.ncyBreadcrumbLabel}}
     %span{"ng-switch-when" => "true"} {{step.ncyBreadcrumbLabel}}

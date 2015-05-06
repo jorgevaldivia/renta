@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503230554) do
+ActiveRecord::Schema.define(version: 20150503233115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,18 @@ ActiveRecord::Schema.define(version: 20150503230554) do
   end
 
   add_index "bank_accounts", ["user_id"], name: "index_bank_accounts_on_user_id", using: :btree
+
+  create_table "contacts", force: true do |t|
+    t.integer  "account_id"
+    t.string   "name"
+    t.string   "email"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contacts", ["account_id"], name: "index_contacts_on_account_id", using: :btree
+  add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
 
   create_table "invoice_line_items", force: true do |t|
     t.integer  "invoice_id"
@@ -97,15 +109,15 @@ ActiveRecord::Schema.define(version: 20150503230554) do
 
   create_table "leases_users", force: true do |t|
     t.integer  "lease_id"
-    t.integer  "user_id"
+    t.integer  "contact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "account_id"
   end
 
   add_index "leases_users", ["account_id"], name: "index_leases_users_on_account_id", using: :btree
+  add_index "leases_users", ["contact_id"], name: "index_leases_users_on_contact_id", using: :btree
   add_index "leases_users", ["lease_id"], name: "index_leases_users_on_lease_id", using: :btree
-  add_index "leases_users", ["user_id"], name: "index_leases_users_on_user_id", using: :btree
 
   create_table "properties", force: true do |t|
     t.integer  "user_id"

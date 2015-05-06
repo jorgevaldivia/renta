@@ -4941,6 +4941,15 @@ h6,
   background-color: inherit;
   border-radius: 0;
 }
+
+.breadcrumb {
+  > li {
+    + li:before {
+      padding-right: 0px;
+    }
+  }
+}
+
 .text-muted {
   color: #7f8992 !important;
 }

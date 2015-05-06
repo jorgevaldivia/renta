@@ -5,7 +5,7 @@ class Properties::LeasesController < ApplicationController
   respond_to :json
 
   def index
-    @q = @property.leases.ransack(params[:q])
+    @q = @property.leases.includes({leases_users: :contact}).ransack(params[:q])
     @leases = @q.result
     respond_with(@property, @leases)
   end
@@ -41,6 +41,7 @@ class Properties::LeasesController < ApplicationController
 
     def lease_params
       params.require(:lease).permit(:start_date, :end_date, :frequency, :interval, :deposit, :rent,
-        tenants_attributes: [:first_name, :last_name, :email, :_destroy, :id])
+        leases_users_attributes: [:_destroy, :id],
+        new_tenants: [:id, :name, :email])
     end
 end

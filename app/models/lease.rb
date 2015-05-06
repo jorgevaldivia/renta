@@ -4,16 +4,15 @@ class Lease < ActiveRecord::Base
   belongs_to :property
   has_many :invoices
   has_many :leases_users
-  has_many :tenants, through: :leases_users, source: :user
+  has_many :tenants, through: :leases_users, source: :contact
 
   FREQUENCY_TYPES = %w(days weeks months years).freeze
 
-  before_save :calculate_next_bill_date
-  after_save :set_current_lease
-  after_create :create_invoices
-
   monetize :rent_cents, allow_nil: true
   monetize :deposit_cents, allow_nil: true
+
+  accepts_nested_attributes_for :tenants
+  accepts_nested_attributes_for :leases_users, allow_destroy: true
 
   # Returns all leases, including open ones, that overlap with the given
   # lease's date range.
@@ -35,7 +34,7 @@ class Lease < ActiveRecord::Base
 
   concerning :Validations do
     included do
-      validates :start_date, :frequency, :interval, :rent, presence: true
+      validates :start_date, :interval, :rent, presence: true
       validates :frequency, inclusion: { in: FREQUENCY_TYPES }
       validates :interval, numericality: { greater_than_or_equal_to: 0 }, if: Proc.new{ |x| x.interval.present? }
       validates :rent, numericality: { greater_than_or_equal_to: 0 }, if: Proc.new{ |x| x.rent.present? }
@@ -61,7 +60,45 @@ class Lease < ActiveRecord::Base
     end
   end
 
+  concerning :Tenants do
+    included do
+      attr_accessor :new_tenants
+      before_validation :find_or_create_new_tenants
+    end
+
+    private
+
+    def find_or_create_new_tenants
+      # self.errors.add("tenants[0].email", "errrrr")
+      return unless self.new_tenants
+
+      self.new_tenants.each_with_index do |tenant, index|
+        next if tenant["email"].blank? && tenant["name"].blank?
+
+        contact = Contact.find_or_initialize_by(email: tenant["email"])
+        contact.name = tenant["name"]
+
+        if contact.valid?
+          self.tenants << contact unless self.tenant_ids.include?(contact.id)
+        else
+          contact.errors.messages.keys.each do |field|
+            contact.errors.messages[field].each do |msg|
+              self.errors.add("tenants[#{tenant["id"]}].#{field}", msg)
+            end
+          end
+        end
+
+      end
+    end
+  end
+
   concerning :Billing do
+    included do
+      # before_save :calculate_next_bill_date
+      after_save :set_current_lease
+      after_create :create_invoices
+    end
+
     # Sets this as the current lease for the property if it is infact the
     # current lease.
     def set_current_lease

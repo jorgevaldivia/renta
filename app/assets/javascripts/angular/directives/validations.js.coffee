@@ -27,27 +27,19 @@ app.factory('FormValidator', [
       @failure = (response) ->
         angular.forEach response.data.errors, (errors, key) ->
           angular.forEach errors, (e) ->
-            # console.log(key)
-            # console.log(form[key])
             if form[key]
               form[key].$dirty = true
               form[key].$setValidity e, false
             return
           return
         return
-
       # Reset the validations by removing the highlighting and the error messages.
-
       @resetValidations = ->
         `var form`
         form = @form
-        angular.forEach @obj, (value, key) ->
-          if form[key]
-            angular.forEach form[key].$error, (err_key, value) ->
-              form[key].$setValidity value, true
-              return
-          return
-        return
+        angular.forEach form.$error, (objs, value) ->
+          angular.forEach objs, (obj, v2) ->
+            form[obj.$name].$setValidity value, true
 
       return
 ])

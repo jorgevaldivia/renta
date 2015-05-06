@@ -60,5 +60,16 @@ app.controller "PropertyFormController", ["$scope", "$state", "$stateParams", "P
 
 app.controller "PropertyShowController", ["$scope", "$stateParams", "Property",
   ($scope, $stateParams, Property) ->
-    # $scope.getProperty($stateParams.id);
+
+    $scope.otherTenantNames = ->
+      return if !$scope.record.object.current_lease
+
+      num_tenants = $scope.record.object.current_lease.leases_users.length - 1
+      names = []
+
+      if num_tenants > 0
+        names = $scope.record.object.current_lease.leases_users.slice(-num_tenants).map (tenant) ->
+          tenant.contact.name
+
+      names.join(", ")
 ]

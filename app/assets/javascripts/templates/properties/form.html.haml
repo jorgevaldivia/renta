@@ -3,38 +3,11 @@
     .panel-title.ibox-title
       .row
         .col-md-8
-          %h5{"ng-show" => "$state.includes('default.properties.new')"}= I18n.t(:add_new, name: Property.model_name.human)
-          %h5{"ng-show" => "$state.includes('default.properties.property.edit')"}= I18n.t(:edit_object, name: Property.model_name.human)
+          %h4{"ng-show" => "$state.includes('default.properties.new')"}= I18n.t(:add_new, name: Property.model_name.human)
+          %h4{"ng-show" => "$state.includes('default.properties.property.edit')"}= I18n.t(:edit_object, name: Property.model_name.human)
   %form.form-horizontal{name: "formScope.form", "novalidate" => ""}
     .panel-body
 
-      / .wizard
-      /   %ul.steps_3.anchor
-      /     %li
-      /       %a.selected{href: "#step-1", isdone: "0", rel: "1"}
-      /         %span.stepNumber 1
-      /         %span.stepDesc
-      /           Step 1
-      /           %br/
-      /           %small Property Details
-      /     %li
-      /       %a.disabled{href: "#step-2", isdone: "0", rel: "2"}
-      /         %span.stepNumber 2
-      /         %span.stepDesc
-      /           Step 2
-      /           %br/
-      /           %small Upload Images
-      /     %li
-      /       %a.disabled{href: "#step-3", isdone: "0", rel: "3"}
-      /         %span.stepNumber 3
-      /         %span.stepDesc
-      /           Step 3
-      /           %br/
-      /           %small Add Lease
-
-      .clearfix
-      %br/
-      %br/
       .form-group{"highlight-if-error" => "name"}
         %label.col-sm-2.control-label= Property.human_attribute_name(:name)
         .col-sm-10
@@ -93,7 +66,7 @@
           .input-group
             %input.form-control{type: "text", "ng-model" => "record.object.size", name: "size"}/
             %span.input-group-addon.small>
-              m
+              %span> m
               %sup 2
           %span{"error-messages" => "size"}
 

@@ -4,7 +4,7 @@ class PropertiesController < ApplicationController
   respond_to :json
 
   def index
-    @q = Property.includes(:current_lease).ransack(params[:q])
+    @q = Property.includes({current_lease: :tenants}).ransack(params[:q])
     @properties = @q.result
     respond_with(@properties)
   end

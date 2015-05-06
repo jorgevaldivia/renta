@@ -4,7 +4,7 @@
       .panel.ibox.float-e-margins
         .panel-heading
           .panel-title.ibox-title
-            %h5 
+            %h4
               %a{"ui-sref" => "default.properties.property.show({id: record.object.id})"} {{ record.object.name }}
         %div
           .ibox-content.no-padding.border-left-right
@@ -50,7 +50,7 @@
               %i.fa.fa-building.fa-fw
               %small
                 {{ record.object.size }}
-                m
+                %span> m
                 %sup 2
 
             %hr.mnr-md.mnl-md/

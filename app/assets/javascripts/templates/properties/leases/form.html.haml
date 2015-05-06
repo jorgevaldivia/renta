@@ -2,7 +2,7 @@
   .panel-heading
     .panel-title.ibox-title
       %h4= I18n.t(:add_new, name: Lease.model_name.human)
-  %form.form-horizontal{name: "form", "novalidate" => "", 'ng-submit' => 'save()'}
+  %form.form-horizontal{name: "formScope.form", "novalidate" => "", 'ng-submit' => 'save()', "ng-init" => "init()"}
     .panel-body.ibox-content
       .form-group{"highlight-if-error" => "start_date"}
         %label.col-sm-2.control-label= Lease.human_attribute_name(:start_date)
@@ -55,28 +55,65 @@
 
       %hr.mnr-md.mnl-md/
 
-      .form-group{"highlight-if-error" => "first_name"}
-        %label.col-sm-2.control-label= User.human_attribute_name(:first_name)
-        .col-sm-6
-          %input.form-control{type: "text", "ng-model" => "record.lease.tenant.first_name", name: "first_name"}/
-          %span{"error-messages" => "first_name"}
+      %div{ "ng-repeat" => "tenant in record.lease.leases_users", "ng-class" => "{'alert-danger': tenant._destroy == 1}" }
+        .row
+          .col-xs-10
+            .contact-box
+              .col-sm-2
+                .text-center
+                  %img.img-circle.m-t-xs.img-responsive{alt: "image", src: "assets/placeholders/users/64.png"}/
 
-      .form-group{"highlight-if-error" => "last_name"}
-        %label.col-sm-2.control-label= User.human_attribute_name(:last_name)
-        .col-sm-6
-          %input.form-control{type: "text", "ng-model" => "record.lease.tenant.last_name", name: "last_name"}/
-          %span{"error-messages" => "last_name"}
+              .col-sm-10
+                %strong {{ tenant.contact.name }}
+                %p.small
+                  %i.fa.fa-envelope.fa-fw
+                  %span {{ tenant.contact.email }}
+                  
+                  %br/
+                  %i.fa.fa-phone.fa-fw
+                  %span 903-363-4210
 
-      .form-group{"highlight-if-error" => "email"}
-        %label.col-sm-2.control-label= User.human_attribute_name(:email)
-        .col-sm-6
-          %input.form-control{type: "text", "ng-model" => "record.lease.tenant.email", name: "email"}/
-          %span{"error-messages" => "email"}
+                .clearfix
+          .col-xs-1
+            %a.text-danger.text-large{ "ng-click" => "removeTenant(tenant)", style: "line-height: 64px;", "ng-hide" => "tenant._destroy == 1" }
+              %i.fa.fa-times-circle-o.fa-fw
+            %a.text-danger.text-large{ "ng-click" => "undoRemove(tenant)", style: "line-height: 64px;", "ng-show" => "tenant._destroy == 1" }
+              %i.fa.fa-undo.fa-fw
+        %hr/
+
+
+      %div{ "ng-repeat" => "tenant in record.lease.new_tenants" }
+        .row
+          .col-sm-2
+            %h5.pull-right
+              %strong= I18n.t(:new_object, name: Lease.human_attribute_name(:tenant))
+        
+        .form-group{"highlight-if-error" => "tenants[{{$index}}].email"}
+          %label.col-sm-2.control-label= Contact.human_attribute_name(:email)
+          .col-sm-6
+            %input.form-control{type: "text", "ng-model" => "tenant.email", name: "tenants[{{$index}}].email"}/
+            %span{"error-messages" => "tenants[{{$index}}].email"}
+      
+        .form-group{"highlight-if-error" => "tenants[{{$index}}].name"}
+          %label.col-sm-2.control-label= Contact.human_attribute_name(:name)
+          .col-sm-5
+            %input.form-control{type: "text", "ng-model" => "tenant.name", name: "tenants[{{$index}}].name"}/
+            %span{"error-messages" => "tenants[{{$index}}].name"}
+
+        %hr/
+
+      %div
+        .row
+          .col-xs-10
+            &nbsp;
+          .col-xs-1
+            %a.text-large{ "ng-click" => "addTenant()" }
+              %i.fa.fa-plus-circle.fa-fw
 
     .panel-footer
       .form-group.mb-0
         %label.col-sm-2.control-label
         .col-sm-10
-          %button.btn.btn-primary{type: "submit", "ng-disabled" => "form.$pristine"}
+          %button.btn.btn-primary{type: "submit", "ng-disabled" => "formScope.form.$pristine"}
             = I18n.t(:save_record, name: Lease.model_name.human)
           %button.btn.btn-default{type: "reset"}= I18n.t(:reset)

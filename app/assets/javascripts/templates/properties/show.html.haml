@@ -33,9 +33,14 @@
         .contact-box
           .col-sm-4
             .text-center
-              %img.img-circle.m-t-xs.img-responsive{alt: "image", src: "assets/demo/avatars/7.jpg"}/
+              %img.img-circle.m-t-xs.img-responsive{alt: "image", src: "assets/placeholders/users/64.png"}/
           .col-sm-8{style: "padding-left: 0"}
-            %strong John Smith
+            %strong
+              {{record.object.current_lease.leases_users[0].contact.name}}
+              %small{"ng-show" => "record.object.current_lease.leases_users.length > 1"}
+                %a.small{"data-toggle" => "tooltip", title: "{{ otherTenantNames() }}"}
+                  + {{record.object.current_lease.leases_users.length - 1}}
+                  = I18n.t(:more)
             %br/
             %small
               %i.fa.fa-usd.fa-fw

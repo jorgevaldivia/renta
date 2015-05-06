@@ -122,6 +122,7 @@
       replace: true
       templateUrl: 'partials/spinner.html'
       link: ($scope, iElm, iAttrs) ->
+
         $timeout ->
           $wrapper = angular.element(iElm).parent('.spinner-wrapper')
           $spinner = angular.element(iElm)

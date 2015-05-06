@@ -76,13 +76,13 @@ body {
 }
 
 
+.no-padding-l{
+  padding-left: 0 !important;
+}
 
-
-
-
-
-
-
+.no-padding-r{
+  padding-right: 0 !important;
+}
 
 .panel-heading {
   border-color: #eff2f7;
@@ -268,257 +268,33 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   border-radius: 3px;
 }
 
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+  cursor: pointer;
+}
 
+[contentEditable=true]{
+  border: 0px; 
+  outline: none;
+  min-width: 100px;
+  display: block;
+  cursor: text;
+}
 
+[contentEditable=true]:empty:not(:focus):before{
+  content:attr(data-ph);
+  font-style:italic;
+  border-bottom:1px dotted #000;
+}
 
+.dotted-input{
+  border: 0px; 
+  border-bottom:1px dotted #000;
+  outline: none;
+  padding-left: 0;
+}
 
-// // pixel
-
-// $panel-content-padding: 20px;
-// //== Media queries breakpoints
-// //
-// //## Define the breakpoints at which your layout will change, adapting to different screen sizes.
-
-// // Extra small screen / phone
-// // Note: Deprecated $screen-xs and $screen-phone as of v3.0.1
-// $screen-xs:                  480px !default;
-// $screen-xs-min:              $screen-xs !default;
-// $screen-phone:               $screen-xs-min !default;
-
-// // Small screen / tablet
-// // Note: Deprecated $screen-sm and $screen-tablet as of v3.0.1
-// $screen-sm:                  768px !default;
-// $screen-sm-min:              $screen-sm !default;
-// $screen-tablet:              $screen-sm-min !default;
-
-// // Medium screen / desktop
-// // Note: Deprecated $screen-md and $screen-desktop as of v3.0.1
-// $screen-md:                  992px !default;
-// $screen-md-min:              $screen-md !default;
-// $screen-desktop:             $screen-md-min !default;
-
-// // Large screen / wide desktop
-// // Note: Deprecated $screen-lg and $screen-lg-desktop as of v3.0.1
-// $screen-lg:                  1200px !default;
-// $screen-lg-min:              $screen-lg !default;
-// $screen-lg-desktop:          $screen-lg-min !default;
-
-// // So media queries don't overlap when required, provide a maximum
-// $screen-xs-max:              ($screen-sm-min - 1) !default;
-// $screen-sm-max:              ($screen-md-min - 1) !default;
-// $screen-md-max:              ($screen-lg-min - 1) !default;
-
-// .page-profile {
-//   // Heading
-
-//   .profile-full-name {
-//     font-size: 20px;
-//     font-weight: 300;
-//     line-height: 40px;
-//     padding-top: 15px;
-//     padding-bottom: 20px;
-//     position: relative;
-//     border-bottom-width: 2px;
-//     margin-bottom: 0;
-//     text-align: center;
-//   }
-
-//   // Tabs
-
-//   .profile-content .tab-content {
-//     background: #fff;
-//   }
-  
-
-//   // Avatar and controls
-//   //
-
-//   .profile-block {
-//     margin-bottom: 18px;
-//     text-align: center;
-//   }
-
-//   .profile-photo {
-//     padding: 6px;
-//     display: inline-block;
-//     margin-bottom: 10px;
-//     border-radius: 999999px;
-//   }
-
-//   .profile-photo img {
-//     display: block;
-//     max-width: 100%;
-//     border-radius: 999999px;
-//   }
-
-
-//   // Panels
-//   //
-
-//   .left-col > .panel .panel-heading {
-//     padding-left: 10px;
-//     padding-right: 10px;
-//   }
-
-//   .left-col > .panel .panel-body {
-//     padding: 10px;
-//     padding-bottom: 0;
-//   }
-
-//   .left-col .list-group-item {
-//     background: none !important;
-//     border: none;
-//     padding-bottom: 0;
-//     margin-top: 7px;
-//     padding-left: 10px;
-//     padding-right: 10px;
-//   }
-
-//   .profile-skills .label {
-//     display: block;
-//     float: left;
-//     margin-right: 4px;
-//     margin-bottom: 4px;
-//   }
-
-//   .profile-list-icon {
-//     width: 24px;
-//     text-align: center;
-//     font-size: 14px;
-//   }
-
-
-//   // Timeline
-
-//   .tl-header,
-//   .tl-icon,
-//   .tl-entry:before {
-//     box-shadow: 0 0 0 4px #fff !important;
-//   }
-
-//   // Followers widget
-//   .widget-followers {
-//     margin: -$panel-content-padding;
-
-//     .follower {
-//       padding: 13px $panel-content-padding;
-//     }
-//   }
-
-//   // Horizontal line
-//   .profile-content-hr {
-//     margin-top: 30px;
-//     margin-bottom: 30px;
-//   }
-// }
-
-
-// @media (min-width: $screen-tablet) {
-//   .page-profile {
-//     .left-col {
-//       float: left;
-//       width: 220px;
-//     }
-//     .right-col {
-//       overflow: hidden;
-//       padding-left: 20px;
-//     }
-//     .profile-content {
-//       margin-top: 0;
-//     }
-//     .profile-full-name {
-//       padding-left: 240px;
-//       padding-bottom: 50px;
-//       text-align: left;
-//     }
-
-//     .profile-row {
-//       margin-top: -36px;
-//     }
-
-//     .profile-block {
-//       margin-top: -70px;
-//     }
-//   }
-//   .profile-content-hr {
-//     display: none;
-//   }
-
-//   .panel .panel-heading {
-//     border-bottom: 2px solid #ececec;
-//   }
-
-//   .panel .panel-heading .panel-title {
-//     color: #555;
-//     font-size: 14px;
-//     line-height: 20px;
-//     margin-left: 0;
-//   }
-
-//   .panel.panel-transparent>.panel-heading {
-//   border-bottom-color: #e2e2e2!important;
-//   }
-  
-//   .left-col>.panel .panel-heading {
-//     padding-left: 10px;
-//     padding-right: 10px;
-//   }
-  
-//   .panel-transparent .panel-body, .panel-transparent .panel-heading {
-//     background: none!important;
-//   }
-
-//   .left-col>.panel .panel-body {
-//     padding: 10px;
-//     padding-bottom: 0;
-
-//     font-size: 13px;
-//     line-height: 1.42857143;
-//   }
-
-//   .panel.profile-photo{
-//     width: auto;
-//     float: none;
-//     border: 1px solid #e2e2e2;
-
-//     padding: 6px;
-//     display: inline-block;
-//     margin-bottom: 10px;
-//     border-radius: 999999px;
-//     position: relative;
-
-//     img{
-//       display: block;
-//       max-width: 100%;
-//       border-radius: 999999px;
-//     }
-//   }
-
-// }
-
-
-// .panel-transparent {
-//   background: none !important;
-//   border: none !important;
-
-//   -webkit-box-shadow: none !important;
-//   -moz-box-shadow: none !important;
-//   box-shadow: none !important;
-
-//   .panel-heading {
-//     background: none !important;
-//   }
-
-//   .panel-body {
-//     background: none !important;
-//   }
-
-//   .panel-body, .panel-heading {
-//     background: none!important;
-//   }
-
-//   .panel-footer {
-//     background: none !important;
-//     border: none !important;
-//   }
-// }
+.text-large{
+  font-size: 24px;
+}

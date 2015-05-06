@@ -32,23 +32,15 @@ app.controller "PropertyLeasesIndexController", ["$scope", "$stateParams", "Leas
 
 app.controller "PropertyLeaseFormController", ["$scope", "$stateParams", "Lease", "FormValidator", "$state",
   ($scope, $stateParams, Lease, FormValidator, $state) ->
-    # $scope.$watch('record.object', ->
-    #   if $scope.record.object
-    #     $scope.init();
-    # )
 
     $scope.init = ->
-      if $stateParams.lease_id
-        Lease.get({property_id: $scope.record.object.id, id: $stateParams.lease_id}).then((record) ->
-          $scope.record.lease = record
-        )
-      else
+      if(!$scope.record.lease)
         $scope.record.lease = new Lease()
-        $scope.record.tenants = []
 
     $scope.save = ->
-      $scope.validator = new FormValidator($scope.form, $scope.record.lease);
+      $scope.validator = new FormValidator($scope.formScope.form, $scope.record.lease);
       $scope.validator.resetValidations();
+      $scope.record.lease.leases_users_attributes = $scope.record.lease.leases_users
 
       if($scope.record.lease.id)
         promise = $scope.record.lease.update()
@@ -57,8 +49,20 @@ app.controller "PropertyLeaseFormController", ["$scope", "$stateParams", "Lease"
         promise = $scope.record.lease.create()
 
       promise.then(((record) ->
-        $state.go('default.properties.property.leases.index', {property_id: $scope.record.object.id});
+        $state.go('default.properties.property.leases.index', {property_id: $scope.record.object.id}, {reload: true});
       ), $scope.validator.failure)
+
+    $scope.removeTenant = (tenant) ->
+      tenant._destroy = 1
+      $scope.formScope.form.$setDirty()
+
+    $scope.undoRemove = (tenant) ->
+      tenant._destroy = 0
+
+    $scope.addTenant = ->
+      $scope.record.lease.new_tenants ||= []
+      $scope.record.lease.new_tenants.push({id: $scope.record.lease.new_tenants.length, name: "", email: ""})
+
 ]
 
 app.controller "PropertyLeasesShowController", ["$scope", "$stateParams",

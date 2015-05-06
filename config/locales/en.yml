@@ -15,10 +15,14 @@ en:
   filters: Filters
   heads_up: "Heads Up!"
   home: Home
+  menu: Menu
+  new_object: "New %{name}"
   no_results: No results found
+  more: more
   paging_counts_angular: "{{pagingFirstRecord()}} - {{pagingLastRecord()}} of {{paging.total_count}}"
   previous_page: Previous Page
   remove: Remove
+  remove_object: "Remove %{name}"
   reset: Reset
   save: Save
   save_record: "Save %{name}"
@@ -38,6 +42,9 @@ en:
 
   activerecord:
     models:
+      contact:
+        one: Contact
+        other: Contacts
       invoice:
         one: Invoice
         other: Invoices
@@ -57,6 +64,10 @@ en:
         other: Transactions
 
     attributes:
+      contact:
+        email: Email
+        name: Name
+
       lease:
         tenant:
           one: Tenant
