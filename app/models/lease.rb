@@ -5,6 +5,7 @@ class Lease < ActiveRecord::Base
   has_many :invoices
   has_many :leases_users
   has_many :tenants, through: :leases_users, source: :contact
+  has_one :next_invoice, -> {where("issue_date >= ?", Date.today).order("issue_date") }, class_name: "Invoice"
 
   FREQUENCY_TYPES = %w(days weeks months years).freeze
 

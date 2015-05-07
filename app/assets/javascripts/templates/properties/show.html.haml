@@ -2,7 +2,7 @@
   .panel-heading
     .panel-title.ibox-title
       %h4= I18n.t(:details)
-  .panel-body.ibox-content
+  .panel-body.ibox-content.slide-down{"ng-show" => "record.object.id"}
     %div{ "ng-show" => "record.object.current_lease" }
       .row
         .col-md-12
@@ -58,12 +58,13 @@
               .well.no-margin-b{style: "padding: 14px;"}
                 %h2
                   %i.fa.fa-usd
-          .col-sm-8{style: "padding-left: 0"}
+          .col-sm-8.no-padding-l
             %strong Payments
             %br/
             %small
               %strong Next:
-              06-01-2015
+              %a{"ui-sref" => "default.invoices.invoice.show({id: record.object.current_lease.next_invoice.id})"}
+                {{ record.object.current_lease.next_invoice.issue_date || "N/A" }}
             %br/
             %small
               %strong Last:

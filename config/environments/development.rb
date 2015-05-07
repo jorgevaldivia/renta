@@ -40,4 +40,9 @@ Rails.application.configure do
   config.logger = Logger.new(STDOUT)
   config.logger.level = Logger.const_get("DEBUG")
   config.log_level = :debug
+
+  # Perform caching
+  config.action_controller.perform_caching = true
+
+  config.cache_store = :memory_store, { size: 64.megabytes }
 end

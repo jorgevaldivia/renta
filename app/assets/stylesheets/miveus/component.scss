@@ -4165,9 +4165,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
      transform: translateX(0);
   -ms-transform: translateX(0);
   -webkit-transform: translateX(0);
-  -o-transition-duration: 250ms;
-     transition-duration: 250ms;
-  -webkit-transition-duration: 250ms;
+  -o-transition-duration: 0ms;
+     transition-duration: 0ms;
+  -webkit-transition-duration: 0ms;
   opacity: 1;
 }
 .slide-right.ng-leave-active,
@@ -4319,10 +4319,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
      transform: translateY(0);
   -ms-transform: translateY(0);
   -webkit-transform: translateY(0);
-  -o-transition-duration: 250ms;
-     transition-duration: 250ms;
-  -webkit-transition-duration: 250ms;
+  -o-transition-duration: 0ms;
+     transition-duration: 0ms;
+  -webkit-transition-duration: 0ms;
   opacity: 1;
+
+  // ms was 250ms
 }
 .slide-down.ng-leave-active,
 .slide-down > .content-body.ng-leave-active {

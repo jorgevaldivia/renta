@@ -256,9 +256,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .contact-box h5{
   margin-bottom: 5px;
 }
-.contact-box a {
-  color: inherit;
-}
 
 .blank-slate h2{
   font-weight: 100;
@@ -297,4 +294,21 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .text-large{
   font-size: 24px;
+}
+
+.w-42{
+  height: 42px;
+  width: 42px;
+}
+
+.w-64{
+  height: 64px;
+  width: 64px;
+}
+
+.wrapper-content {
+  padding: 20px 10px 40px;
+}
+.wrapper {
+  padding: 0 20px;
 }

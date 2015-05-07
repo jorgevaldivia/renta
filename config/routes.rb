@@ -5,6 +5,9 @@ Rails.application.routes.draw do
       resources :invoices
     end
   end
+  
+  resources :invoices, except: [:new, :edit], defaults: { format: :json }
+  resources :contacts, except: [:new, :edit], defaults: { format: :json }
 
   resource :dashboard, only: :show
   resource :me, only: :show, controller: "me", defaults: { format: :json }

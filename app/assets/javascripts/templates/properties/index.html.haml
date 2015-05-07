@@ -18,6 +18,7 @@
     %table.table.table-hover
       %thead
         %tr
+          %th.w-64 &nbsp;
           %th= Property.human_attribute_name(:name)
           %th= Property.human_attribute_name(:address_line_1)
           %th= Property.human_attribute_name(:city)
@@ -25,6 +26,9 @@
           %th &nbsp;
       %tbody
         %tr{"ng-repeat" => "record in records"}
+          %td
+            %span.label.label-default
+              Rented
           %td
             %a{"ui-sref" => "default.properties.property.show({id: record.id})"}
               {{record.name}}

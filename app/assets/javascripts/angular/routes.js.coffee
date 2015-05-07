@@ -165,6 +165,102 @@ app.config [
       }
     )
 
+    .state('default.contacts',
+      url: '/contacts'
+      template: '<div class="ui-view slide-down"></div>'
+      controller: "ContactsController"
+      ncyBreadcrumb: { skip: true }
+    )
+
+    .state('default.contacts.index',
+      url: '/'
+      templateUrl: 'contacts/index.html'
+      controller: "ContactsIndexController"
+      ncyBreadcrumb: { label: 'Contacts' }
+    )
+
+    .state('default.contacts.new',
+      url: '/new'
+      templateUrl: 'contacts/new.html'
+      controller: "ContactFormController"
+      ncyBreadcrumb: {
+        parent: 'default.contacts.index'
+        label: "New"
+      }
+    )
+
+    .state('default.contacts.contact',
+      url: '/:id'
+      templateUrl: 'contacts/contact.html'
+      controller: "ContactController"
+      abstract: true
+      ncyBreadcrumb: {
+        parent: 'default.contacts.index'
+        label: "{{ record.object.name | characters:25 }}"
+        force: true
+      }
+    )
+
+    .state('default.contacts.contact.show',
+      url: ''
+      templateUrl: 'contacts/show.html'
+      controller: "ContactShowController"
+      ncyBreadcrumb: { skip: true }
+    )
+
+    .state('default.contacts.contact.edit',
+      url: '/edit'
+      templateUrl: 'contacts/form.html'
+      controller: "ContactFormController"
+      ncyBreadcrumb: {
+        parent: 'default.contacts.contact'
+        label: "Edit"
+      }
+    )
+
+    .state('default.invoices',
+      url: '/invoices'
+      template: '<div class="ui-view slide-down"></div>'
+      controller: "InvoicesController"
+      ncyBreadcrumb: { skip: true }
+    )
+
+    .state('default.invoices.index',
+      url: '/'
+      templateUrl: 'invoices/index.html'
+      controller: "InvoicesIndexController"
+      ncyBreadcrumb: { label: 'Invoices' }
+    )
+
+    .state('default.invoices.new',
+      url: '/new'
+      templateUrl: 'invoices/new.html'
+      controller: "InvoiceFormController"
+      ncyBreadcrumb: {
+        parent: 'default.invoices.index'
+        label: "New"
+      }
+    )
+
+    .state('default.invoices.invoice',
+      url: '/:id'
+      template: '<div class="ui-view slide-down"></div>'
+      controller: "InvoiceController"
+      abstract: true
+      ncyBreadcrumb: {
+        parent: 'default.invoices.index'
+        label: "{{ record.object.subject | characters:25 }}"
+        force: true
+      }
+    )
+
+    .state('default.invoices.invoice.show',
+      url: ''
+      templateUrl: 'invoices/show.html'
+      controller: "InvoiceShowController"
+      ncyBreadcrumb: { skip: true }
+    )
+
     # .state('default.leases',
     #   url: '/properties/:property_id/leases'
     #   abstract: true

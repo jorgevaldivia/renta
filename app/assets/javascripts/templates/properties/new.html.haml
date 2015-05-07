@@ -3,10 +3,15 @@
     .col-md-9
       %div{"ng-include" => "'properties/form.html'"}
     .col-md-3
-      %h4
-        %b Tips
-      %br/
-      %p.small
-        Tell us a bit about your property. This information will be used to better categorize and report on your data. It will also let prospective tenants know more about your property if you ever decide to list it.
-      %p.small
-        During step 3 you'll be able to add a lease. This is where you can add tenants and setup other lease details such as rent & deposit amounts and contract duration.
+      .wrapper.wrapper-content
+        %h4
+          %b Tips
+        %br/
+        %p.small
+          Tell us a bit about your property. This information will be used to better categorize and report on your data. It will also let prospective tenants know more about your property if you ever decide to list it.
+        %h4
+          %i.fa.fa-file-text
+          %b= Lease.model_name.human(count: 2)
+        %br/
+        %div.small
+          You'll be able to add leases once you've saved your property. This is where you can add details like rent and deposit amounts, lease terms, and begin accepting payments.

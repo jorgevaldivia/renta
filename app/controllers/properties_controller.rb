@@ -4,13 +4,15 @@ class PropertiesController < ApplicationController
   respond_to :json
 
   def index
-    @q = Property.includes({current_lease: :tenants}).ransack(params[:q])
+    @q = Property.includes({current_lease: {leases_users: :contact}}).ransack(params[:q])
     @properties = @q.result
     respond_with(@properties)
   end
 
   def show
-    @property = Property.includes(:current_lease).find(params[:id])
+    @property = Property.
+      includes({current_lease: [{leases_users: :contact}, :next_invoice]}).
+        find(params[:id])
     respond_with(@property)
   end
 

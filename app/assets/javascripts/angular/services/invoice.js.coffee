@@ -1,9 +1,6 @@
-app.factory "Invoice", [
-  "$resource"
-  ($resource) ->
-    return $resource("/080070c44a/invoices/:id/.json", null,
-      update:
-        method: "PUT",
-      query:  { method:'GET', isArray: false },
-    )
+app.factory "Invoice", ["railsResourceFactory", (railsResourceFactory) ->
+  railsResourceFactory(
+    url: "/invoices/{{id}}"
+    name: "invoice"
+  )
 ]

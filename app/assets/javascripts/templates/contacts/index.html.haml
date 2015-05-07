@@ -1,0 +1,36 @@
+.container-fluid.pt-md
+  .panel.ibox
+    .panel-heading
+      .panel-title.ibox-title
+        .row
+          .col-md-12
+            %h4.pull-left= Contact.model_name.human(count: 2)
+            %a.btn.btn-primary.btn-sm.pull-right{"ui-sref" => "default.contacts.new"}
+              %i.fa.fa-plus
+              = I18n.t(:add, name: Contact.model_name.human)
+    .panel-body.ibox-content
+      .row
+        .col-md-12
+          .input-group
+            %input.input-sm.form-control{:placeholder => "Search Here", :type => "text"}/
+            %span.input-group-btn
+
+    %table.table.table-hover
+      %thead
+        %tr
+          %th= Contact.human_attribute_name(:name)
+          %th= Contact.human_attribute_name(:email)
+      %tbody
+        %tr{"ng-repeat" => "record in records"}
+          %td
+            %img.img-circle.w-42{alt: "image", src: "assets/placeholders/users/64.png"}/
+            &nbsp;
+            %a{"ui-sref" => "default.contacts.contact.show({id: record.id})"}
+              {{record.name}}
+          %td.small
+            %i.fa.fa-envelope.fa-fw.text-muted
+            {{record.email}}
+
+            %br/
+            %i.fa.fa-phone.fa-fw.text-muted
+            903-363-4210
