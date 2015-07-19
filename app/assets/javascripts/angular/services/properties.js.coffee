@@ -1,8 +1,6 @@
-app.factory "Property", [
-  "$resource",
-  ($resource) ->
-    return $resource("/properties/:id", null,
-      update:
-        method: "PATCH",
-    )
+app.factory "Property", ["railsResourceFactory", (railsResourceFactory) ->
+  railsResourceFactory(
+    url: "/properties/{{id}}"
+    name: "property"
+  )
 ]

@@ -9,7 +9,7 @@ app.controller "PropertyController", ["$scope", "$state", "$stateParams", "Prope
     $scope.getProperty = (id) ->
       if id
         if(String($scope.record.object.id) != String(id))
-          Property.get({id: id}, (record) ->
+          Property.get({id: id}).then((record) ->
             $scope.record.object = record
           )
       else
@@ -26,7 +26,7 @@ app.controller "PropertyController", ["$scope", "$state", "$stateParams", "Prope
 app.controller "PropertiesIndexController", ["$scope", "Property",
   ($scope, Property) ->
     $scope.refreshProperties = ->
-      Property.query((records)->
+      Property.query().then((records)->
         $scope.records = records
       )
 
@@ -43,17 +43,8 @@ app.controller "PropertyFormController", ["$scope", "$state", "$stateParams", "P
       else
         $scope.record = {object: new Property()}
 
-    $scope.save = ->
-      $scope.validator = new FormValidator($scope.formScope.form, $scope.record.object)
-      $scope.validator.resetValidations()
-      if($scope.record.object.id)
-        promise = $scope.record.object.$update({id: $scope.record.object.id})
-      else
-        promise = $scope.record.object.$save()
-
-      promise.then(((record) ->
-         $state.go('default.properties.property.show', {id: record.id});
-      ), $scope.validator.failure)
+    $scope.saveSuccess = (result) ->
+      $state.go('default.properties.property.show', {id: result.id});
 
     $scope.init();
 ]

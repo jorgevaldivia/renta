@@ -1,0 +1,16 @@
+.panel.ibox.float-e-margins
+  .panel-heading
+    .panel-title.ibox-title
+      %h4= I18n.t(:profile)
+
+  %form.form-horizontal{name: "formScope.form", "novalidate" => "", 'ng-submit' => 'save()', "ng-init" => "init()"}
+    .panel-body.ibox-content.profile-content.no-padding-hr
+      .textInput{label: User.human_attribute_name(:first_name), "field-name" => "first_name", "ng-model" => "records.me.first_name"}
+      .textInput{label: User.human_attribute_name(:last_name), "field-name" => "last_name", "ng-model" => "records.me.last_name"}
+      / .textInput{label: User.human_attribute_name(:email), "field-name" => "email", "ng-model" => "records.me.email"}
+
+      .hr-line-dashed
+
+      .form-group
+        .col-sm-4.col-sm-offset-2
+          %button.btn.btn-primary{type: "submit", "ng-disabled" => "formScope.form.$pristine"}= I18n.t(:save_record, name: I18n.t(:profile))

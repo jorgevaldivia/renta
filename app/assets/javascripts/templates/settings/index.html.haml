@@ -1,0 +1,20 @@
+.container-fluid.pt-md
+  .row
+    .col-md-4
+      .panel.ibox.float-e-margins
+        .panel-heading
+          .panel-title.ibox-title
+            %h4= I18n.t(:settings)
+        .panel-body.ibox-content.profile-content.no-padding-hr
+          %ul.nav
+            %li
+              %a{href: "#"}
+                %i.fa.fa-user.fa-fw
+                = I18n.t(:profile)
+            %li
+              %a{href: "#"}
+                %i.fa.fa-university.fa-fw
+                = BankAccount.model_name.human
+
+    .col-md-8
+      .ui-view.slide-right

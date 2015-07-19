@@ -1,5 +1,6 @@
-app.factory "Me", [
-  "$resource",
-  ($resource) ->
-    return $resource("/me", null)
+app.factory "Me", ["railsResourceFactory", (railsResourceFactory) ->
+  railsResourceFactory(
+    url: "/me"
+    name: "me"
+  )
 ]

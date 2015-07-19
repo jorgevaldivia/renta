@@ -1,4 +1,4 @@
-class OpenPay::BankAccount < OpenPay::Base
+class OpenPay::Bank < OpenPay::Base
   private
   
   def resource_name

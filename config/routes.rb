@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :contacts, except: [:new, :edit], defaults: { format: :json }
 
   resource :dashboard, only: :show
-  resource :me, only: :show, controller: "me", defaults: { format: :json }
+  resource :me, only: [:show, :update], controller: "me", defaults: { format: :json }
 
   devise_for :users, controllers: { 
     sessions: "users/sessions",

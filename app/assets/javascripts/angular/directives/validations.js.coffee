@@ -39,7 +39,8 @@ app.factory('FormValidator', [
         form = @form
         angular.forEach form.$error, (objs, value) ->
           angular.forEach objs, (obj, v2) ->
-            form[obj.$name].$setValidity value, true
+            if form[obj.$name]
+              form[obj.$name].$setValidity value, true
 
       return
 ])

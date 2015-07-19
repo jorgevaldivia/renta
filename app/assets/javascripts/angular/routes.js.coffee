@@ -20,6 +20,20 @@ app.config [
       }
     )
 
+    $stateProvider.state('default.settings',
+      url: '/settings'
+      templateUrl: 'settings/layout.html'
+      controller: "SettingsController"
+      ncyBreadcrumb: { label: "Settings" }
+    )
+
+    $stateProvider.state('default.settings.profile',
+      url: '/profile/edit'
+      templateUrl: 'settings/profile/edit.html'
+      controller: "SettingsProfileController"
+      ncyBreadcrumb: { label: "Profile" }
+    )
+
     .state('default.properties',
       url: '/properties'
       templateUrl: 'properties/layout.html'

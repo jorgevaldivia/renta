@@ -99,19 +99,18 @@
                   %p.mb-0
                     Joel Bowen -
                     %span.text-muted Donec egestas. Duis ac arcu. Nunc mauris...
-            / / media list
 
     %li.dropdown
       %a.dropdown-toggle{:href => "", "data-toggle" => "dropdown"}
         %span.img-wrapper.img-rounded
           %img{:alt => "", :src => "/assets/avatar/avatar2.jpg"}/
-        %span.text.fw-sb.ml-xs.hidden-xs {{me.first_name}}
+        %span.text.fw-sb.ml-xs.hidden-xs {{records.me.first_name}}
         %span.caret
       %ul.dropdown-menu
         %li
-          %a{"ui-sref" => "default.setting.profile"}
-            %i.ai.ai-person.fs-16.pos-t-1.mr-xs
-            Profile
+          %a{"ui-sref" => "default.settings.profile"}
+            %i.fa.fa-wrench.fa-fw
+            = I18n.t(:settings)
         %li
           %a{:href => ""}
             %i.ai.ai-info-outline.fs-16.pos-t-1.mr-xs
@@ -121,5 +120,3 @@
           %a{"ui-sref" => "minimal.page.signin"}
             %i.ai.ai-lock.fs-16.pos-t-1.mr-xs
             Logout
-  / / end: right nav
-/ / end: navbar-nocollapse

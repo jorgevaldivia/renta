@@ -1,10 +1,11 @@
 app.controller "DefaultController", ["$scope", "$stateParams", "Me",
   ($scope, $stateParams, Me) ->
-    $scope.me = {}
+    $scope.records = {}
+    $scope.records.me = new Me()
 
     $scope.getMe = ->
-      Me.get((record) ->
-        $scope.me = record
+      Me.get().then((record) ->
+        $scope.records.me = record
       )
 
     $scope.getMe()

@@ -21,6 +21,7 @@ en:
   more: more
   paging_counts_angular: "{{pagingFirstRecord()}} - {{pagingLastRecord()}} of {{paging.total_count}}"
   previous_page: Previous Page
+  profile: Profile
   remove: Remove
   remove_object: "Remove %{name}"
   reset: Reset
@@ -42,6 +43,9 @@ en:
 
   activerecord:
     models:
+      bank_account:
+        one: Bank Account
+        other: Bank Accounts
       contact:
         one: Contact
         other: Contacts
@@ -58,7 +62,7 @@ en:
           years: Year(s)
       property:
         one: Property
-        other: Properties
+        other: All Properties
       transaction:
         one: Transaction
         other: Transactions

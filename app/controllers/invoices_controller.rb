@@ -10,7 +10,9 @@ class InvoicesController < ApplicationController
   end
 
   def show
-    @invoice = Invoice.find(params[:id])
+    @invoice = Invoice.
+      includes([{lease: :tenants}, :line_items]).
+      find(params[:id])
     respond_with(@invoice)
   end
 

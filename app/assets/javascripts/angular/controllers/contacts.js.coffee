@@ -23,11 +23,12 @@ app.controller "ContactController", ["$scope", "$state", "$stateParams", "Contac
     $scope.getContact($stateParams.id);
 ]
 
-app.controller "ContactsIndexController", ["$scope", "Contact",
-  ($scope, Contact) ->
+app.controller "ContactsIndexController", ["$scope", "Contact", "$location"
+  ($scope, Contact, $location) ->
 
     $scope.refreshContacts = ->
-      Contact.query().then((records)->
+      console.log($location.search())
+      Contact.query({"q[leases_users_lease_id_in][]": [10]}).then((records)->
         $scope.records = records
       )
 

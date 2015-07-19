@@ -5,26 +5,31 @@
         .col-md-8
           %h4{"ng-show" => "$state.includes('default.properties.new')"}= I18n.t(:add_new, name: Property.model_name.human)
           %h4{"ng-show" => "$state.includes('default.properties.property.edit')"}= I18n.t(:edit_object, name: Property.model_name.human)
-  %form.form-horizontal{name: "formScope.form", "novalidate" => ""}
-    .panel-body
 
-      .form-group{"highlight-if-error" => "name"}
-        %label.col-sm-2.control-label= Property.human_attribute_name(:name)
-        .col-sm-10
-          %input.form-control{type: "text", "ng-model" => "record.object.name", name: "name"}/
-          %span{"error-messages" => "name"}
+  .panel-body
+    %form.form-input.form-horizontal{name: "formScope.form", "novalidate" => "", "ng-submitxx" => "testo()", 'submit-and-validate' => 'testo()', "ng-success" => "saveSuccess(result)", "ng-record" => "record.object"}
 
-      .form-group{"highlight-if-error" => "address_line_1"}
-        %label.col-sm-2.control-label= Property.human_attribute_name(:address_line_1)
-        .col-sm-10
-          %input.form-control{type: "text", "ng-model" => "record.object.address_line_1", name: "address_line_1"}/
-          %span{"error-messages" => "address_line_1"}
+      .text-input{label: Property.human_attribute_name(:name), "field-name" => "name", "ng-model" => "record.object.name"}
+        / .text-input{label: Property.human_attribute_name(:address_line_1), "field-name" => "address_line_1", "ng-model" => "record.object.address_line_1"}
+        / .text-input{label: Property.human_attribute_name(:address_line_2), "field-name" => "address_line_2", "ng-model" => "record.object.address_line_2"}
 
-      .form-group{"highlight-if-error" => "address_line_2"}
-        %label.col-sm-2.control-label= Property.human_attribute_name(:address_line_2)
-        .col-sm-10
-          %input.form-control{type: "text", "ng-model" => "record.object.address_line_2", name: "address_line_2"}/
-          %span{"error-messages" => "address_line_2"}
+      / .form-group{"highlight-if-error" => "name"}
+      /   %label.col-sm-2.control-label= Property.human_attribute_name(:name)
+      /   .col-sm-10
+      /     %input.form-control{type: "text", "ng-model" => "record.object.name", name: "name"}/
+      /     %span{"error-messages" => "name"}
+
+      / .form-group{"highlight-if-error" => "address_line_1"}
+      /   %label.col-sm-2.control-label= Property.human_attribute_name(:address_line_1)
+      /   .col-sm-10
+      /     %input.form-control{type: "text", "ng-model" => "record.object.address_line_1", name: "address_line_1"}/
+      /     %span{"error-messages" => "address_line_1"}
+
+      / .form-group{"highlight-if-error" => "address_line_2"}
+      /   %label.col-sm-2.control-label= Property.human_attribute_name(:address_line_2)
+      /   .col-sm-10
+      /     %input.form-control{type: "text", "ng-model" => "record.object.address_line_2", name: "address_line_2"}/
+      /     %span{"error-messages" => "address_line_2"}
 
       .form-group{"highlight-if-error" => "city"}
         %label.col-sm-2.control-label= Property.human_attribute_name(:city)
@@ -46,14 +51,14 @@
 
       .form-group{"highlight-if-error" => "beds, baths"}
         %label.col-sm-2.control-label= Property.human_attribute_name(:beds_baths)
-        .col-sm-3
+        .col-xs-3
           %select.form-control{type: "text", "ng-model" => "record.object.beds", name: "beds"}
             - (0..10).each do |num|
               %option{value: num}
                 = (num == 10) ? "#{num}+" : num
           %span{"error-messages" => "beds"}
 
-        .col-sm-3
+        .col-xs-3
           %select.form-control{type: "text", "ng-model" => "record.object.baths", name: "baths"}
             - (0..20).map{ |x| "%g" % (x / 2.0) }.each do |num|
               %option{value: num}
@@ -70,11 +75,11 @@
               %sup 2
           %span{"error-messages" => "size"}
 
+      .hr-line-dashed
 
-    .panel-footer
       .form-group.mb-0
         %label.col-sm-2.control-label
         .col-sm-10
-          %button.btn.btn-primary{type: "submit", "ng-click" => "save();", "ng-disabled" => "formScope.form.$pristine"}
+          %button.btn.btn-primary{type: "submit", "ng-xxdisabled" => "formScope.form.$pristine"}
             = I18n.t(:save_record, name: Property.model_name.human)
           %button.btn.btn-default{type: "reset"}= I18n.t(:reset)

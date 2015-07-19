@@ -31,6 +31,7 @@
 @import "atlant";
 @import "wizard";
 @import "modals";
+@import "invoices";
 
 body {
   font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -84,6 +85,16 @@ body {
   padding-right: 0 !important;
 }
 
+.no-padding-hr {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.no-padding-vr {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
 .panel-heading {
   border-color: #eff2f7;
   font-size: 16px;
@@ -109,7 +120,7 @@ body {
 }
 body {
   font-family: "Helvetica Neue", Helvetica,Arial,sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.42857143;
   color: #333;
   // background-color: #fff;
@@ -311,4 +322,21 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 .wrapper {
   padding: 0 20px;
+}
+
+
+.gray-lighter-bg{
+  background-color: $gray-lighter;
+}
+
+.thick-gray-light-border{
+  border-bottom: 8px solid $gray-light;
+}
+
+.hr-line-dashed {
+  border-top: 1px dashed #e7eaec;
+  color: #ffffff;
+  background-color: #ffffff;
+  height: 1px;
+  margin: 20px 0;
 }

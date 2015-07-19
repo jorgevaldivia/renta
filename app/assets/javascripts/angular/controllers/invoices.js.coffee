@@ -61,4 +61,12 @@ app.controller "InvoiceFormController", ["$scope", "$state", "$stateParams", "In
 app.controller "InvoiceShowController", ["$scope", "$stateParams", "Invoice",
   ($scope, $stateParams, Invoice) ->
 
+    $scope.tenantNames = ->
+      return if !$scope.record.object.tenants
+
+      names = $scope.record.object.tenants.map (tenant) ->
+        tenant.name
+
+      names.join(", ")
+
 ]

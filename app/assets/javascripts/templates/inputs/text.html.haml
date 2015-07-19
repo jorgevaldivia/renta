@@ -1,0 +1,6 @@
+.form-group{"ng-class" => "{'has-error': form[field_name].$invalid}"}
+  %label.col-sm-2.control-label {{label}}
+  .col-sm-6
+    %input.form-control.server-validation{type: "text", "ng-model" => "ngModel", name: "{{field_name}}"}/
+    %span{"error-messages" => "{{field_name}}"}
+    
